@@ -1,48 +1,50 @@
-import SidebarMenu from 'react-bootstrap-sidebar-menu';
+import React from "react";
+import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 
-function Sidebar() {
+import SideNav, {
+  Toggle,
+  Nav,
+  NavItem,
+  NavIcon,
+  NavText
+} from "@trendmicro/react-sidenav";
+
+class SideNavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isVisible: true
+    };
+  }
+
+  render() {
     return (
-        <SidebarMenu>
-            <SidebarMenu.Header>
-                <SidebarMenu.Brand>
-                {/* Your brand icon */}
-                </SidebarMenu.Brand>
-                <SidebarMenu.Toggle />
-            </SidebarMenu.Header>
-            <SidebarMenu.Body>
-                <SidebarMenu.Nav>
-                    <SidebarMenu.Nav.Link>
-                        <SidebarMenu.Nav.Icon>
-                        {/* Menu item icon */}
-                        </SidebarMenu.Nav.Icon>
-                        <SidebarMenu.Nav.Title>
-                        {/* Menu item title */}
-                        </SidebarMenu.Nav.Title>
-                    </SidebarMenu.Nav.Link>
-                </SidebarMenu.Nav>
-                <SidebarMenu.Sub>
-                    <SidebarMenu.Sub.Toggle>
-                        <SidebarMenu.Nav.Icon />
-                        <SidebarMenu.Nav.Title>
-                        {/* Submenu title */}
-                        </SidebarMenu.Nav.Title>
-                    </SidebarMenu.Sub.Toggle>
-                    <SidebarMenu.Sub.Collapse>
-                        <SidebarMenu.Nav>
-                        <SidebarMenu.Nav.Link>
-                            <SidebarMenu.Nav.Icon>
-                            {/* Submenu item icon */}
-                            </SidebarMenu.Nav.Icon>
-                            <SidebarMenu.Nav.Title>
-                            {/* Submenu item title */}
-                            </SidebarMenu.Nav.Title>
-                        </SidebarMenu.Nav.Link>
-                        </SidebarMenu.Nav>
-                    </SidebarMenu.Sub.Collapse>
-                </SidebarMenu.Sub>
-            </SidebarMenu.Body>
-        </SidebarMenu>
+      <SideNav expanded={this.state.isVisible}>
+        <SideNav.Toggle
+          onClick={() => {
+            this.setState({ isVisible: !this.state.isVisible });
+          }}
+        />
+        <SideNav.Nav defaultSelected="home">
+          <NavItem eventKey="home">
+            <NavIcon>
+              <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
+            </NavIcon>
+            <NavText>Home</NavText>
+          </NavItem>
+          <NavItem eventKey="placed orders">
+            <NavIcon>
+              <i
+                className="fa fa-fw fa-line-chart"
+                style={{ fontSize: "1.75em" }}
+              />
+            </NavIcon>
+            <NavText>placed orders</NavText>
+          </NavItem>
+        </SideNav.Nav>
+      </SideNav>
     );
+  }
 }
 
-export default Sidebar;
+export default SideNavBar;
