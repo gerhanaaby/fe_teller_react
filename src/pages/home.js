@@ -3,7 +3,6 @@ import { Col, Row } from "react-bootstrap";
 import NavbarComponent from "../components/navbar";
 
 import SidebarComponent from "../components/sibebar";
-import "./../css/home.css";
 import bsimLogo from "./../assets/images/logoBSIM.png";
 import Sidebar from "../components/sibebar";
 
