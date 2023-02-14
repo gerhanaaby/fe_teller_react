@@ -8,6 +8,9 @@ import FieldText from "../components/field_text";
 import NavbarReact from "../components/navbar";
 import "./../css/login.css";
 
+import tellerLogo from "./../assets/images/teller.png";
+import bsimLogo from "./../assets/images/logoBSIM.png";
+
 import React from "react";
 
 export default function Login() {
@@ -35,16 +38,16 @@ export default function Login() {
       showPass: !values.showPass,
     });
   };
+  document.body.style = "background: red;";
   return (
-    <body className="bodyLogin">
+    <div>
       <header className="header">
-        <h1>SFPOPOS</h1>
-        <div className="Title-Subtitle">
-          San Franciscos Privately Owned Public Spaces
-        </div>
+        <img src={bsimLogo} style={{ width: "180px", height: "50px" }} />
       </header>
-
       <div class="loginForm">
+        <div class="tellerLogo">
+          <img src={tellerLogo} style={{ width: "500px", height: "160px" }} />
+        </div>
         <i class="welcomeText">
           Selamat Datang, silakan login untuk memulai Aplikasi
         </i>
@@ -59,11 +62,16 @@ export default function Login() {
         </Form.Group>
 
         <div className="d-grid gap-2">
-          <Button variant="danger" size="lg">
-            Block level button
+          <Button
+            variant="danger"
+            size="lg"
+            style={{ backgroundColor: "rgb(165, 2, 2)" }}
+            onClick={handleSubmit}
+          >
+            <b>Log In</b>
           </Button>
         </div>
       </div>
-    </body>
+    </div>
   );
 }

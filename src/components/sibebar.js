@@ -13,6 +13,8 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { useState, useEffect } from "react";
+import bsimLogo from "./../assets/images/logoBSIM.png";
+import { Container, Navbar } from "react-bootstrap";
 
 function App() {
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
@@ -37,7 +39,7 @@ function App() {
       <Sidebar
         breakPoint="sm"
         transitionDuration={800}
-        backgroundColor="rgb(0, 249, 249, 0.7)"
+        backgroundColor="grey"
         rtl={false}
         style={{ height: "100vh" }}
       >
@@ -47,6 +49,8 @@ function App() {
             icon={<MenuOutlinedIcon />}
             onClick={() => {
               collapseSidebar();
+              toggleSidebar();
+              // toggle();
             }}
             style={{ textAlign: "center" }}
           >
@@ -69,18 +73,32 @@ function App() {
         {/* )} */}
       </Sidebar>
       <main>
+        <Navbar bg="light">
+          <Container>
+            <Navbar.Brand href="#home">
+              <img
+                src={bsimLogo}
+                width="180"
+                height="30"
+                className="d-inline-block align-top"
+                alt="React Bootstrap logo"
+              />
+            </Navbar.Brand>
+          </Container>
+        </Navbar>
+
         <h1
           onClick={() => {
             toggle();
           }}
-          style={{ color: "white", marginLeft: "5rem" }}
+          style={{ color: "blue", marginLeft: "5rem" }}
         >
           React-Pro-Sidebar
         </h1>
         {toggled ? (
-          <h1 style={{ color: "white", marginLeft: "5rem" }}>Toggled</h1>
+          <h1 style={{ color: "red", marginLeft: "5rem" }}>Toggled</h1>
         ) : (
-          <h1 style={{ color: "white", marginLeft: "5rem" }}>Not Toggled</h1>
+          <h1 style={{ color: "black", marginLeft: "5rem" }}>Not Toggled</h1>
         )}
         {broken && (
           <h1 style={{ color: "white", marginLeft: "5rem" }}>Small screen</h1>

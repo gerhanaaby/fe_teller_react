@@ -1,6 +1,6 @@
-body {
-  background-color: blue;
-}
+/* .bodyLogin {
+  background-color: rgb(229, 62, 62);
+} */
 
 .loginForm {
   padding: 20px;
@@ -8,7 +8,7 @@ body {
   width: 40%;
   height: 300px;
   position: absolute;
-  top: 40%;
+  top: 20%;
   left: 30%;
   color: wheat;
 }
@@ -24,7 +24,14 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  text-align: center;
-  background-color: purple;
+  text-align: left;
+  background-color: white;
   color: white;
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.tellerLogo {
+  width: 50%;
 }
