@@ -38,7 +38,7 @@ function App() {
       <Sidebar
         breakPoint="sm"
         transitionDuration={800}
-        backgroundColor="grey"
+        backgroundColor="rgb(238, 238, 238)"
         rtl={false}
         style={{ height: "100vh" }}
       >
@@ -52,42 +52,32 @@ function App() {
             style={{ textAlign: "center" }}
           >
             {" "}
-            <h2>Admin</h2>
+            <b>Teller App Dev</b>
           </MenuItem>
-          <SubMenu label="Charts">
-            <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
-            <MenuItem icon={<PeopleOutlinedIcon />}>Team</MenuItem>
+          <SubMenu label="Kriling">
+            <MenuItem style={{ fontSize: "15px" }}>
+              Setoran Kriling (SKN)
+            </MenuItem>
+            <MenuItem style={{ fontSize: "15px" }}>Titipan Kriling</MenuItem>
           </SubMenu>
-          <SubMenu label="Maps">
-            <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
-            <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>
+          <SubMenu label="RTGS">
+            <MenuItem style={{ fontSize: "15px" }}>
+              Single Customer Transfer
+            </MenuItem>
+            <MenuItem style={{ fontSize: "15px" }}>Interbank Transfer</MenuItem>
           </SubMenu>
-          <SubMenu label="Theme">
-            <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
-            <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
+          <SubMenu label="Pemindahbukuan">
+            <MenuItem style={{ fontSize: "15px" }}>Mata Uang Sama</MenuItem>
+            <MenuItem style={{ fontSize: "15px" }}>Mata Uang Beda</MenuItem>
+          </SubMenu>
+          <SubMenu label="Inquiry Saldo Cashbox">
+            <MenuItem style={{ fontSize: "15px" }}>IDR</MenuItem>
+            <MenuItem style={{ fontSize: "15px" }}>Valas</MenuItem>
+            <MenuItem style={{ fontSize: "15px" }}>Denominasi</MenuItem>
           </SubMenu>
         </Menu>
-        {/* )} */}
       </Sidebar>
-      <main>
-        {/* <header className="header">
-          <img
-            src={bsimLogo}
-            style={{
-              width: "180px",
-              height: "50px",
-              backgroundColor: "white",
-              marginLeft: "250px",
-            }}
-          />
-        </header> */}
-        <h1
-          onClick={() => {
-            toggle();
-          }}
-          style={{ color: "white", marginLeft: "5rem" }}
-        ></h1>
-      </main>
+      <main></main>
     </div>
   );
 }
