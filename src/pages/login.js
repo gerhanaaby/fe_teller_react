@@ -36,21 +36,13 @@ export default function Login() {
     });
   };
   return (
-    //<div style={{ backgroundColor: "#FF0000" }}>red</div>
-    <Container className="body">
+    <body className="bodyLogin">
       <header className="header">
         <h1>SFPOPOS</h1>
         <div className="Title-Subtitle">
           San Franciscos Privately Owned Public Spaces
         </div>
       </header>
-      {/* <Navbar bg="light" expand="lg">
-        <Container fluid>
-          <Navbar.Brand href="#">Bank Sinarmas</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll"></Navbar.Collapse>
-        </Container>
-      </Navbar> */}
 
       <div class="loginForm">
         <i class="welcomeText">
@@ -72,6 +64,6 @@ export default function Login() {
           </Button>
         </div>
       </div>
-    </Container>
+    </body>
   );
 }
