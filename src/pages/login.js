@@ -9,6 +9,7 @@ import NavbarReact from "../components/navbar";
 import "./../css/login.css";
 
 import tellerLogo from "./../assets/images/teller.png";
+import bsimLogo from "./../assets/images/logoBSIM.png";
 
 import React from "react";
 
@@ -36,40 +37,42 @@ export default function Login() {
       ...values,
       showPass: !values.showPass,
     });
-
-    return (
-      //<div style={{ backgroundColor: "#FF0000" }}>red</div>
-      <Container className="body">
-        <header className="header">
-          <h1>SFPOPOS</h1>
-          <div className="Title-Subtitle">
-            San Franciscos Privately Owned Public Spaces
-          </div>
-        </header>
-        <div class="loginForm">
-          <div class="tellerLogo">
-            <img src={tellerLogo} style={{ width: "500px", height: "160px" }} />
-          </div>
-          <i class="welcomeText">
-            Selamat Datang, silakan login untuk memulai Aplikasi
-          </i>
-          <br />
-          <br />
-          <Form.Group controlId="formText" className="mb-3">
-            <Form.Control type="text" placeholder="Username" />
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
-
-          <div className="d-grid gap-2">
-            <Button variant="danger" size="lg">
-              Block level button
-            </Button>
-          </div>
-        </div>
-      </Container>
-    );
   };
+
+  return (
+    //<div style={{ backgroundColor: "#FF0000" }}>red</div>
+    <Container className="body">
+      <header className="header">
+        <img src={bsimLogo} style={{ width: "180px", height: "50px" }} />
+      </header>
+      <div class="loginForm">
+        <div class="tellerLogo">
+          <img src={tellerLogo} style={{ width: "500px", height: "160px" }} />
+        </div>
+        <i class="welcomeText">
+          Selamat Datang, silakan login untuk memulai Aplikasi
+        </i>
+        <br />
+        <br />
+        <Form.Group controlId="formText" className="mb-3">
+          <Form.Control type="text" placeholder="Username" />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Control type="password" placeholder="Password" />
+        </Form.Group>
+
+        <div className="d-grid gap-2">
+          <Button
+            variant="danger"
+            size="lg"
+            style={{ backgroundColor: "rgb(165, 2, 2)" }}
+            onClick={handleSubmit}
+          >
+            <b>Log In</b>
+          </Button>
+        </div>
+      </div>
+    </Container>
+  );
 }

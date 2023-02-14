@@ -1,5 +1,5 @@
 body {
-  background-color: blue;
+  background-color: rgb(229, 62, 62);
 }
 
 .loginForm {
@@ -24,12 +24,14 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  text-align: center;
-  background-color: purple;
+  text-align: left;
+  background-color: white;
   color: white;
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-.tellerLogo{
+.tellerLogo {
   width: 50%;
-
 }

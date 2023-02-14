@@ -13,6 +13,7 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { useState, useEffect } from "react";
+import bsimLogo from "./../assets/images/logoBSIM.png";
 
 function App() {
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
@@ -37,7 +38,7 @@ function App() {
       <Sidebar
         breakPoint="sm"
         transitionDuration={800}
-        backgroundColor="rgb(0, 249, 249, 0.7)"
+        backgroundColor="grey"
         rtl={false}
         style={{ height: "100vh" }}
       >
@@ -69,22 +70,23 @@ function App() {
         {/* )} */}
       </Sidebar>
       <main>
+        {/* <header className="header">
+          <img
+            src={bsimLogo}
+            style={{
+              width: "180px",
+              height: "50px",
+              backgroundColor: "white",
+              marginLeft: "250px",
+            }}
+          />
+        </header> */}
         <h1
           onClick={() => {
             toggle();
           }}
           style={{ color: "white", marginLeft: "5rem" }}
-        >
-          React-Pro-Sidebar
-        </h1>
-        {toggled ? (
-          <h1 style={{ color: "white", marginLeft: "5rem" }}>Toggled</h1>
-        ) : (
-          <h1 style={{ color: "white", marginLeft: "5rem" }}>Not Toggled</h1>
-        )}
-        {broken && (
-          <h1 style={{ color: "white", marginLeft: "5rem" }}>Small screen</h1>
-        )}
+        ></h1>
       </main>
     </div>
   );
