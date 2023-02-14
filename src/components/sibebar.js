@@ -5,6 +5,7 @@ import {
   useProSidebar,
   SubMenu,
 } from "react-pro-sidebar";
+import { Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -15,8 +16,9 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { useState, useEffect } from "react";
 import bsimLogo from "./../assets/images/logoBSIM.png";
 import { Container, Navbar } from "react-bootstrap";
+import Kriling from "../pages/kriling";
 
-function App() {
+function SidebarComponent() {
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
     useProSidebar();
 
@@ -39,7 +41,7 @@ function App() {
       <Sidebar
         breakPoint="sm"
         transitionDuration={800}
-        backgroundColor="grey"
+        backgroundColor="rgb(238, 238, 238)"
         rtl={false}
         style={{ height: "100vh" }}
       >
@@ -55,22 +57,33 @@ function App() {
             style={{ textAlign: "center" }}
           >
             {" "}
-            <h2>Admin</h2>
+            <b>Teller App Dev</b>
           </MenuItem>
-          <SubMenu label="Charts">
-            <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
-            <MenuItem icon={<PeopleOutlinedIcon />}>Team</MenuItem>
+          <SubMenu label="Kriling">
+            <MenuItem
+              component={<Link to="/skn" />}
+              style={{ fontSize: "15px" }}
+            >
+              Setoran Kriling (SKN)
+            </MenuItem>
+            <MenuItem style={{ fontSize: "15px" }}>Titipan Kriling</MenuItem>
           </SubMenu>
-          <SubMenu label="Maps">
-            <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
-            <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>
+          <SubMenu label="RTGS">
+            <MenuItem style={{ fontSize: "15px" }}>
+              Single Customer Transfer
+            </MenuItem>
+            <MenuItem style={{ fontSize: "15px" }}>Interbank Transfer</MenuItem>
           </SubMenu>
-          <SubMenu label="Theme">
-            <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
-            <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
+          <SubMenu label="Pemindahbukuan">
+            <MenuItem style={{ fontSize: "15px" }}>Mata Uang Sama</MenuItem>
+            <MenuItem style={{ fontSize: "15px" }}>Mata Uang Beda</MenuItem>
+          </SubMenu>
+          <SubMenu label="Inquiry Saldo Cashbox">
+            <MenuItem style={{ fontSize: "15px" }}>IDR</MenuItem>
+            <MenuItem style={{ fontSize: "15px" }}>Valas</MenuItem>
+            <MenuItem style={{ fontSize: "15px" }}>Denominasi</MenuItem>
           </SubMenu>
         </Menu>
-        {/* )} */}
       </Sidebar>
       <main>
         <Navbar bg="light">
@@ -108,4 +121,4 @@ function App() {
   );
 }
 
-export default App;
+export default SidebarComponent;
