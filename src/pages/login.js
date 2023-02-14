@@ -8,6 +8,8 @@ import FieldText from "../components/field_text";
 import NavbarReact from "../components/navbar";
 import "./../css/login.css";
 
+import tellerLogo from './../assets/images/teller.png'
+
 import React from 'react'
 
 export default function Login() {
@@ -40,29 +42,29 @@ export default function Login() {
       <Container className="body">
         <Navbar bg="light" expand="lg">
           <Container fluid>
-            <Navbar.Brand href="#">Bank Sinarmas</Navbar.Brand>
+            <Navbar.Brand>Bank Sinarmas</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
-            
-            </Navbar.Collapse>
+            </Navbar.Collapse>``
           </Container>
         </Navbar>
         
 
 
         <div class="loginForm">
+          <div class="tellerLogo">
+            <img src={tellerLogo} style={{ width: '500px', height: '160px' }}/>
+          </div>
           <i class="welcomeText">
             Selamat Datang, silakan login untuk memulai Aplikasi
           </i>
           <br />
           <br />
           <Form.Group controlId="formText" className="mb-3">
-          
             <Form.Control type="text" placeholder="Username" />
           </Form.Group>
           
           <Form.Group className="mb-3" controlId="formBasicPassword">
-      
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
           
