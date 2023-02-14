@@ -12,7 +12,6 @@ export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <SidebarComponent></SidebarComponent>
         <Routes>
           <Route exact path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} exact />

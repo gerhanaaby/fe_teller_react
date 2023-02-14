@@ -1,6 +1,7 @@
 import { CenterFocusStrong } from "@mui/icons-material";
 import React from "react";
 import { Col, Container, Dropdown, Form, Row } from "react-bootstrap";
+import SidebarComponent from "../components/sibebar";
 import "./../css/home.css";
 
 export default function Kriling() {
@@ -13,6 +14,7 @@ export default function Kriling() {
         left: "50%",
       }}
     >
+      <SidebarComponent style={{ float: "left" }}></SidebarComponent>
       <Container class="bodyHome">
         <Form.Group controlId="formText" className="mb-3">
           <Row>

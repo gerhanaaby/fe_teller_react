@@ -5,13 +5,14 @@ import NavbarComponent from "../components/navbar";
 import SidebarComponent from "../components/sibebar";
 import "./../css/home.css";
 import bsimLogo from "./../assets/images/logoBSIM.png";
+import Sidebar from "../components/sibebar";
 
 export default class Home extends Component {
   render() {
-    document.body.style = "background: blue;";
+    document.body.style = "background: white;";
     return (
       <Col>
-        <SidebarComponent />
+        <Sidebar></Sidebar>
       </Col>
     );
   }
