@@ -9,6 +9,30 @@ import "./../css/login.css";
 
 export default class Login extends Component {
   render() {
+    const [values, setValues] = useState({
+      usernName: "",
+      pass: "",
+      showPass: false,
+    });
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      axios
+        .post("https://reqres.in/api/login", {
+          userName: values.userName,
+          password: values.pass,
+        })
+        .then((res) => {
+          localStorage.setItem("token", res.data.token);
+        })
+        .catch((err) => console.error(err));
+    };
+    const handlePassVisibilty = () => {
+      setValues({
+        ...values,
+        showPass: !values.showPass,
+      });
+    };
     return (
       //<div style={{ backgroundColor: "#FF0000" }}>red</div>
       <Container className="body">
