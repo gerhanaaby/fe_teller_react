@@ -1,7 +1,6 @@
 import { CenterFocusStrong } from "@mui/icons-material";
 import React from "react";
 import { Col, Container, Dropdown, Form, Row } from "react-bootstrap";
-import "./../css/home.css";
 
 export default function Kriling() {
   return (
