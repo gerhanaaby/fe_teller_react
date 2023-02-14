@@ -1,3 +1,7 @@
+body {
+  background-color: blue;
+}
+
 .loginForm {
   padding: 20px;
   width: 50%;
@@ -15,6 +19,12 @@
   margin-left: 12%;
 }
 
-body {
-  background-color: blue;
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: purple;
+  color: white;
 }
