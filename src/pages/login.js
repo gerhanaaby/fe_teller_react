@@ -8,52 +8,47 @@ import FieldText from "../components/field_text";
 import NavbarReact from "../components/navbar";
 import "./../css/login.css";
 
-import tellerLogo from './../assets/images/teller.png'
+import tellerLogo from "./../assets/images/teller.png";
 
-import React from 'react'
+import React from "react";
 
 export default function Login() {
-    const [values, setValues] = useState({
-      userName: "",
-      pass: "",
-      showPass: false,
+  const [values, setValues] = useState({
+    userName: "",
+    pass: "",
+    showPass: false,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("https://reqres.in/api/login", {
+        userName: values.userName,
+        password: values.pass,
+      })
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+      })
+      .catch((err) => console.error(err));
+  };
+  const handlePassVisibilty = () => {
+    setValues({
+      ...values,
+      showPass: !values.showPass,
     });
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      axios
-        .post("https://reqres.in/api/login", {
-          userName: values.userName,
-          password: values.pass,
-        })
-        .then((res) => {
-          localStorage.setItem("token", res.data.token);
-        })
-        .catch((err) => console.error(err));
-    };
-    const handlePassVisibilty = () => {
-      setValues({
-        ...values,
-        showPass: !values.showPass,
-      });
-    };
     return (
       //<div style={{ backgroundColor: "#FF0000" }}>red</div>
       <Container className="body">
-        <Navbar bg="light" expand="lg">
-          <Container fluid>
-            <Navbar.Brand>Bank Sinarmas</Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbarScroll" />
-            <Navbar.Collapse id="navbarScroll">
-            </Navbar.Collapse>``
-          </Container>
-        </Navbar>
-        
-
-
+        <header className="header">
+          <h1>SFPOPOS</h1>
+          <div className="Title-Subtitle">
+            San Franciscos Privately Owned Public Spaces
+          </div>
+        </header>
         <div class="loginForm">
           <div class="tellerLogo">
-            <img src={tellerLogo} style={{ width: '500px', height: '160px' }}/>
+            <img src={tellerLogo} style={{ width: "500px", height: "160px" }} />
           </div>
           <i class="welcomeText">
             Selamat Datang, silakan login untuk memulai Aplikasi
@@ -63,11 +58,11 @@ export default function Login() {
           <Form.Group controlId="formText" className="mb-3">
             <Form.Control type="text" placeholder="Username" />
           </Form.Group>
-          
+
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          
+
           <div className="d-grid gap-2">
             <Button variant="danger" size="lg">
               Block level button
@@ -76,6 +71,5 @@ export default function Login() {
         </div>
       </Container>
     );
+  };
 }
-
-
