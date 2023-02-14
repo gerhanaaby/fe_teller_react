@@ -1,21 +1,21 @@
-.loginForm{
-    padding: 20px;
-    width: 50%;
-    width: 40%; 
-    height: 300px;
-    position: absolute;
-    top: 40%;
-    left: 30%;
-    background-color: red;
-    color: wheat;
+.loginForm {
+  padding: 20px;
+  width: 50%;
+  width: 40%;
+  height: 300px;
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  background-color: red;
+  color: wheat;
 }
 
-.welcomeText{
-    color: white;
-    text-align: center;
-    margin-left: 12%;
+.welcomeText {
+  color: white;
+  text-align: center;
+  margin-left: 12%;
 }
 
-.back{
-    background-color: blue;
+body {
+  background-color: blue;
 }
