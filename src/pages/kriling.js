@@ -1,6 +1,14 @@
 import { CenterFocusStrong } from "@mui/icons-material";
 import React, { useState } from "react";
-import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Dropdown,
+  DropdownButton,
+  Form,
+  Row,
+} from "react-bootstrap";
 import SidebarComponent from "../components/sibebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +23,7 @@ export default function Kriling() {
   const [values, setValues] = useState({
     nomorRek: "",
     namaProduk: "",
-    mataUangRek: "",
+    mataUangRek: "Jenis Mata Uang",
     namaPemilik: "",
     noIdPemilik: "",
     kodeCabang: "",
@@ -67,10 +75,12 @@ export default function Kriling() {
     <div
       style={{
         position: "absolute",
+        top: "20%",
+        left: "30%",
         backgroundColor: "white",
-        width: "1120px",
-        paddingTop: "2%",
-        paddingLeft: "23%",
+        //width: "1120px",
+        //paddingTop: "2%",
+        //paddingLeft: "23%",
       }}
     >
       <Container class="bodyHome">
@@ -105,7 +115,7 @@ export default function Kriling() {
                 <Form.Control
                   type="text"
                   placeholder="Nomor Rekening"
-                  onChange={(u) =>
+                  onSelect={(u) =>
                     setValues({ ...values, nomorRek: u.target.value })
                   }
                 />
@@ -122,7 +132,7 @@ export default function Kriling() {
                   type="text"
                   placeholder="Nama Produk"
                   disabled
-                  onChange={(u) =>
+                  onSelect={(u) =>
                     setValues({ ...values, namaProduk: u.target.value })
                   }
                 />
@@ -135,14 +145,33 @@ export default function Kriling() {
                 <b>Mata Uang Rekening</b>
               </Col>
               <Col>
-                <Dropdown.Toggle variant="danger" id="dropdown-basic">
-                  Jenis Mata Uang
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#">IDR</Dropdown.Item>
-                  <Dropdown.Item href="#">USD</Dropdown.Item>
-                  <Dropdown.Item href="#">SGD</Dropdown.Item>
-                </Dropdown.Menu>
+                <DropdownButton
+                  variant="danger"
+                  id="dropdown-basic"
+                  title={values.mataUangRek}
+                >
+                  <Dropdown.Item
+                    onSelect={(u) =>
+                      setValues({ ...values, mataUangRek: u.target.value })
+                    }
+                  >
+                    IDR
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onSelect={(u) =>
+                      setValues({ ...values, mataUangRek: u.target.value })
+                    }
+                  >
+                    USD
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onSelect={(u) =>
+                      setValues({ ...values, mataUangRek: u.target.value })
+                    }
+                  >
+                    SGD
+                  </Dropdown.Item>
+                </DropdownButton>
               </Col>
             </Row>
           </Dropdown>
