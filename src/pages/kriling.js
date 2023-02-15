@@ -4,7 +4,10 @@ import { Col, Container, Dropdown, Form, Row } from "react-bootstrap";
 
 export default function Kriling() {
   return (
-    <body
+    // <body
+
+    // >
+    <div
       style={{
         backgroundColor: "white",
         width: "550px",
@@ -12,7 +15,7 @@ export default function Kriling() {
         left: "50%",
       }}
     >
-      <Container class="bodyHome">
+      <Container>
         <Form.Group controlId="formText" className="mb-3">
           <Row>
             <Col>
@@ -212,6 +215,6 @@ export default function Kriling() {
           </Row>
         </Form.Group>
       </Container>
-    </body>
+    </div>
   );
 }

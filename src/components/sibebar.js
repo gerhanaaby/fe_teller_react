@@ -52,18 +52,7 @@ export default function SidebarComponent() {
         style={{ height: "100vh" }}
       >
         {/* {!broken && ( */}
-        <Menu
-          menuItemStyles={{
-            button: ({ level, active, disabled }) => {
-              // only apply styles on first level elements of the tree
-              if (level === 2)
-                return {
-                  color: disabled ? "#f5d9ff" : "#d359ff",
-                  backgroundColor: active ? "#ff0000" : undefined,
-                };
-            },
-          }}
-        >
+        <Menu>
           <MenuItem
             icon={<MenuOutlinedIcon />}
             onClick={() => {
@@ -78,9 +67,27 @@ export default function SidebarComponent() {
           <MenuItem component={<Link to="/home" />} icon={<HomeOutlinedIcon />}>
             Home
           </MenuItem>
+          <SubMenu label="Kriling">
+            <MenuItem component={<Link to="/skn" />}>Setoran Kriling </MenuItem>
+            <MenuItem component={<Link to="/login" />}>
+              Penitipan Kriling
+            </MenuItem>
+          </SubMenu>
+          <SubMenu label="RTGS">
+            <MenuItem component={<Link to="/home" />}>
+              Single Customer Transfer
+            </MenuItem>
+            <MenuItem component={<Link to="/home" />}>
+              Outward Interbank Transfer
+            </MenuItem>
+          </SubMenu>
+          <SubMenu label="Pemindahbukuan">
+            <MenuItem component={<Link to="/home" />}>Mata Uang Sama</MenuItem>
+            <MenuItem component={<Link to="/home" />}>Mata Uang Beda </MenuItem>
+          </SubMenu>
           <SubMenu label="Charts">
-            <MenuItem> Pie charts </MenuItem>
-            <MenuItem> Line charts </MenuItem>
+            <MenuItem component={<Link to="/home" />}> Pie charts </MenuItem>
+            <MenuItem component={<Link to="/home" />}> Line charts </MenuItem>
           </SubMenu>
           <MenuItem> Documentation </MenuItem>
           <MenuItem> Calendar </MenuItem>
@@ -95,7 +102,7 @@ export default function SidebarComponent() {
 
       <main style={{ width: "100%" }}>
         <Navbar bg="dark" variant="dark">
-          <Container>
+          <Container margin="0px,5px">
             <Navbar.Brand href="#home">
               <img
                 alt=""
@@ -106,6 +113,7 @@ export default function SidebarComponent() {
               />{" "}
             </Navbar.Brand>
           </Container>
+          <Container></Container>
         </Navbar>
         <h1
           onClick={() => {
