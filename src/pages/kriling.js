@@ -9,16 +9,15 @@ import {
   Form,
   Row,
 } from "react-bootstrap";
-import SidebarComponent from "../components/sibebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function Kriling() {
   const navigate = useNavigate();
 
-  function handleCancel() {
+  const handleCancel = () => {
     navigate("/home");
-  }
+  };
 
   const [values, setValues] = useState({
     nomorRek: "",
@@ -40,6 +39,9 @@ export default function Kriling() {
     tanggalKriling: "",
   });
 
+  const handleSelect = (evt) => {
+    setValues({ ...values, mataUangRek: evt });
+  };
   const hostInquiry = (e) => {
     e.preventDefault();
 
@@ -78,9 +80,8 @@ export default function Kriling() {
         top: "20%",
         left: "30%",
         backgroundColor: "white",
-        //width: "1120px",
-        //paddingTop: "2%",
-        //paddingLeft: "23%",
+        top: "18%",
+        left: "20%",
       }}
     >
       <Container class="bodyHome">
@@ -89,7 +90,7 @@ export default function Kriling() {
             <Row>
               <Form.Group controlId="formText" className="mb-3">
                 <Form.Label>
-                  <Row style={{ width: "1050px" }}>
+                  <Row style={{ width: "900px" }}>
                     <Col>
                       <h5>
                         <i>Setoran Kriling</i>
@@ -149,28 +150,11 @@ export default function Kriling() {
                   variant="danger"
                   id="dropdown-basic"
                   title={values.mataUangRek}
+                  onSelect={handleSelect}
                 >
-                  <Dropdown.Item
-                    onSelect={(u) =>
-                      setValues({ ...values, mataUangRek: u.target.value })
-                    }
-                  >
-                    IDR
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onSelect={(u) =>
-                      setValues({ ...values, mataUangRek: u.target.value })
-                    }
-                  >
-                    USD
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onSelect={(u) =>
-                      setValues({ ...values, mataUangRek: u.target.value })
-                    }
-                  >
-                    SGD
-                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="IDR">IDR</Dropdown.Item>
+                  <Dropdown.Item eventKey="USD">USD</Dropdown.Item>
+                  <Dropdown.Item eventKey="SGD">SGD</Dropdown.Item>
                 </DropdownButton>
               </Col>
             </Row>
@@ -415,13 +399,15 @@ export default function Kriling() {
             <Col>
               <Button variant="danger" type="submit">
                 Host Inquiry
-              </Button>{" "}
+              </Button>
               <Button variant="outline-danger" onClick={handleCancel()}>
                 Cancel
-              </Button>{" "}
+              </Button>
             </Col>
           </Row>
         </Form>
+        <br />
+        <br />
       </Container>
     </div>
   );
