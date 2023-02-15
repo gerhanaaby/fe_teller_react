@@ -8,7 +8,6 @@ export const SidebarData = [
   {
     title: "Kriling",
     //path: "/skn",
-    icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
@@ -16,19 +15,16 @@ export const SidebarData = [
       {
         title: "Setoran Kriling",
         path: "/skn",
-        icon: <IoIcons.IoIosPaper />,
       },
       {
         title: "Penitipan Kriling",
         path: "/about-us/vision",
-        icon: <IoIcons.IoIosPaper />,
       },
     ],
   },
   {
     title: "RTGS",
     //path: "/SingleCustomerTransfer",
-    icon: <IoIcons.IoIosPaper />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
@@ -36,13 +32,11 @@ export const SidebarData = [
       {
         title: "Single Customer Transfer",
         path: "/services/services1",
-        icon: <IoIcons.IoIosPaper />,
         cName: "sub-nav",
       },
       {
         title: "Outward Interbank Transfer",
         path: "/services/services2",
-        icon: <IoIcons.IoIosPaper />,
         cName: "sub-nav",
       },
     ],
@@ -50,48 +44,42 @@ export const SidebarData = [
   {
     title: "Pemindahbukuan",
     //path: "/contact",
-    icon: <FaIcons.FaPhone />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     subNav: [
       {
         title: "Mata Uang Sama",
         path: "/services/services1",
-        icon: <IoIcons.IoIosPaper />,
         cName: "sub-nav",
       },
       {
         title: "Mata Uang Beda",
         path: "/services/services2",
-        icon: <IoIcons.IoIosPaper />,
         cName: "sub-nav",
       },
     ],
   },
   {
-    title: "Events",
-    path: "/events",
-    icon: <FaIcons.FaEnvelopeOpenText />,
-
+    title: "Saldo Cash Box",
+    //path: "/contact",
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
-
     subNav: [
       {
-        title: "Event 1",
-        path: "/events/events1",
-        icon: <IoIcons.IoIosPaper />,
+        title: "IDR",
+        path: "/services/services1",
+        cName: "sub-nav",
       },
       {
-        title: "Event 2",
-        path: "/events/events2",
-        icon: <IoIcons.IoIosPaper />,
+        title: "Valas",
+        path: "/services/services2",
+        cName: "sub-nav",
+      },
+      {
+        title: "Denominasi",
+        path: "/services/services2",
+        cName: "sub-nav",
       },
     ],
-  },
-  {
-    title: "Support",
-    path: "/support",
-    icon: <IoIcons.IoMdHelpCircle />,
   },
 ];

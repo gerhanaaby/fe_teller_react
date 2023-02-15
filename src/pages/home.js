@@ -9,10 +9,6 @@ import Sidebar from "../components/sibebar";
 export default class Home extends Component {
   render() {
     document.body.style = "background: white;";
-    return (
-      <Col>
-        <Sidebar></Sidebar>
-      </Col>
-    );
+    return <Col></Col>;
   }
 }

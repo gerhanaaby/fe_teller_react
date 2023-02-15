@@ -1,20 +1,28 @@
 import { CenterFocusStrong } from "@mui/icons-material";
 import React from "react";
-import { Col, Container, Dropdown, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
+import SidebarComponent from "../components/sibebar";
 
 export default function Kriling() {
   return (
     <body
       style={{
         backgroundColor: "white",
-        width: "550px",
-        top: "50%",
-        left: "50%",
+        width: "1020px",
+        paddingTop: "2%",
+        paddingLeft: "23%",
       }}
     >
-      <SidebarComponent style={{ float: "left" }}></SidebarComponent>
       <Container class="bodyHome">
         <Form.Group controlId="formText" className="mb-3">
+          <Row>
+            <Form.Group controlId="formText" className="mb-3">
+              <Form.Label>
+                <b>Case-ID : SK-123543542</b>
+              </Form.Label>
+              <hr />
+            </Form.Group>
+          </Row>
           <Row>
             <Col>
               <Form.Label>
@@ -212,6 +220,13 @@ export default function Kriling() {
             </Col>
           </Row>
         </Form.Group>
+        <Row>
+          <hr />
+          <Col>
+            <Button variant="danger">Host Inquiry</Button>{" "}
+            <Button variant="outline-danger">Cancel</Button>{" "}
+          </Col>
+        </Row>
       </Container>
     </body>
   );
