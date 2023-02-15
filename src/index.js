@@ -9,9 +9,10 @@ import Sidebar_new from "./components/sidebar_new";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ProSidebarProvider>
+    <App />
+    {/* //<ProSidebarProvider>
       <App />
-    </ProSidebarProvider>
+    //</ProSidebarProvider> */}
   </React.StrictMode>
 );
 

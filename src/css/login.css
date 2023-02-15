@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+body {
+  /* background-color: rgb(229, 62, 62); */
+  background-color: white;
+}
+
+>>>>>>> origin/fe_reynaldi
 .loginForm {
   padding: 20px;
   width: 50%;

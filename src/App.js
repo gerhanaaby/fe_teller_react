@@ -13,17 +13,14 @@ export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Col>
-          <SidebarComponent />
-        </Col>
-        <Col>
-          <Routes>
-            <Route exact path="/login" element={<Login />} />
-            <Route path="/home" element={<Home />} exact />
-            <Route path="/rtgs" element={<RTGS />} exact />
-            <Route path="/skn" element={<Kriling />} exact />
-          </Routes>
-        </Col>
+        <SidebarComponent />
+
+        <Routes>
+          <Route exact path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} exact />
+          <Route path="/rtgs" element={<RTGS />} exact />
+          <Route path="/skn" element={<Kriling />} exact />
+        </Routes>
       </BrowserRouter>
     );
   }

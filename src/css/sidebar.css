@@ -33,12 +33,13 @@
 }
 
 .dropdown-link:hover {
-  background: green;
+  background: rgb(141, 18, 2);
   cursor: pointer;
+  color: white;
 }
 
 .nav {
-  background: #15171c;
+  background: rgb(229, 62, 62);
   height: 80px;
   display: flex;
   justify-content: flex-start;
