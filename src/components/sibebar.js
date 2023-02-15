@@ -100,7 +100,7 @@ export default function SidebarComponent() {
         {/* )} */}
       </Sidebar>
 
-      <main style={{ width: "100%" }}>
+      <main style={{ width: "100%", zIndex: "-1" }}>
         <Navbar bg="dark" variant="dark">
           <Container margin="0px,5px">
             <Navbar.Brand href="#home">
@@ -110,7 +110,7 @@ export default function SidebarComponent() {
                 width="180"
                 height="50"
                 className="d-inline-block align-top"
-              />{" "}
+              />
             </Navbar.Brand>
           </Container>
           <Container></Container>

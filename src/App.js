@@ -7,18 +7,23 @@ import Login from "./pages/login";
 import RTGS from "./pages/rtgs";
 import Kriling from "./pages/kriling";
 import SidebarComponent from "./components/sibebar";
+import { Col } from "react-bootstrap";
 
 export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <SidebarComponent />
-        <Routes>
-          <Route exact path="/login" element={<Login />} />
-          <Route path="/home" element={<Home />} exact />
-          <Route path="/rtgs" element={<RTGS />} exact />
-          <Route path="/skn" element={<Kriling />} exact />
-        </Routes>
+        <Col>
+          <SidebarComponent />
+        </Col>
+        <Col>
+          <Routes>
+            <Route exact path="/login" element={<Login />} />
+            <Route path="/home" element={<Home />} exact />
+            <Route path="/rtgs" element={<RTGS />} exact />
+            <Route path="/skn" element={<Kriling />} exact />
+          </Routes>
+        </Col>
       </BrowserRouter>
     );
   }
