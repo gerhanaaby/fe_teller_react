@@ -1,11 +1,11 @@
-import Form from 'react-bootstrap/Form';
+// import Form from "react-bootstrap/Form";
 
-function FieldPassword() {
-  return (
-    <>
-      <Form.Control type="password" placeholder="Password" />
-    </>
-  );
-}
+// function FieldPassword() {
+//   return (
+//     <>
+//       <Form.Control type="password" placeholder="Password" />
+//     </>
+//   );
+// }
 
-export default FieldPassword;
+// export default FieldPassword;

@@ -1,11 +1,11 @@
-import Button from 'react-bootstrap/Button';
+// import Button from "react-bootstrap/Button";
 
-function ButtonMain() {
-  return (
-    <>
-      <Button variant="danger">Danger</Button>{' '}
-    </>
-  );
-}
+// function ButtonMain() {
+//   return (
+//     <>
+//       <Button variant="danger">Danger</Button>{" "}
+//     </>
+//   );
+// }
 
-export default ButtonMain;
+// export default ButtonMain;

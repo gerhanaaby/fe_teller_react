@@ -1,11 +1,11 @@
-import Form from 'react-bootstrap/Form';
+// import Form from 'react-bootstrap/Form';
 
-function FieldText() {
-  return (
-    <>
-      <Form.Control type="text" placeholder="Normal text" />
-    </>
-  );
-}
+// function FieldText() {
+//   return (
+//     <>
+//       <Form.Control type="text" placeholder="Normal text" />
+//     </>
+//   );
+// }
 
-export default FieldText;
+// export default FieldText;
