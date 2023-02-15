@@ -10,15 +10,8 @@ import {
   Row,
 } from "react-bootstrap";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export default function Kriling() {
-  const navigate = useNavigate();
-
-  const handleCancel = () => {
-    navigate("/home");
-  };
-
   const [values, setValues] = useState({
     nomorRek: "",
     namaProduk: "",
@@ -400,7 +393,7 @@ export default function Kriling() {
               <Button variant="danger" type="submit">
                 Host Inquiry
               </Button>
-              <Button variant="outline-danger" onClick={handleCancel()}>
+              <Button variant="outline-danger" href="/home">
                 Cancel
               </Button>
             </Col>
