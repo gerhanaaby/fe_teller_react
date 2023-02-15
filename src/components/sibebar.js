@@ -1,4 +1,10 @@
-import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
+import {
+  Sidebar,
+  Menu,
+  MenuItem,
+  useProSidebar,
+  SubMenu,
+} from "react-pro-sidebar";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -11,7 +17,7 @@ import { useState, useEffect } from "react";
 import bsimLogo from "./../assets/images/logoBSIM.png";
 import React from "react";
 import { Col, Container, Navbar, Stack } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 export default function SidebarComponent() {
   const {
     collapseSidebar,
@@ -33,43 +39,74 @@ export default function SidebarComponent() {
     }
   };
   return (
-    <Stack direction="horizontal" gap={2}>
-      <div
-        //id="app"
-        style={({ height: "100%" }, { display: "flex", flexDirection: "row" })}
+    // <Stack direction="horizontal" gap={2}>
+    <div
+      //id="app"
+      style={({ height: "100%" }, { display: "flex", flexDirection: "row" })}
+    >
+      <Sidebar
+        breakPoint="sm"
+        transitionDuration={800}
+        backgroundColor="rgb(0, 249, 249, 0.7)"
+        rtl={false}
+        style={{ height: "100vh" }}
       >
-        <Sidebar
-          breakPoint="sm"
-          transitionDuration={800}
-          backgroundColor="rgb(0, 249, 249, 0.7)"
-          rtl={false}
-          style={{ height: "100vh" }}
+        {/* {!broken && ( */}
+        <Menu
+          menuItemStyles={{
+            button: ({ level, active, disabled }) => {
+              // only apply styles on first level elements of the tree
+              if (level === 2)
+                return {
+                  color: disabled ? "#f5d9ff" : "#d359ff",
+                  backgroundColor: active ? "#ff0000" : undefined,
+                };
+            },
+          }}
         >
-          {/* {!broken && ( */}
-          <Menu>
-            <MenuItem
-              icon={<MenuOutlinedIcon />}
-              onClick={() => {
-                collapseSidebar();
-              }}
-              style={{ textAlign: "center" }}
-            >
-              {" "}
-              <h2>Admin</h2>
-            </MenuItem>
+          <MenuItem
+            icon={<MenuOutlinedIcon />}
+            onClick={() => {
+              collapseSidebar();
+            }}
+            style={{ textAlign: "center" }}
+          >
+            {" "}
+            <h2>Admin</h2>
+          </MenuItem>
 
-            <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
-            <MenuItem icon={<PeopleOutlinedIcon />}>Team</MenuItem>
-            <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
-            <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
-            <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
-            <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>
-          </Menu>
-          {/* )} */}
-        </Sidebar>
+          <MenuItem component={<Link to="/home" />} icon={<HomeOutlinedIcon />}>
+            Home
+          </MenuItem>
+          <SubMenu label="Charts">
+            <MenuItem> Pie charts </MenuItem>
+            <MenuItem> Line charts </MenuItem>
+          </SubMenu>
+          <MenuItem> Documentation </MenuItem>
+          <MenuItem> Calendar </MenuItem>
+          <MenuItem icon={<PeopleOutlinedIcon />}>Team</MenuItem>
+          <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
+          <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
+          <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
+          <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>
+        </Menu>
+        {/* )} */}
+      </Sidebar>
 
-        {/* <main>
-        
+      <main style={{ width: "100%" }}>
+        <Navbar bg="dark" variant="dark">
+          <Container>
+            <Navbar.Brand href="#home">
+              <img
+                alt=""
+                src={bsimLogo}
+                width="180"
+                height="50"
+                className="d-inline-block align-top"
+              />{" "}
+            </Navbar.Brand>
+          </Container>
+        </Navbar>
         <h1
           onClick={() => {
             toggle();
@@ -86,24 +123,12 @@ export default function SidebarComponent() {
         {broken && (
           <h1 style={{ color: "white", marginLeft: "5rem" }}>Small screen</h1>
         )}
-      </main> */}
+      </main>
+    </div>
+    /* <div style={{ width: "100%", height: "15%" }}>
+     
       </div>
-      <div style={{ width: "100%", height: "15%" }}>
-        <Navbar bg="dark" variant="dark">
-          <Container>
-            <Navbar.Brand href="#home">
-              <img
-                alt=""
-                src={bsimLogo}
-                width="180"
-                height="50"
-                className="d-inline-block align-top"
-              />{" "}
-            </Navbar.Brand>
-          </Container>
-        </Navbar>
-      </div>
-    </Stack>
+    </Stack> */
   );
 }
 
