@@ -8,7 +8,7 @@ import RTGS from "./pages/rtgs";
 import Kriling from "./pages/kriling";
 import { Col, Container, Navbar } from "react-bootstrap";
 import SidebarComponent from "./components/sibebar";
-import bsimLogo from "./assets/images/logoBSIM.png";
+import CekSaldo from "./pages/cek_saldo";
 
 export default class App extends Component {
   render() {
@@ -20,6 +20,8 @@ export default class App extends Component {
           <Route exact path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} exact />
           <Route path="/rtgs" element={<RTGS />} exact />
+          <Route path="/skn" element={<Kriling />} exact />
+          <Route path="/cek_saldo" element={<CekSaldo />} exact />
         </Routes>
       </BrowserRouter>
     );
