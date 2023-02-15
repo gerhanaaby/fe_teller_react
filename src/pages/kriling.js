@@ -1,252 +1,228 @@
 import { CenterFocusStrong } from "@mui/icons-material";
-import React from "react";
 import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
 import SidebarComponent from "../components/sibebar";
+import { width } from "@mui/system";
+import axios from "axios";
+import { Component, Fragment, useState } from "react";
+import ButtonMain from "../components/button_main";
+import FieldPassword from "../components/field_password";
+import FieldText from "../components/field_text";
+import NavbarReact from "../components/navbar";
+import "./../css/login.css";
+
+import tellerLogo from "./../assets/images/teller.png";
+import bsimLogo from "./../assets/images/logoBSIM.png";
 
 export default function Kriling() {
   return (
-    <body
-      style={{
-        backgroundColor: "white",
-        width: "1020px",
-        paddingTop: "2%",
-        paddingLeft: "23%",
-      }}
-    >
-      <Container class="bodyHome">
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Form.Group controlId="formText" className="mb-3">
-              <Form.Label>
-                <b>Case-ID : SK-123543542</b>
-              </Form.Label>
-              <hr />
-            </Form.Group>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Nomor Rekening</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control type="text" placeholder="Nomor Rekening" />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>Nama Produk</Form.Label>
-            </Col>
-            <Col>
-              <Form.Control type="text" placeholder="Nama Produk" disabled />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Dropdown>
-          <Row>
-            <Col>
-              <b>Mata Uang Rekening</b>
-            </Col>
-            <Col>
-              <Dropdown.Toggle variant="danger" id="dropdown-basic">
-                Jenis Mata Uang
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">IDR</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">USD</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">SGD</Dropdown.Item>
-              </Dropdown.Menu>
-            </Col>
-          </Row>
-        </Dropdown>
-        <br />
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>Nama Pemilik</Form.Label>
-            </Col>
-            <Col>
-              <Form.Control type="text" placeholder="Nama Pemilik" disabled />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>No. Identitas Pemilik</Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                type="text"
-                placeholder="No. Identitas Pemilik"
-                disabled
-              />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>Kode Cabang</Form.Label>
-            </Col>
-            <Col>
-              <Form.Control placeholder="Kode" disabled />
-            </Col>
-            <Col>
-              <Form.Control placeholder="Nama Cabang" disabled />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>No. Warkat Rekening</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control placeholder="Jenis Warkat" />
-            </Col>
-            <Col>
-              <Form.Control placeholder="Nomor Warkat" />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>Bank</Form.Label>
-            </Col>
-            <Col>
-              <Form.Control type="text" placeholder="Nama Bank" disabled />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Dropdown>
-          <Row>
-            <Col>Kode Transaksi</Col>
-            <Col>
-              <Dropdown.Toggle variant="danger" id="dropdown-basic">
-                Transaction Code
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">00 - Cheque </Dropdown.Item>
-                <Dropdown.Item href="#/action-2">
-                  01 - Bilyet Giro
-                </Dropdown.Item>
-                <Dropdown.Item href="#/action-3">20 - Wesel</Dropdown.Item>
-              </Dropdown.Menu>
-            </Col>
-          </Row>
-        </Dropdown>
-        <br />
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Member Code</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control type="text" placeholder="Member Code" />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Jumlah</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control placeholder="Jumlah" />
-            </Col>
-            <Col>
-              <Form.Label>Charge</Form.Label>
-            </Col>
-            <Col>
-              <Form.Control placeholder="Charge" disabled />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>Jumlah Total</Form.Label>
-            </Col>
-            <Col>
-              <Form.Control type="text" placeholder="Jumlah Total" disabled />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Message</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control type="text" placeholder="Pesan" />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Slip Number</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control type="text" placeholder="Slip Number" />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>Tanggal Kriling</Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                type="text"
-                placeholder="Tanggal Kriling"
-                disabled
-              />
-            </Col>
-          </Row>
-        </Form.Group>
+    <div style={{ position: "absolute", top: "20%", left: "30%" }}>
+      <Form.Group controlId="formText" className="mb-3">
         <Row>
-          <hr />
+          <Form.Group controlId="formText" className="mb-3">
+            <Form.Label>
+              <b>Case-ID : SK-123543542</b>
+            </Form.Label>
+            <hr />
+          </Form.Group>
+        </Row>
+        <Row>
           <Col>
-            <Button variant="danger">Host Inquiry</Button>{" "}
-            <Button variant="outline-danger">Cancel</Button>{" "}
+            <Form.Label>
+              <b>Nomor Rekening</b>
+            </Form.Label>
+          </Col>
+          <Col>
+            <Form.Control type="text" placeholder="Nomor Rekening" />
           </Col>
         </Row>
-      </Container>
-    </body>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>Nama Produk</Form.Label>
+          </Col>
+          <Col>
+            <Form.Control type="text" placeholder="Nama Produk" disabled />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Dropdown>
+        <Row>
+          <Col>
+            <b>Mata Uang Rekening</b>
+          </Col>
+          <Col>
+            <Dropdown.Toggle variant="danger" id="dropdown-basic">
+              Jenis Mata Uang
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">IDR</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">USD</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">SGD</Dropdown.Item>
+            </Dropdown.Menu>
+          </Col>
+        </Row>
+      </Dropdown>
+      <br />
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>Nama Pemilik</Form.Label>
+          </Col>
+          <Col>
+            <Form.Control type="text" placeholder="Nama Pemilik" disabled />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>No. Identitas Pemilik</Form.Label>
+          </Col>
+          <Col>
+            <Form.Control
+              type="text"
+              placeholder="No. Identitas Pemilik"
+              disabled
+            />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>Kode Cabang</Form.Label>
+          </Col>
+          <Col>
+            <Form.Control placeholder="Kode" disabled />
+          </Col>
+          <Col>
+            <Form.Control placeholder="Nama Cabang" disabled />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>
+              <b>No. Warkat Rekening</b>
+            </Form.Label>
+          </Col>
+          <Col>
+            <Form.Control placeholder="Jenis Warkat" />
+          </Col>
+          <Col>
+            <Form.Control placeholder="Nomor Warkat" />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>Bank</Form.Label>
+          </Col>
+          <Col>
+            <Form.Control type="text" placeholder="Nama Bank" disabled />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Dropdown>
+        <Row>
+          <Col>Kode Transaksi</Col>
+          <Col>
+            <Dropdown.Toggle variant="danger" id="dropdown-basic">
+              Transaction Code
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">00 - Cheque </Dropdown.Item>
+              <Dropdown.Item href="#/action-2">01 - Bilyet Giro</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">20 - Wesel</Dropdown.Item>
+            </Dropdown.Menu>
+          </Col>
+        </Row>
+      </Dropdown>
+      <br />
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>
+              <b>Member Code</b>
+            </Form.Label>
+          </Col>
+          <Col>
+            <Form.Control type="text" placeholder="Member Code" />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>
+              <b>Jumlah</b>
+            </Form.Label>
+          </Col>
+          <Col>
+            <Form.Control placeholder="Jumlah" />
+          </Col>
+          <Col>
+            <Form.Label>Charge</Form.Label>
+          </Col>
+          <Col>
+            <Form.Control placeholder="Charge" disabled />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>Jumlah Total</Form.Label>
+          </Col>
+          <Col>
+            <Form.Control type="text" placeholder="Jumlah Total" disabled />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>
+              <b>Message</b>
+            </Form.Label>
+          </Col>
+          <Col>
+            <Form.Control type="text" placeholder="Pesan" />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>
+              <b>Slip Number</b>
+            </Form.Label>
+          </Col>
+          <Col>
+            <Form.Control type="text" placeholder="Slip Number" />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>Tanggal Kriling</Form.Label>
+          </Col>
+          <Col>
+            <Form.Control type="text" placeholder="Tanggal Kriling" disabled />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Row>
+        <hr />
+        <Col>
+          <Button variant="danger">Host Inquiry</Button>{" "}
+          <Button variant="outline-danger">Cancel</Button>{" "}
+        </Col>
+      </Row>
+    </div>
   );
 }
-
-// export default function Kriling() {
-//   document.body.style = "background: white;";
-//   return (
-//     // <body
-
-//     // >
-//     // <div
-//     //   style={{
-//     //     backgroundColor: "white",
-//     //     width: "550px",
-//     //     top: "50%",
-//     //     left: "50%",
-//     //   }}
-//     // >
-
-//     // </div>
-//   );
-// }

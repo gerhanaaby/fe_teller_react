@@ -22,6 +22,7 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(this.this.state.userName);
     axios
       .post("https://reqres.in/api/login", {
         userName: values.userName,
@@ -41,9 +42,9 @@ export default function Login() {
   document.body.style = "background: red;";
   return (
     <div>
-      <header className="header">
+      {/* <header className="header">
         <img src={bsimLogo} style={{ width: "180px", height: "50px" }} />
-      </header>
+      </header> */}
       <div class="loginForm">
         <div class="tellerLogo">
           <img src={tellerLogo} style={{ width: "500px", height: "160px" }} />
@@ -54,11 +55,19 @@ export default function Login() {
         <br />
         <br />
         <Form.Group controlId="formText" className="mb-3">
-          <Form.Control type="text" placeholder="Username" />
+          <Form.Control
+            type="text"
+            placeholder="Username"
+            onChange={(e) => setValues({ ...values, userName: e.target.value })}
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setValues({ ...values, password: e.target.value })}
+          />
         </Form.Group>
 
         <div className="d-grid gap-2">
