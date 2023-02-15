@@ -12,6 +12,7 @@ import tellerLogo from "./../assets/images/teller.png";
 import bsimLogo from "./../assets/images/logoBSIM.png";
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [values, setValues] = useState({
@@ -20,8 +21,11 @@ export default function Login() {
     showPass: false,
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     axios
       .post("https://reqres.in/api/login", {
         userName: values.userName,
@@ -29,6 +33,7 @@ export default function Login() {
       })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
+        navigate("/home");
       })
       .catch((err) => console.error(err));
   };
@@ -53,24 +58,38 @@ export default function Login() {
         </i>
         <br />
         <br />
-        <Form.Group controlId="formText" className="mb-3">
-          <Form.Control type="text" placeholder="Username" />
-        </Form.Group>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="formText" className="mb-3">
+            <Form.Control
+              type="text"
+              placeholder="Username"
+              onChange={(u) =>
+                setValues({ ...values, userName: u.target.value })
+              }
+              required
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setValues({ ...values, pass: e.target.value })}
+              required
+            />
+          </Form.Group>
 
-        <div className="d-grid gap-2">
-          <Button
-            variant="danger"
-            size="lg"
-            style={{ backgroundColor: "rgb(165, 2, 2)" }}
-            onClick={handleSubmit}
-          >
-            <b>Log In</b>
-          </Button>
-        </div>
+          <div className="d-grid gap-2">
+            <Button
+              variant="danger"
+              size="lg"
+              style={{ backgroundColor: "rgb(165, 2, 2)" }}
+              type="submit"
+            >
+              <b>Log In</b>
+            </Button>
+          </div>
+        </Form>
       </div>
     </div>
   );

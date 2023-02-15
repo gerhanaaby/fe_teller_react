@@ -60,26 +60,9 @@ export const SidebarData = [
     ],
   },
   {
-    title: "Saldo Cash Box",
-    //path: "/contact",
+    title: "Cek Saldo",
+    path: "/cek_saldo",
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
-    subNav: [
-      {
-        title: "IDR",
-        path: "/services/services1",
-        cName: "sub-nav",
-      },
-      {
-        title: "Valas",
-        path: "/services/services2",
-        cName: "sub-nav",
-      },
-      {
-        title: "Denominasi",
-        path: "/services/services2",
-        cName: "sub-nav",
-      },
-    ],
   },
 ];
