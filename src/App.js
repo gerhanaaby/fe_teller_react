@@ -6,8 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/login";
 import RTGS from "./pages/rtgs";
 import Kriling from "./pages/kriling";
-import SidebarComponent from "./components/sibebar";
 import { Col } from "react-bootstrap";
+import SidebarComponent from "./components/sibebar";
 
 export default class App extends Component {
   render() {
