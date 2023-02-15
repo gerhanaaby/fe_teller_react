@@ -3,12 +3,21 @@ import { Col, Row } from "react-bootstrap";
 import NavbarComponent from "../components/navbar";
 
 import SidebarComponent from "../components/sibebar";
-import bsimLogo from "./../assets/images/logoBSIM.png";
+import homepage from "./../assets/images/homepage.png";
 import Sidebar from "../components/sibebar";
 
 export default class Home extends Component {
   render() {
     document.body.style = "background: white;";
-    return <h1>kkkkkkk</h1>;
+    return (
+      <img
+        alt=""
+        src={homepage}
+        width="500px"
+        height="500px"
+        className="d-inline-block align-top"
+        style={{ marginLeft: "42%", marginTop: "7%" }}
+      />
+    );
   }
 }
