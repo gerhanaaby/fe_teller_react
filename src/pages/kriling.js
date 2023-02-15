@@ -68,9 +68,8 @@ export default function Kriling() {
       style={{
         position: "absolute",
         backgroundColor: "white",
-        width: "1120px",
-        paddingTop: "2%",
-        paddingLeft: "23%",
+        top: "18%",
+        left: "20%",
       }}
     >
       <Container class="bodyHome">
@@ -79,7 +78,7 @@ export default function Kriling() {
             <Row>
               <Form.Group controlId="formText" className="mb-3">
                 <Form.Label>
-                  <Row style={{ width: "1050px" }}>
+                  <Row style={{ width: "900px" }}>
                     <Col>
                       <h5>
                         <i>Setoran Kriling</i>
@@ -393,6 +392,8 @@ export default function Kriling() {
             </Col>
           </Row>
         </Form>
+        <br />
+        <br />
       </Container>
     </div>
   );

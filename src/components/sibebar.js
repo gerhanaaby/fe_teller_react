@@ -14,10 +14,11 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 import bsimLogo from "./../assets/images/logoBSIM.png";
-import { Container, Navbar } from "react-bootstrap";
+import { Col, Container, Navbar, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Home from "../pages/home";
 import Kriling from "../pages/kriling";
+import NavbarComponent from "./navbar";
 export default function SidebarComponent() {
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
     useProSidebar();
@@ -33,96 +34,72 @@ export default function SidebarComponent() {
     }
   };
   return (
-    <div
-      style={({ height: "100%" }, { display: "flex", flexDirection: "row" })}
-    >
-      <Sidebar
-        breakPoint="sm"
-        transitionDuration={800}
-        backgroundColor="rgb(0, 249, 249, 0.7)"
-        rtl={false}
-        style={{ height: "100vh" }}
-      >
-        {/* {!broken && ( */}
-        <Menu>
-          <MenuItem
-            icon={<MenuOutlinedIcon />}
-            onClick={() => {
-              collapseSidebar();
-            }}
-            style={{ textAlign: "center" }}
-          >
-            {" "}
-            <h2>Admin</h2>
-          </MenuItem>
-
-          <MenuItem component={<Link to="/home" />} icon={<HomeOutlinedIcon />}>
-            Home
-          </MenuItem>
-          <SubMenu label="Kriling">
-            <MenuItem component={<Link to="/skn" />}>Setoran Kriling </MenuItem>
-            <MenuItem component={<Link to="/login" />}>
-              Penitipan Kriling
-            </MenuItem>
-          </SubMenu>
-          <SubMenu label="RTGS">
-            <MenuItem component={<Link to="/home" />}>
-              Single Customer Transfer
-            </MenuItem>
-            <MenuItem component={<Link to="/home" />}>
-              Outward Interbank Transfer
-            </MenuItem>
-          </SubMenu>
-          <SubMenu label="Pemindahbukuan">
-            <MenuItem component={<Link to="/home" />}>Mata Uang Sama</MenuItem>
-            <MenuItem component={<Link to="/home" />}>Mata Uang Beda </MenuItem>
-          </SubMenu>
-          <SubMenu label="Charts">
-            <MenuItem component={<Link to="/home" />}> Pie charts </MenuItem>
-            <MenuItem component={<Link to="/home" />}> Line charts </MenuItem>
-          </SubMenu>
-          <MenuItem> Documentation </MenuItem>
-          <MenuItem> Calendar </MenuItem>
-          <MenuItem icon={<PeopleOutlinedIcon />}>Team</MenuItem>
-          <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
-          <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
-          <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
-          <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>
-        </Menu>
-      </Sidebar>
-      <main style={{ width: "100%" }}>
-        <Navbar bg="dark" variant="dark">
-          <Container margin="0px,5px">
-            <Navbar.Brand href="#home">
-              <img
-                alt=""
-                src={bsimLogo}
-                width="180"
-                height="50"
-                className="d-inline-block align-top"
-              />
-            </Navbar.Brand>
-          </Container>
-          <Container></Container>
-        </Navbar>
-        <h1
-          onClick={() => {
-            toggle();
-          }}
-          style={{ color: "white", marginLeft: "5rem" }}
+    <Row>
+      <Col>
+        <div
+          style={
+            ({ height: "100%" }, { display: "flex", flexDirection: "row" })
+          }
         >
-          React-Pro-Sidebar
-        </h1>
-        {toggled ? (
-          <h1 style={{ color: "white", marginLeft: "5rem" }}>Toggled</h1>
-        ) : (
-          <h1 style={{ color: "white", marginLeft: "5rem" }}>Not Toggled</h1>
-        )}
-        {broken && (
-          <h1 style={{ color: "white", marginLeft: "5rem" }}>Small screen</h1>
-        )}
-      </main>
-    </div>
+          <Sidebar
+            breakPoint="sm"
+            transitionDuration={800}
+            backgroundColor="rgb(222, 220, 220)"
+            rtl={false}
+            style={{ height: "100vh", position: "fixed" }}
+          >
+            {/* {!broken && ( */}
+            <Menu>
+              <MenuItem
+                icon={<MenuOutlinedIcon />}
+                onClick={() => {
+                  collapseSidebar();
+                }}
+                style={{ textAlign: "center" }}
+              >
+                {" "}
+                <h5>Prototype</h5>
+              </MenuItem>
+
+              <MenuItem component={<Link to="/home" />}>Dashboard</MenuItem>
+              <SubMenu label="Kriling">
+                <MenuItem component={<Link to="/skn" />}>
+                  Setoran Kriling{" "}
+                </MenuItem>
+                <MenuItem component={<Link to="/skn" />}>
+                  Penitipan Kriling
+                </MenuItem>
+              </SubMenu>
+              <SubMenu label="RTGS">
+                <MenuItem component={<Link to="/home" />}>
+                  Single Customer Transfer
+                </MenuItem>
+                <MenuItem component={<Link to="/home" />}>
+                  Outward Interbank Transfer
+                </MenuItem>
+              </SubMenu>
+              <SubMenu label="Pemindahbukuan">
+                <MenuItem component={<Link to="/home" />}>
+                  Mata Uang Sama
+                </MenuItem>
+                <MenuItem component={<Link to="/home" />}>
+                  Mata Uang Beda{" "}
+                </MenuItem>
+              </SubMenu>
+              <MenuItem
+                component={<Link to="/cek_saldo" />}
+                label="Check Saldo"
+              >
+                Check Saldo
+              </MenuItem>
+            </Menu>
+          </Sidebar>
+        </div>
+      </Col>
+      <Col>
+        <NavbarComponent />
+      </Col>
+    </Row>
   );
 }
 
