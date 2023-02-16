@@ -8,6 +8,7 @@ import bsimLogo from "./../assets/images/logoBSIM.png";
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import NavbarComponent from "../components/navbar";
 
 export default function Login() {
   const [values, setValues] = useState({
@@ -20,16 +21,21 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //console.log("kehit");
     axios
-      .post("https://reqres.in/api/login", {
+      .post("http://localhost:5000/user/auth/login", {
         userName: values.userName,
         password: values.pass,
       })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
+        console.log(res.data.token);
         navigate("/home");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.log("gagal");
+        console.error(err);
+      });
   };
   const handlePassVisibilty = () => {
     setValues({
@@ -40,20 +46,7 @@ export default function Login() {
   document.body.style = "background: red;";
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
-        <Container margin="0px,5px">
-          <Navbar.Brand href="#home">
-            <img
-              alt=""
-              src={bsimLogo}
-              width="180"
-              height="50"
-              className="d-inline-block align-top"
-            />
-          </Navbar.Brand>
-        </Container>
-        <Container></Container>
-      </Navbar>
+      <NavbarComponent />
       <div class="loginForm">
         <div class="tellerLogo">
           <img src={tellerLogo} style={{ width: "500px", height: "160px" }} />
@@ -90,6 +83,7 @@ export default function Login() {
               size="lg"
               style={{ backgroundColor: "rgb(165, 2, 2)" }}
               type="submit"
+              onClick={handleSubmit}
             >
               <b>Log In</b>
             </Button>

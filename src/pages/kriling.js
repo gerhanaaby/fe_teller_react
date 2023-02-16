@@ -22,7 +22,7 @@ export default function Kriling() {
     namaCabang: "",
     noWarkat: "",
     namaBank: "",
-    kodeTransaksi: "",
+    kodeTransaksi: "Transaction Code",
     memberCode: "",
     jumlah: "",
     charge: "",
@@ -32,36 +32,52 @@ export default function Kriling() {
     tanggalKriling: "",
   });
 
-  const handleSelect = (evt) => {
+  const handleSelectMataUang = (evt) => {
     setValues({ ...values, mataUangRek: evt });
+  };
+  const handleSelectKodeTransaksi = (evt) => {
+    setValues({ ...values, kodeTransaksi: evt });
   };
   const hostInquiry = (e) => {
     e.preventDefault();
-
+    // console.log(localStorage.getItem("token")); ${localStorage.getItem("token")}
     axios
-      .post("https://reqres.in/api/login", {
-        creditAccountNo: values.noWarkat,
-        amount: values.jumlahTotal,
-        beneficiaryResidentStatus: "1",
-        clearingCode: "BBBAIDJA",
-        remark: values.message,
-        transactionDate: values.tanggalKriling,
-        transactionTime: "",
-        clearingTransactionCode: "50",
-        referenceId: "MDLN-803837197299",
-        paymentDetails1: values.message,
-        senderName: values.namaPemilik,
-        paymentDetails2: "",
-        paymentDetails3: "",
-        debitAccountNo: values.nomorRek,
-        beneficiaryNationStatus: "0",
-        beneficiaryType: "1",
-        beneficiaryName: "ALTO",
-        chargeAmount: values.charge,
-        currency: values.mataUangRek,
-      })
+      .post(
+        "http://localhost:5000/user/transac/postskn",
+        {
+          creditAccountNo: values.noWarkat,
+          amount: values.jumlahTotal,
+          beneficiaryResidentStatus: "1",
+          clearingCode: "BBBAIDJA",
+          remark: values.message,
+          transactionDate: values.tanggalKriling,
+          transactionTime: "",
+          clearingTransactionCode: "50",
+          referenceId: "MDLN-803837197299",
+          paymentDetails1: values.message,
+          senderName: values.namaPemilik,
+          paymentDetails2: "",
+          paymentDetails3: "",
+          debitAccountNo: values.nomorRek,
+          beneficiaryNationStatus: "0",
+          beneficiaryType: "1",
+          beneficiaryName: "ALTO",
+          chargeAmount: values.charge,
+          currency: values.mataUangRek,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Acess-Control-Allow-Origin": "*",
+            aw: "xxx",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Accept: "application/json",
+          },
+        }
+      )
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
+        console.log();
+        // localStorage.setItem("token", res.data.token);
       })
       .catch((err) => console.error(err));
   };
@@ -109,7 +125,7 @@ export default function Kriling() {
                 <Form.Control
                   type="text"
                   placeholder="Nomor Rekening"
-                  onSelect={(u) =>
+                  onChange={(u) =>
                     setValues({ ...values, nomorRek: u.target.value })
                   }
                 />
@@ -125,8 +141,8 @@ export default function Kriling() {
                 <Form.Control
                   type="text"
                   placeholder="Nama Produk"
-                  disabled
-                  onSelect={(u) =>
+                  //disabled
+                  onChange={(u) =>
                     setValues({ ...values, namaProduk: u.target.value })
                   }
                 />
@@ -143,7 +159,7 @@ export default function Kriling() {
                   variant="danger"
                   id="dropdown-basic"
                   title={values.mataUangRek}
-                  onSelect={handleSelect}
+                  onSelect={handleSelectMataUang}
                 >
                   <Dropdown.Item eventKey="IDR">IDR</Dropdown.Item>
                   <Dropdown.Item eventKey="USD">USD</Dropdown.Item>
@@ -162,7 +178,7 @@ export default function Kriling() {
                 <Form.Control
                   type="text"
                   placeholder="Nama Pemilik"
-                  disabled
+                  //disabled
                   onChange={(u) =>
                     setValues({ ...values, namaPemilik: u.target.value })
                   }
@@ -179,7 +195,7 @@ export default function Kriling() {
                 <Form.Control
                   type="text"
                   placeholder="No. Identitas Pemilik"
-                  disabled
+                  //disabled
                   onChange={(u) =>
                     setValues({ ...values, noIdPemilik: u.target.value })
                   }
@@ -195,14 +211,16 @@ export default function Kriling() {
               <Col>
                 <Form.Control
                   placeholder="Kode"
-                  disabled
+                  //disabled
                   onChange={(u) =>
                     setValues({ ...values, kodeCabang: u.target.value })
                   }
                 />
               </Col>
               <Col>
-                <Form.Control placeholder="Nama Cabang" disabled />
+                <Form.Control
+                  placeholder="Nama Cabang" //disabled
+                />
               </Col>
             </Row>
           </Form.Group>
@@ -240,7 +258,7 @@ export default function Kriling() {
                 <Form.Control
                   type="text"
                   placeholder="Nama Bank"
-                  disabled
+                  //disabled
                   onChange={(u) =>
                     setValues({ ...values, namaBank: u.target.value })
                   }
@@ -254,18 +272,18 @@ export default function Kriling() {
                 <b>Kode Transaksi</b>
               </Col>
               <Col>
-                <Dropdown.Toggle variant="danger" id="dropdown-basic">
-                  Transaction Code
-                </Dropdown.Toggle>
-                <Dropdown.Menu
-                  onChange={(u) =>
-                    setValues({ ...values, kodeTransaksi: u.target.value })
-                  }
+                <DropdownButton
+                  variant="danger"
+                  id="dropdown-basic"
+                  title={values.kodeTransaksi}
+                  onSelect={handleSelectKodeTransaksi}
                 >
-                  <Dropdown.Item href="#">00 - Cheque </Dropdown.Item>
-                  <Dropdown.Item href="#">01 - Bilyet Giro</Dropdown.Item>
-                  <Dropdown.Item href="#">20 - Wesel</Dropdown.Item>
-                </Dropdown.Menu>
+                  <Dropdown.Item eventKey="Cheque">00 - Cheque </Dropdown.Item>
+                  <Dropdown.Item eventKey="Bilyet Giro">
+                    01 - Bilyet Giro
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="Wesel">20 - Wesel</Dropdown.Item>
+                </DropdownButton>
               </Col>
             </Row>
           </Dropdown>
@@ -309,7 +327,7 @@ export default function Kriling() {
               <Col>
                 <Form.Control
                   placeholder="Charge"
-                  disabled
+                  //disabled
                   onChange={(u) =>
                     setValues({ ...values, charge: u.target.value })
                   }
@@ -326,7 +344,7 @@ export default function Kriling() {
                 <Form.Control
                   type="text"
                   placeholder="Jumlah Total"
-                  disabled
+                  //disabled
                   onChange={(u) =>
                     setValues({ ...values, jumlahTotal: u.target.value })
                   }
@@ -379,7 +397,7 @@ export default function Kriling() {
                 <Form.Control
                   type="text"
                   placeholder="Tanggal Kriling"
-                  disabled
+                  //disabled
                   onChange={(u) =>
                     setValues({ ...values, tanggalKriling: u.target.value })
                   }
@@ -390,7 +408,7 @@ export default function Kriling() {
           <Row>
             <hr />
             <Col>
-              <Button variant="danger" type="submit">
+              <Button variant="danger" type="submit" onClick={hostInquiry}>
                 Host Inquiry
               </Button>
               <Button variant="outline-danger" href="/home">
