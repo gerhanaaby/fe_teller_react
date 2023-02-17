@@ -24,49 +24,45 @@ export default function SidebarComponent() {
     }
   };
   return (
-    <Row>
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <Sidebar
-          breakPoint="sm"
-          transitionDuration={800}
-          backgroundColor="rgb(222, 220, 220)"
-          rtl={false}
-          style={{ height: "100vh", position: "fixed" }}
+    // <Row>
+    //   <div style={{ display: "flex", flexDirection: "row" }}>
+    <Sidebar
+      breakPoint="sm"
+      transitionDuration={800}
+      backgroundColor="rgb(222, 220, 220)"
+      rtl={false}
+      style={{ height: "100vh" }}
+    >
+      {/* {!broken && ( */}
+      <Menu>
+        <MenuItem
+          icon={<MenuOutlinedIcon />}
+          onClick={() => {
+            collapseSidebar();
+          }}
+          style={{ textAlign: "center" }}
         >
-          {/* {!broken && ( */}
-          <Menu>
-            <MenuItem
-              icon={<MenuOutlinedIcon />}
-              onClick={() => {
-                collapseSidebar();
-              }}
-              style={{ textAlign: "center" }}
-            >
-              <h5>Prototype</h5>
-            </MenuItem>
+          <h5>Prototype</h5>
+        </MenuItem>
 
-            <MenuItem component={<Link to="/home" />}>Dashboard</MenuItem>
-            <SubMenu label="Kriling">
-              <MenuItem component={<Link to="/skn" />}>
-                Setoran Kriling{" "}
-              </MenuItem>
-              <MenuItem component={<Link to="/skn" />}>
-                Penitipan Kriling
-              </MenuItem>
-            </SubMenu>
-            <MenuItem
-              component={<Link to="/internal_transfer" />}
-              label="Internal Transfer"
-            >
-              Internal Transfer
-            </MenuItem>
-            <MenuItem component={<Link to="/cek_saldo" />} label="Check Saldo">
-              Check Saldo
-            </MenuItem>
-          </Menu>
-        </Sidebar>
-        <NavbarComponent />
+        <MenuItem component={<Link to="/home" />}>Dashboard</MenuItem>
+        <SubMenu label="Kriling">
+          <MenuItem component={<Link to="/skn" />}>Setoran Kriling </MenuItem>
+          <MenuItem component={<Link to="/skn" />}>Penitipan Kriling</MenuItem>
+        </SubMenu>
+        <MenuItem
+          component={<Link to="/internal_transfer" />}
+          label="Internal Transfer"
+        >
+          Internal Transfer
+        </MenuItem>
+        <MenuItem component={<Link to="/cek_saldo" />} label="Check Saldo">
+          Check Saldo
+        </MenuItem>
+      </Menu>
+    </Sidebar>
+    /* <NavbarComponent />
       </div>
-    </Row>
+    </Row> */
   );
 }

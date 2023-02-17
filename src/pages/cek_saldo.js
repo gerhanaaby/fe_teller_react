@@ -21,13 +21,15 @@ export default function CekSaldo() {
 
   return (
     <div
-      style={{
-        position: "absolute",
-        backgroundColor: "white",
-        top: "18%",
-        left: "20%",
-        zIndex: "-2",
-      }}
+    //   style={
+    //     {
+    //       // position: "absolute",
+    //       // backgroundColor: "white",
+    //       // top: "18%",
+    //       // left: "20%",
+    //       // zIndex: "-2",
+    //     }
+    //   }
     >
       <Container class="bodyHome">
         <Form.Group controlId="formText" className="mb-3">

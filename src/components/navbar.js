@@ -8,11 +8,13 @@ export default function NavbarComponent() {
       style={{
         width: "100%",
         position: "fixed",
-        zIndex: "-1",
+        //marginBottom: "10%",
+        // zIndex: "-1",
         backgroundColor: "rgb(255, 49, 49)",
       }}
     >
-      <Container style={{ marginLeft: "20%" }}>
+      <Container>
+        {/* style={{ marginLeft: "20%" }}> */}
         <Navbar.Brand>
           <img
             alt=""
