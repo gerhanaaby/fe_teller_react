@@ -28,7 +28,7 @@ export default function Login() {
     e.preventDefault();
     //console.log("kehit");
     axios
-      .post("http://localhost:5000/user/auth/login", {
+      .post("http://10.22.100.82:5000/user/auth/login", {
         userName: values.userName,
         password: values.pass,
       })

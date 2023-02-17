@@ -38,6 +38,34 @@ export default function InternalTransfer() {
 
   const hostInquiry = (e) => {
     e.preventDefault();
+    axios
+      .post(
+        "http://10.22.100.82:5000/user/transac/postinquirytransfer",
+        {
+          accountNo: values.nomorRekDebet,
+          referenceId: "154500902248",
+        },
+        {
+          headers: {
+            headers: {
+              "Content-Type": "application/json",
+              "Acess-Control-Allow-Origin": "*",
+              aw: "xxx",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Accept: "application/json",
+            },
+          },
+        }
+      )
+      .then((res) => {
+        console.log();
+        // localStorage.setItem("token", res.data.token);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const sendTransaction = (e) => {
+    e.preventDefault();
     // console.log(localStorage.getItem("token")); ${localStorage.getItem("token")}
     axios
       .post(
@@ -82,7 +110,7 @@ export default function InternalTransfer() {
       }}
     >
       <Container class="bodyHome">
-        <Form onSubmit={hostInquiry}>
+        <Form onSubmit={sendTransaction}>
           <Form.Group controlId="formText" className="mb-3">
             <Row>
               <Form.Group controlId="formText" className="mb-3">
@@ -359,6 +387,14 @@ export default function InternalTransfer() {
             <Col>
               <Button variant="danger" type="submit" onClick={hostInquiry}>
                 Host Inquiry
+              </Button>
+              <Button
+                variant="danger"
+                type="submit"
+                onClick={sendTransaction}
+                style={{ marginLeft: "8px" }}
+              >
+                Send Transaction
               </Button>
               <Button
                 variant="outline-danger"
