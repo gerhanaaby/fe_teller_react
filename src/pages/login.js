@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Button, Container, Form, Navbar } from "react-bootstrap";
+import { Button, Container, Form, Modal, Navbar } from "react-bootstrap";
 
 import "./../css/login.css";
 
@@ -18,9 +18,13 @@ export default function Login() {
     showPass: false,
   });
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     //console.log("kehit");
     axios
@@ -34,7 +38,9 @@ export default function Login() {
         navigate("/home");
       })
       .catch((err) => {
+        handleShow();
         console.log("gagal");
+
         console.error(err);
       });
   };
@@ -48,6 +54,20 @@ export default function Login() {
   return (
     <div>
       <NavbarLoginComponent />
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Proses Login Gagal</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Silakan periksa kembali username dan password anda
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <div class="loginForm">
         <div class="tellerLogo">
           <img src={tellerLogo} style={{ width: "500px", height: "160px" }} />
