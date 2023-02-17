@@ -49,12 +49,10 @@ export default function Kriling() {
         },
         {
           headers: {
-            headers: {
-              "Content-Type": "application/json",
-              "Acess-Control-Allow-Origin": "*",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-              Accept: "application/json",
-            },
+            "Content-Type": "application/json",
+            "Acess-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Accept: "application/json",
           },
         }
       )

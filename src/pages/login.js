@@ -28,10 +28,18 @@ export default function Login() {
     e.preventDefault();
     //console.log("kehit");
     axios
-      .post("http://http://10.22.100.82:5000/user/auth/login", {
-        userName: values.userName,
-        password: values.pass,
-      })
+      .post(
+        "http://10.22.100.82:5000/user/auth/login",
+        {
+          userName: values.userName,
+          password: values.pass,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         console.log(res.data.token);

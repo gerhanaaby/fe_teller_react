@@ -8,8 +8,6 @@ export default function NavbarComponent() {
       style={{
         width: "100%",
         position: "fixed",
-        //marginBottom: "10%",
-        // zIndex: "-1",
         backgroundColor: "rgb(255, 49, 49)",
       }}
     >
