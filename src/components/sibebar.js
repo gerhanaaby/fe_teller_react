@@ -11,8 +11,7 @@ import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NavbarComponent from "./navbar";
 export default function SidebarComponent() {
-  const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
-    useProSidebar();
+  const { collapseSidebar, toggleSidebar, toggled } = useProSidebar();
 
   const toggle = () => {
     toggleSidebar();
@@ -26,110 +25,48 @@ export default function SidebarComponent() {
   };
   return (
     <Row>
-      <Col>
-        <div
-          style={
-            ({ height: "100%" }, { display: "flex", flexDirection: "row" })
-          }
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <Sidebar
+          breakPoint="sm"
+          transitionDuration={800}
+          backgroundColor="rgb(222, 220, 220)"
+          rtl={false}
+          style={{ height: "100vh", position: "fixed" }}
         >
-          <Sidebar
-            breakPoint="sm"
-            transitionDuration={800}
-            backgroundColor="rgb(222, 220, 220)"
-            rtl={false}
-            style={{ height: "100vh", position: "fixed" }}
-          >
-            {/* {!broken && ( */}
-            <Menu>
-              <MenuItem
-                icon={<MenuOutlinedIcon />}
-                onClick={() => {
-                  collapseSidebar();
-                }}
-                style={{ textAlign: "center" }}
-              >
-                <h5>Prototype</h5>
-              </MenuItem>
+          {/* {!broken && ( */}
+          <Menu>
+            <MenuItem
+              icon={<MenuOutlinedIcon />}
+              onClick={() => {
+                collapseSidebar();
+              }}
+              style={{ textAlign: "center" }}
+            >
+              <h5>Prototype</h5>
+            </MenuItem>
 
-              <MenuItem component={<Link to="/home" />}>Dashboard</MenuItem>
-              <SubMenu label="Kriling">
-                <MenuItem component={<Link to="/skn" />}>
-                  Setoran Kriling{" "}
-                </MenuItem>
-                <MenuItem component={<Link to="/skn" />}>
-                  Penitipan Kriling
-                </MenuItem>
-              </SubMenu>
-              <SubMenu label="RTGS">
-                <MenuItem component={<Link to="/home" />}>
-                  Single Customer Transfer
-                </MenuItem>
-                <MenuItem component={<Link to="/home" />}>
-                  Outward Interbank Transfer
-                </MenuItem>
-              </SubMenu>
-              <SubMenu label="Pemindahbukuan">
-                <MenuItem component={<Link to="/home" />}>
-                  Mata Uang Sama
-                </MenuItem>
-                <MenuItem component={<Link to="/home" />}>
-                  Mata Uang Beda{" "}
-                </MenuItem>
-              </SubMenu>
-              <MenuItem
-                component={<Link to="/cek_saldo" />}
-                label="Check Saldo"
-              >
-                Check Saldo
+            <MenuItem component={<Link to="/home" />}>Dashboard</MenuItem>
+            <SubMenu label="Kriling">
+              <MenuItem component={<Link to="/skn" />}>
+                Setoran Kriling{" "}
               </MenuItem>
-            </Menu>
-          </Sidebar>
-        </div>
-      </Col>
-      <Col>
+              <MenuItem component={<Link to="/skn" />}>
+                Penitipan Kriling
+              </MenuItem>
+            </SubMenu>
+            <MenuItem
+              component={<Link to="/internal_transfer" />}
+              label="Internal Transfer"
+            >
+              Internal Transfer
+            </MenuItem>
+            <MenuItem component={<Link to="/cek_saldo" />} label="Check Saldo">
+              Check Saldo
+            </MenuItem>
+          </Menu>
+        </Sidebar>
         <NavbarComponent />
-      </Col>
+      </div>
     </Row>
   );
 }
-
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import * as FaIcons from "react-icons/fa";
-// import * as AiIcons from "react-icons/ai";
-// import { SidebarData } from "./sidebar_data";
-// import { IconContext } from "react-icons/lib";
-// import SubMenu from "./subMenu";
-// import "./../css/sidebar.css";
-// const SidebarComponent = () => {
-//   const [sidebar, setSidebar] = useState(true);
-
-//   const showSidebar = () => setSidebar(!sidebar);
-
-//   return (
-//     <>
-//       <IconContext.Provider value={{ color: "#fff" }}>
-//         <div class="nav">
-//           <Link class="nav-icon" to="#">
-//             <FaIcons.FaBars onClick={showSidebar} />
-//           </Link>
-//         </div>
-//         <nav
-//           class={sidebar ? "sidebar-nav-open" : "sidebar-nav-close"}
-//           sidebar={sidebar}
-//         >
-//           <div className="sidebar-wrap">
-//             <Link className="nav-icon" to="#">
-//               <FaIcons.FaBars onClick={showSidebar} />
-//             </Link>
-//             {SidebarData.map((item, index) => {
-//               return <SubMenu item={item} key={index} />;
-//             })}
-//           </div>
-//         </nav>
-//       </IconContext.Provider>
-//     </>
-//   );
-// };
-
-// export default SidebarComponent;

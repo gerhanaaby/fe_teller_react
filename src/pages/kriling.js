@@ -1,4 +1,3 @@
-import { CenterFocusStrong } from "@mui/icons-material";
 import React, { useState } from "react";
 import {
   Button,
@@ -86,11 +85,10 @@ export default function Kriling() {
     <div
       style={{
         position: "absolute",
-        top: "20%",
-        left: "30%",
         backgroundColor: "white",
         top: "18%",
         left: "20%",
+        zIndex: "-2",
       }}
     >
       <Container class="bodyHome">
@@ -411,7 +409,11 @@ export default function Kriling() {
               <Button variant="danger" type="submit" onClick={hostInquiry}>
                 Host Inquiry
               </Button>
-              <Button variant="outline-danger" href="/home">
+              <Button
+                variant="outline-danger"
+                href="/home"
+                style={{ marginLeft: "8px" }}
+              >
                 Cancel
               </Button>
             </Col>

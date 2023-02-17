@@ -6,10 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/login";
 import RTGS from "./pages/rtgs";
 import Kriling from "./pages/kriling";
-import { Col, Container, Navbar } from "react-bootstrap";
-import SidebarComponent from "./components/sibebar";
 import CekSaldo from "./pages/cek_saldo";
 import Dashboard from "./pages/dashboard";
+import InternalTransfer from "./pages/internal_transfer";
 
 export default class App extends Component {
   render() {
@@ -22,6 +21,11 @@ export default class App extends Component {
             <Route path="/rtgs" element={<RTGS />} exact />
             <Route path="/skn" element={<Kriling />} exact />
             <Route path="/cek_saldo" element={<CekSaldo />} exact />
+            <Route
+              path="/internal_transfer"
+              element={<InternalTransfer />}
+              exact
+            />
           </Route>
         </Routes>
       </BrowserRouter>

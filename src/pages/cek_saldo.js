@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Form, Row, Col, Button, Table } from "react-bootstrap";
 
 export default function CekSaldo() {
+  const [values, setValues] = useState({
+    nomorRek: "",
+    branch: "",
+    nomorCabang: "",
+    tanggal: "",
+    accountNo: "",
+    accountName: "",
+    custNo: "",
+    limit: "",
+    category: "",
+    ccy: "",
+    onlineBal: "",
+    workingBal: "",
+    clearedBal: "",
+    openDate: "",
+  });
+
   return (
     <div
       style={{
@@ -9,6 +26,7 @@ export default function CekSaldo() {
         backgroundColor: "white",
         top: "18%",
         left: "20%",
+        zIndex: "-2",
       }}
     >
       <Container class="bodyHome">
@@ -35,7 +53,13 @@ export default function CekSaldo() {
               </Form.Label>
             </Col>
             <Col>
-              <Form.Control type="text" placeholder="Nomor Rekening" />
+              <Form.Control
+                type="text"
+                placeholder="Nomor Rekening"
+                onChange={(u) =>
+                  setValues({ ...values, nomorRek: u.target.value })
+                }
+              />
             </Col>
           </Row>
         </Form.Group>
@@ -49,9 +73,9 @@ export default function CekSaldo() {
                 type="text"
                 placeholder="Nomor Cabang"
                 disabled
-                // onChange={(u) =>
-                //   setValues({ ...values, namaProduk: u.target.value })
-                // }
+                onChange={(u) =>
+                  setValues({ ...values, nomorCabang: u.target.value })
+                }
               />
             </Col>
           </Row>
@@ -63,7 +87,9 @@ export default function CekSaldo() {
             <Button variant="danger" type="submit">
               Search
             </Button>{" "}
-            <Button variant="outline-danger">Print</Button>{" "}
+            <Button variant="outline-danger" style={{ marginLeft: "4px" }}>
+              Print
+            </Button>{" "}
           </Col>
         </Row>
         <br />
@@ -89,9 +115,9 @@ export default function CekSaldo() {
                 type="text"
                 placeholder="Tanggal Hari Ini"
                 disabled
-                //   onChange={(u) =>
-                //     setValues({ ...values, namaProduk: u.target.value })
-                //   }
+                onChange={(u) =>
+                  setValues({ ...values, tanggal: u.target.value })
+                }
               />
             </Col>
           </Row>
@@ -102,7 +128,14 @@ export default function CekSaldo() {
               <Form.Label>Nomor Rekening</Form.Label>
             </Col>
             <Col>
-              <Form.Control type="text" placeholder="Nomor Rekening" disabled />
+              <Form.Control
+                type="text"
+                placeholder="Nomor Rekening"
+                disabled
+                onChange={(u) =>
+                  setValues({ ...values, nomorRek: u.target.value })
+                }
+              />
             </Col>
           </Row>
         </Form.Group>
@@ -116,9 +149,9 @@ export default function CekSaldo() {
                 type="text"
                 placeholder="Nama Cabang"
                 disabled
-                //   onChange={(u) =>
-                //     setValues({ ...values, namaProduk: u.target.value })
-                //   }
+                onChange={(u) =>
+                  setValues({ ...values, branch: u.target.value })
+                }
               />
             </Col>
           </Row>
@@ -177,7 +210,14 @@ export default function CekSaldo() {
             <Form.Label>Online Balance</Form.Label>
           </Col>
           <Col>
-            <Form.Control type="text" placeholder="Online Balance" disabled />
+            <Form.Control
+              type="text"
+              placeholder="Online Balance"
+              disabled
+              onChange={(u) =>
+                setValues({ ...values, onlineBal: u.target.value })
+              }
+            />
           </Col>
         </Row>
       </Form.Group>
@@ -191,9 +231,9 @@ export default function CekSaldo() {
               type="text"
               placeholder="Working Balance"
               disabled
-              //   onChange={(u) =>
-              //     setValues({ ...values, namaProduk: u.target.value })
-              //   }
+              onChange={(u) =>
+                setValues({ ...values, workingBal: u.target.value })
+              }
             />
           </Col>
         </Row>
@@ -208,9 +248,9 @@ export default function CekSaldo() {
               type="text"
               placeholder="Cleared Balance"
               disabled
-              //   onChange={(u) =>
-              //     setValues({ ...values, namaProduk: u.target.value })
-              //   }
+              onChange={(u) =>
+                setValues({ ...values, workingBal: u.target.value })
+              }
             />
           </Col>
         </Row>

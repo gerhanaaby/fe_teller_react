@@ -9,6 +9,7 @@ import bsimLogo from "./../assets/images/logoBSIM.png";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavbarComponent from "../components/navbar";
+import NavbarLoginComponent from "../components/navbar_login";
 
 export default function Login() {
   const [values, setValues] = useState({
@@ -46,7 +47,7 @@ export default function Login() {
   document.body.style = "background: red;";
   return (
     <div>
-      <NavbarComponent />
+      <NavbarLoginComponent />
       <div class="loginForm">
         <div class="tellerLogo">
           <img src={tellerLogo} style={{ width: "500px", height: "160px" }} />
