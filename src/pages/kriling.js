@@ -52,7 +52,6 @@ export default function Kriling() {
             headers: {
               "Content-Type": "application/json",
               "Acess-Control-Allow-Origin": "*",
-              aw: "xxx",
               Authorization: `Bearer ${localStorage.getItem("token")}`,
               Accept: "application/json",
             },
@@ -71,7 +70,7 @@ export default function Kriling() {
     // console.log(localStorage.getItem("token")); ${localStorage.getItem("token")}
     axios
       .post(
-        "http://localhost:5000/user/transac/postskn",
+        "http://10.22.100.82:5000/user/tansact/postskn",
         {
           creditAccountNo: values.noWarkat,
           amount: values.jumlahTotal,
@@ -95,16 +94,16 @@ export default function Kriling() {
         },
         {
           headers: {
-            "Content-Type": "application/json",
-            "Acess-Control-Allow-Origin": "*",
-            aw: "xxx",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers":
+              "Origin, X-Requested-With, Content-Type, Accept, Authorization",
           },
         }
       )
       .then((res) => {
-        console.log();
+        console.log(res.data);
+
         // localStorage.setItem("token", res.data.token);
       })
       .catch((err) => console.error(err));
