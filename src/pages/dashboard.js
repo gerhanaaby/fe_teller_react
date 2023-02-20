@@ -13,14 +13,14 @@ export default class Dashboard extends Component {
           height: "100vh",
           display: "flex",
           flexDirection: "row",
-          // position: "fixed",
-          // zIndex: "1",
         }}
       >
         <SidebarComponent />
         <main>
           <NavbarComponent />
-          <Outlet />
+          <div style={{ marginTop: "100px" }}>
+            <Outlet />
+          </div>
         </main>
       </div>
     );

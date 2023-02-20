@@ -31,10 +31,10 @@ export default function SidebarComponent() {
       transitionDuration={800}
       backgroundColor="rgb(222, 220, 220)"
       rtl={false}
-      style={{ height: "100vh" }}
+      style={{ height: "100%" }}
     >
       {/* {!broken && ( */}
-      <Menu>
+      <Menu style={{ position: "absolute", width: "250px", height: "100%" }}>
         <MenuItem
           icon={<MenuOutlinedIcon />}
           onClick={() => {
