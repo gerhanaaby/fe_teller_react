@@ -69,24 +69,32 @@ export default function InternalTransfer() {
     // console.log(localStorage.getItem("token")); ${localStorage.getItem("token")}
     axios
       .post(
-        "http://localhost:5000/user/transac/postinternaltransfer",
+        "http://10.22.100.82:5000/user/transac/postinternaltransfer",
         {
-          referenceId: "MDLN-125123213129",
-          debitAccountNo: values.nomorRekDebet,
           creditAccountNo: values.nomorRekKredit,
-          creditAmount: values.jumlah,
-          creditCurrency: values.mataUangRek,
-          transactionDate: values.tanggalTransaksi,
+          amount: values.jumlah,
+          beneficiaryResidentStatus: "1",
+          clearingCode: "BBBAIDJA",
           remark: values.pesan,
-          beneficiaryName: values.namaProdukKredit,
-          debitAccountName: values.namaPemilikDebet,
+          transactionDate: values.tanggalTransaksi,
+          transactionTime: "000000",
+          clearingTransactionCode: "50",
+          referenceId: "MDLN-803837197299",
+          paymentDetails1: values.pesan,
+          senderName: values.namaPemilikDebet,
+          paymentDetails2: "",
+          paymentDetails3: "",
+          debitAccountNo: values.nomorRekDebet,
+          beneficiaryNationStatus: "0",
+          beneficiaryType: "1",
+          beneficiaryName: "ALTO",
+          chargeAmount: values.charge,
+          currency: values.mataUangRek,
         },
         {
           headers: {
             "Content-Type": "application/json",
-            "Acess-Control-Allow-Origin": "*",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-            Accept: "application/json",
           },
         }
       )
@@ -98,16 +106,6 @@ export default function InternalTransfer() {
   };
 
   return (
-    // <div
-    //   style={{
-    //     position: "absolute",
-    //     backgroundColor: "white",
-    //     top: "18%",
-    //     left: "20%",
-    //     width: "1000px",
-    //     zIndex: "-2",
-    //   }}
-    // >
     <Container>
       <Form onSubmit={sendTransaction}>
         <Form.Group controlId="formText" className="mb-3">

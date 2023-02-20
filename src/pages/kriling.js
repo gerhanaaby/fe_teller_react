@@ -108,15 +108,6 @@ export default function Kriling() {
   };
 
   return (
-    // <div
-    //   style={{
-    //     position: "absolute",
-    //     backgroundColor: "white",
-    //     top: "18%",
-    //     left: "20%",
-    //     zIndex: "-2",
-    //   }}
-    // >
     <Container style={{ marginTop: "10%" }}>
       <Form onSubmit={sendTransaction}>
         <Form.Group controlId="formText" className="mb-3">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Container, Form, Row, Col, Button, Table } from "react-bootstrap";
 
 export default function CekSaldo() {
@@ -19,81 +20,102 @@ export default function CekSaldo() {
     openDate: "",
   });
 
+  const search = (e) => {
+    e.preventDefault();
+    // console.log(localStorage.getItem("token")); ${localStorage.getItem("token")}
+    axios
+      .post(
+        "http://10.22.100.82:5000/user/transac/postgetdetail",
+        {
+          transactionID: "3546245666000",
+          accountNumber: values.nomorRek,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers":
+              "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
-    <div
-    //   style={
-    //     {
-    //       // position: "absolute",
-    //       // backgroundColor: "white",
-    //       // top: "18%",
-    //       // left: "20%",
-    //       // zIndex: "-2",
-    //     }
-    //   }
-    >
+    <div>
       <Container class="bodyHome">
-        <Form.Group controlId="formText" className="mb-3">
+        <Form onSubmit={search}>
+          <Form.Group controlId="formText" className="mb-3">
+            <Row>
+              <Form.Group controlId="formText" className="mb-3">
+                <Form.Label>
+                  <Row style={{ width: "900px" }}>
+                    <Col>
+                      <h5>
+                        <i>Account Enquiries</i>
+                      </h5>
+                      <span>Account Balance by Account Number</span>
+                    </Col>
+                  </Row>
+                </Form.Label>
+                <hr />
+              </Form.Group>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Label>
+                  <b>Nomor Rekening</b>
+                </Form.Label>
+              </Col>
+              <Col>
+                <Form.Control
+                  type="text"
+                  placeholder="Nomor Rekening"
+                  onChange={(u) =>
+                    setValues({ ...values, nomorRek: u.target.value })
+                  }
+                />
+              </Col>
+            </Row>
+          </Form.Group>
+          <Form.Group controlId="formText" className="mb-3">
+            <Row>
+              <Col>
+                <Form.Label>Branch</Form.Label>
+              </Col>
+              <Col>
+                <Form.Control
+                  type="text"
+                  placeholder="Nomor Cabang"
+                  disabled
+                  onChange={(u) =>
+                    setValues({ ...values, nomorCabang: u.target.value })
+                  }
+                />
+              </Col>
+            </Row>
+          </Form.Group>
           <Row>
-            <Form.Group controlId="formText" className="mb-3">
-              <Form.Label>
-                <Row style={{ width: "900px" }}>
-                  <Col>
-                    <h5>
-                      <i>Account Enquiries</i>
-                    </h5>
-                    <span>Account Balance by Account Number</span>
-                  </Col>
-                </Row>
-              </Form.Label>
-              <hr />
-            </Form.Group>
-          </Row>
-          <Row>
+            <Col></Col>
             <Col>
-              <Form.Label>
-                <b>Nomor Rekening</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                type="text"
-                placeholder="Nomor Rekening"
-                onChange={(u) =>
-                  setValues({ ...values, nomorRek: u.target.value })
-                }
-              />
+              {" "}
+              <Button variant="danger" type="submit">
+                Search
+              </Button>{" "}
+              <Button
+                variant="outline-danger"
+                style={{ marginLeft: "4px" }}
+                onClick={search}
+              >
+                Print
+              </Button>{" "}
             </Col>
           </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>Branch</Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                type="text"
-                placeholder="Nomor Cabang"
-                disabled
-                onChange={(u) =>
-                  setValues({ ...values, nomorCabang: u.target.value })
-                }
-              />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Row>
-          <Col></Col>
-          <Col>
-            {" "}
-            <Button variant="danger" type="submit">
-              Search
-            </Button>{" "}
-            <Button variant="outline-danger" style={{ marginLeft: "4px" }}>
-              Print
-            </Button>{" "}
-          </Col>
-        </Row>
+        </Form>
         <br />
         <hr />
         <Form.Group controlId="formText" className="mb-3">
