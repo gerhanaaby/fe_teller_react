@@ -283,6 +283,6 @@ export default function CekSaldo() {
           </Col>
         </Row>
       </Form.Group>
-    </Container>
+    </div>
   );
 }
