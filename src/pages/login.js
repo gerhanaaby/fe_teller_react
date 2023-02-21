@@ -1,14 +1,12 @@
 import axios from "axios";
-import { Button, Container, Form, Modal, Navbar } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 
 import "./../css/login.css";
 
 import tellerLogo from "./../assets/images/teller.png";
-import bsimLogo from "./../assets/images/logoBSIM.png";
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NavbarComponent from "../components/navbar";
 import NavbarLoginComponent from "../components/navbar_login";
 
 export default function Login() {
@@ -26,6 +24,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const startTime = performance.now();
     //console.log("kehit");
     axios
       .post(
@@ -41,6 +40,9 @@ export default function Login() {
         }
       )
       .then((res) => {
+        const endTime = performance.now();
+        const responseTime = endTime - startTime;
+        console.log(`Request took ${responseTime} milliseconds`);
         localStorage.setItem("token", res.data.token);
         console.log(res.data.token);
         navigate("/home");
@@ -76,11 +78,11 @@ export default function Login() {
         </Modal.Footer>
       </Modal>
 
-      <div class="loginForm">
-        <div class="tellerLogo">
+      <div className="loginForm">
+        <div className="tellerLogo">
           <img src={tellerLogo} style={{ width: "500px", height: "160px" }} />
         </div>
-        <i class="welcomeText">
+        <i className="welcomeText">
           Selamat Datang, silakan login untuk memulai Aplikasi
         </i>
         <br />
