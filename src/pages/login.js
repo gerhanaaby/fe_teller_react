@@ -1,10 +1,23 @@
 import axios from "axios";
-import { Button, Form, Modal } from "react-bootstrap";
+import {
+  Button,
+  Container,
+  Form,
+  InputGroup,
+  Modal,
+  Navbar,
+} from "react-bootstrap";
 
 import "./../css/login.css";
 
 import tellerLogo from "./../assets/images/teller.png";
-
+import bsimLogo from "./../assets/images/logoBSIM.png";
+import {
+  BsFillPersonFill,
+  BsFillEyeFill,
+  BsFillEyeSlashFill,
+} from "react-icons/bs";
+import { RiKeyFill } from "react-icons/ri";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavbarLoginComponent from "../components/navbar_login";
@@ -87,39 +100,46 @@ export default function Login() {
         </i>
         <br />
         <br />
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formText" className="mb-3">
-            <Form.Control
-              type="text"
-              placeholder="Username"
-              onChange={(u) =>
-                setValues({ ...values, userName: u.target.value })
-              }
-              required
-            />
-          </Form.Group>
+        {/* <Form onSubmit={handleSubmit}> */}
+        <InputGroup controlId="formText" className="mb-3">
+          <InputGroup.Text id="inputGroup-sizing-default">
+            <BsFillPersonFill />
+          </InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Username"
+            onChange={(u) => setValues({ ...values, userName: u.target.value })}
+            required
+          />
+        </InputGroup>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setValues({ ...values, pass: e.target.value })}
-              required
-            />
-          </Form.Group>
+        <InputGroup className="mb-3" controlId="formBasicPassword">
+          <InputGroup.Text id="inputGroup-sizing-default">
+            <RiKeyFill />
+          </InputGroup.Text>
+          <Form.Control
+            type={values.showPass ? "text" : "password"}
+            placeholder="Password"
+            onChange={(e) => setValues({ ...values, pass: e.target.value })}
+            required
+          />
+          <Button variant="light" onClick={handlePassVisibilty}>
+            {values.showPass ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
+          </Button>
+        </InputGroup>
 
-          <div className="d-grid gap-2">
-            <Button
-              variant="danger"
-              size="lg"
-              style={{ backgroundColor: "rgb(165, 2, 2)" }}
-              type="submit"
-              onClick={handleSubmit}
-            >
-              <b>Log In</b>
-            </Button>
-          </div>
-        </Form>
+        <div className="d-grid gap-2">
+          <Button
+            variant="danger"
+            size="lg"
+            style={{ backgroundColor: "rgb(165, 2, 2)" }}
+            type="submit"
+            onClick={handleSubmit}
+          >
+            <b>Log In</b>
+          </Button>
+        </div>
+        {/* </Form> */}
       </div>
     </div>
   );

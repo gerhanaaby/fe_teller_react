@@ -88,3 +88,11 @@
 .sidebar-wrap {
   width: 100%;
 }
+
+.sidebar-new {
+  position: fixed;
+  overflow-y: scroll;
+
+  /* display: flex,
+          flexDirection: row, */
+}

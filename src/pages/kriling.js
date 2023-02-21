@@ -114,7 +114,7 @@ export default function Kriling() {
   };
 
   return (
-    <Container style={{ marginTop: "10%" }}>
+    <Container>
       <Form.Group controlId="formText" className="mb-3">
         <Row>
           <Form.Group controlId="formText" className="mb-3">
@@ -442,9 +442,6 @@ export default function Kriling() {
           </Button>
         </Col>
       </Row>
-      <br />
-      <br />
     </Container>
-    // </div>
   );
 }
