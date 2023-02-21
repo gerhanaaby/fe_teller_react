@@ -11,7 +11,8 @@ import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NavbarComponent from "./navbar";
 export default function SidebarComponent() {
-  const { collapseSidebar, toggleSidebar, toggled } = useProSidebar();
+  const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
+    useProSidebar();
 
   const toggle = () => {
     toggleSidebar();
@@ -31,7 +32,14 @@ export default function SidebarComponent() {
       transitionDuration={800}
       backgroundColor="rgb(222, 220, 220)"
       rtl={false}
-      style={{ height: "100%" }}
+      // style={
+      //   {
+      //     //height: "100%",
+      //     //position: "fixed",
+      //     //zindex: 1,
+      //     //overflowx: "hidden",
+      //   }
+      // }
     >
       {/* {!broken && ( */}
       <Menu style={{ position: "absolute", width: "250px", height: "100%" }}>
@@ -39,6 +47,7 @@ export default function SidebarComponent() {
           icon={<MenuOutlinedIcon />}
           onClick={() => {
             collapseSidebar();
+            //toggleSidebar();
           }}
           style={{ textAlign: "center" }}
         >

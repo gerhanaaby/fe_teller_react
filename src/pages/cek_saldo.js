@@ -46,116 +46,34 @@ export default function CekSaldo() {
   };
 
   return (
-    <div>
-      <Container class="bodyHome">
-        <Form onSubmit={search}>
-          <Form.Group controlId="formText" className="mb-3">
-            <Row>
-              <Form.Group controlId="formText" className="mb-3">
-                <Form.Label>
-                  <Row style={{ width: "900px" }}>
-                    <Col>
-                      <h5>
-                        <i>Account Enquiries</i>
-                      </h5>
-                      <span>Account Balance by Account Number</span>
-                    </Col>
-                  </Row>
-                </Form.Label>
-                <hr />
-              </Form.Group>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Label>
-                  <b>Nomor Rekening</b>
-                </Form.Label>
-              </Col>
-              <Col>
-                <Form.Control
-                  type="text"
-                  placeholder="Nomor Rekening"
-                  onChange={(u) =>
-                    setValues({ ...values, nomorRek: u.target.value })
-                  }
-                />
-              </Col>
-            </Row>
-          </Form.Group>
-          <Form.Group controlId="formText" className="mb-3">
-            <Row>
-              <Col>
-                <Form.Label>Branch</Form.Label>
-              </Col>
-              <Col>
-                <Form.Control
-                  type="text"
-                  placeholder="Nomor Cabang"
-                  disabled
-                  onChange={(u) =>
-                    setValues({ ...values, nomorCabang: u.target.value })
-                  }
-                />
-              </Col>
-            </Row>
-          </Form.Group>
+    <Container>
+      <Form onSubmit={search}>
+        <Form.Group controlId="formText" className="mb-3">
           <Row>
-            <Col></Col>
-            <Col>
-              {" "}
-              <Button variant="danger" type="submit">
-                Search
-              </Button>{" "}
-              <Button
-                variant="outline-danger"
-                style={{ marginLeft: "4px" }}
-                onClick={search}
-              >
-                Print
-              </Button>{" "}
-            </Col>
+            <Form.Group controlId="formText" className="mb-3">
+              <Form.Label>
+                <Row style={{ width: "900px" }}>
+                  <Col>
+                    <h5>
+                      <i>Account Enquiries</i>
+                    </h5>
+                    <span>Account Balance by Account Number</span>
+                  </Col>
+                </Row>
+              </Form.Label>
+              <hr />
+            </Form.Group>
           </Row>
-        </Form>
-        <br />
-        <hr />
-        <Form.Group controlId="formText" className="mb-3">
-          <Form.Label>
-            <Row style={{ width: "900px" }}>
-              <Col>
-                <h5>
-                  <i>Hasil Pencarian</i>
-                </h5>
-              </Col>
-            </Row>
-          </Form.Label>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
           <Row>
             <Col>
-              <Form.Label>Tanggal</Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                type="text"
-                placeholder="Tanggal Hari Ini"
-                disabled
-                onChange={(u) =>
-                  setValues({ ...values, tanggal: u.target.value })
-                }
-              />
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>Nomor Rekening</Form.Label>
+              <Form.Label>
+                <b>Nomor Rekening</b>
+              </Form.Label>
             </Col>
             <Col>
               <Form.Control
                 type="text"
                 placeholder="Nomor Rekening"
-                disabled
                 onChange={(u) =>
                   setValues({ ...values, nomorRek: u.target.value })
                 }
@@ -163,24 +81,102 @@ export default function CekSaldo() {
             </Col>
           </Row>
         </Form.Group>
-        <Form.Group controlId="formText" className="mb-5">
+        <Form.Group controlId="formText" className="mb-3">
           <Row>
             <Col>
-              <Form.Label>Nama Cabang</Form.Label>
+              <Form.Label>Branch</Form.Label>
             </Col>
             <Col>
               <Form.Control
                 type="text"
-                placeholder="Nama Cabang"
+                placeholder="Nomor Cabang"
                 disabled
                 onChange={(u) =>
-                  setValues({ ...values, branch: u.target.value })
+                  setValues({ ...values, nomorCabang: u.target.value })
                 }
               />
             </Col>
           </Row>
         </Form.Group>
-      </Container>
+        <Row>
+          <Col></Col>
+          <Col>
+            {" "}
+            <Button variant="danger" type="submit">
+              Search
+            </Button>{" "}
+            <Button
+              variant="outline-danger"
+              style={{ marginLeft: "4px" }}
+              onClick={search}
+            >
+              Print
+            </Button>{" "}
+          </Col>
+        </Row>
+      </Form>
+      <br />
+      <hr />
+      <Form.Group controlId="formText" className="mb-3">
+        <Form.Label>
+          <Row style={{ width: "900px" }}>
+            <Col>
+              <h5>
+                <i>Hasil Pencarian</i>
+              </h5>
+            </Col>
+          </Row>
+        </Form.Label>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>Tanggal</Form.Label>
+          </Col>
+          <Col>
+            <Form.Control
+              type="text"
+              placeholder="Tanggal Hari Ini"
+              disabled
+              onChange={(u) =>
+                setValues({ ...values, tanggal: u.target.value })
+              }
+            />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-3">
+        <Row>
+          <Col>
+            <Form.Label>Nomor Rekening</Form.Label>
+          </Col>
+          <Col>
+            <Form.Control
+              type="text"
+              placeholder="Nomor Rekening"
+              disabled
+              onChange={(u) =>
+                setValues({ ...values, nomorRek: u.target.value })
+              }
+            />
+          </Col>
+        </Row>
+      </Form.Group>
+      <Form.Group controlId="formText" className="mb-5">
+        <Row>
+          <Col>
+            <Form.Label>Nama Cabang</Form.Label>
+          </Col>
+          <Col>
+            <Form.Control
+              type="text"
+              placeholder="Nama Cabang"
+              disabled
+              onChange={(u) => setValues({ ...values, branch: u.target.value })}
+            />
+          </Col>
+        </Row>
+      </Form.Group>
 
       <Table striped>
         <thead>
@@ -279,6 +275,6 @@ export default function CekSaldo() {
           </Col>
         </Row>
       </Form.Group>
-    </div>
+    </Container>
   );
 }

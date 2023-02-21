@@ -390,7 +390,6 @@ export default function InternalTransfer() {
           </Button>
         </Col>
       </Row>
-      <br />
     </Container>
   );
 }

@@ -3,22 +3,30 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 import NavbarComponent from "../components/navbar";
 import SidebarComponent from "../components/sibebar";
+import "./../css/sidebar.css";
 
 export default class Dashboard extends Component {
   render() {
     return (
       <div
-        id="dashboard"
         style={{
-          height: "100vh",
           display: "flex",
           flexDirection: "row",
+          position: "fixed",
+          height: "100%",
+          // width: "100%",
         }}
       >
         <SidebarComponent />
-        <main>
+        {/* </div> */}
+        <main style={{ position: "relative", overflow: "auto" }}>
           <NavbarComponent />
-          <div style={{ marginTop: "100px" }}>
+          <div
+            style={{
+              paddingTop: "10%",
+              paddingBottom: "5%",
+            }}
+          >
             <Outlet />
           </div>
         </main>
