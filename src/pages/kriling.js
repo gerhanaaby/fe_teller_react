@@ -40,9 +40,10 @@ export default function Kriling() {
 
   const hostInquiry = (e) => {
     e.preventDefault();
+    const startTime = performance.now();
     axios
       .post(
-        "http://http://10.22.100.82:5000/user/transac/postinquirytransfer",
+        "http://10.22.100.82:5000/user/transac/postinquirytransfer",
         {
           accountNo: values.nomorRek,
           referenceId: "154500902248",
@@ -50,13 +51,17 @@ export default function Kriling() {
         {
           headers: {
             "Content-Type": "application/json",
-            "Acess-Control-Allow-Origin": "*",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers":
+              "Origin, X-Requested-With, Content-Type, Accept, Authorization",
           },
         }
       )
       .then((res) => {
+        const endTime = performance.now();
+        const responseTime = endTime - startTime;
+        console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })
       .catch((err) => console.error(err));
@@ -64,7 +69,7 @@ export default function Kriling() {
 
   const sendTransaction = (e) => {
     e.preventDefault();
-
+    const startTime = performance.now();
     axios
       .post(
         "http://10.22.100.82:5000/user/tansact/postskn",
@@ -100,6 +105,9 @@ export default function Kriling() {
         }
       )
       .then((res) => {
+        const endTime = performance.now();
+        const responseTime = endTime - startTime;
+        console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })
       .catch((err) => console.error(err));

@@ -38,6 +38,7 @@ export default function InternalTransfer() {
 
   const hostInquiry = (e) => {
     e.preventDefault();
+    const startTime = performance.now();
     axios
       .post(
         "http://10.22.100.82:5000/user/transac/postinquirytransfer",
@@ -47,14 +48,18 @@ export default function InternalTransfer() {
         },
         {
           headers: {
-            headers: {
-              "Acess-Control-Allow-Origin": "*",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers":
+              "Origin, X-Requested-With, Content-Type, Accept, Authorization",
           },
         }
       )
       .then((res) => {
+        const endTime = performance.now();
+        const responseTime = endTime - startTime;
+        console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })
       .catch((err) => console.error(err));
@@ -62,40 +67,36 @@ export default function InternalTransfer() {
 
   const sendTransaction = (e) => {
     e.preventDefault();
+    const startTime = performance.now();
     // console.log(localStorage.getItem("token")); ${localStorage.getItem("token")}
     axios
       .post(
         "http://10.22.100.82:5000/user/transac/postinternaltransfer",
         {
-          creditAccountNo: values.nomorRekKredit,
-          amount: values.jumlah,
-          beneficiaryResidentStatus: "1",
-          clearingCode: "BBBAIDJA",
-          remark: values.pesan,
-          transactionDate: values.tanggalTransaksi,
-          transactionTime: "000000",
-          clearingTransactionCode: "50",
-          referenceId: "MDLN-803837197299",
-          paymentDetails1: values.pesan,
-          senderName: values.namaPemilikDebet,
-          paymentDetails2: "",
-          paymentDetails3: "",
+          referenceId: "MDLN-125123213129",
           debitAccountNo: values.nomorRekDebet,
-          beneficiaryNationStatus: "0",
-          beneficiaryType: "1",
-          beneficiaryName: "ALTO",
-          chargeAmount: values.charge,
-          currency: values.mataUangRek,
+          creditAccountNo: values.nomorRekKredit,
+          creditAmount: values.jumlah,
+          creditCurrency: values.mataUangRek,
+          transactionDate: values.tanggalTransaksi,
+          remark: values.pesan,
+          beneficiaryName: values.namaPemilikKredit,
+          debitAccountName: values.namaPemilikDebet,
         },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Access-Control-Allow-Origin": "*",
+            Accept: "application/json",
+            "Content-Type": "application/json",
           },
         }
       )
       .then((res) => {
         console.log(res.data);
+        const endTime = performance.now();
+        const responseTime = endTime - startTime;
+        console.log(`Request took ${responseTime} milliseconds`);
       })
       .catch((err) => console.error(err));
   };

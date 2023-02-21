@@ -22,6 +22,7 @@ export default function CekSaldo() {
 
   const search = (e) => {
     e.preventDefault();
+    const startTime = performance.now();
     // console.log(localStorage.getItem("token")); ${localStorage.getItem("token")}
     axios
       .post(
@@ -40,6 +41,9 @@ export default function CekSaldo() {
         }
       )
       .then((res) => {
+        const endTime = performance.now();
+        const responseTime = endTime - startTime;
+        console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })
       .catch((err) => console.error(err));
