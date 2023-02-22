@@ -18,8 +18,7 @@ export default class Dashboard extends Component {
         }}
       >
         <SidebarComponent />
-        {/* </div> */}
-        <main style={{ position: "relative", overflow: "auto" }}>
+        <main style={{ position: "relative", overflow: "auto", width: "100%" }}>
           <NavbarComponent />
           <div
             style={{

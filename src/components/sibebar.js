@@ -25,29 +25,17 @@ export default function SidebarComponent() {
     }
   };
   return (
-    // <Row>
-    //   <div style={{ display: "flex", flexDirection: "row" }}>
     <Sidebar
       breakPoint="sm"
       transitionDuration={800}
       backgroundColor="rgb(222, 220, 220)"
       rtl={false}
-      // style={
-      //   {
-      //     //height: "100%",
-      //     //position: "fixed",
-      //     //zindex: 1,
-      //     //overflowx: "hidden",
-      //   }
-      // }
     >
-      {/* {!broken && ( */}
       <Menu style={{ position: "absolute", width: "250px", height: "100%" }}>
         <MenuItem
           icon={<MenuOutlinedIcon />}
           onClick={() => {
             collapseSidebar();
-            //toggleSidebar();
           }}
           style={{ textAlign: "center" }}
         >
@@ -70,8 +58,5 @@ export default function SidebarComponent() {
         </MenuItem>
       </Menu>
     </Sidebar>
-    /* <NavbarComponent />
-      </div>
-    </Row> */
   );
 }
