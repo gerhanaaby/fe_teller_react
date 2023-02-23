@@ -1,6 +1,12 @@
 import "./App.css";
 import React, { Component } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Navigate,
+  Outlet,
+} from "react-router-dom";
 import Home from "./pages/home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/login";
@@ -9,12 +15,17 @@ import CekSaldo from "./pages/cek_saldo";
 import Dashboard from "./pages/dashboard";
 import InternalTransfer from "./pages/internal_transfer";
 
-export default class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} exact />
+function App() {
+  function PrivateRoutes({ redirectTo }) {
+    let isAuthenticated = localStorage.getItem("token");
+    return isAuthenticated == null ? <Outlet /> : <Navigate to={redirectTo} />;
+  }
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} exact />
+        <Route element={<PrivateRoutes redirectTo={"/login"} />}>
           <Route path="/" element={<Dashboard />} exact>
             <Route path="/home" element={<Home />} exact />
             <Route path="/skn" element={<Kriling />} exact />
@@ -25,8 +36,10 @@ export default class App extends Component {
               exact
             />
           </Route>
-        </Routes>
-      </BrowserRouter>
-    );
-  }
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
+
+export default App;
