@@ -9,7 +9,7 @@ export default function NavbarComponent() {
         width: "100%",
         position: "fixed",
         backgroundColor: "rgb(255, 49, 49)",
-        //zIndex: "1",
+        zIndex: "1",
       }}
     >
       <Container>
