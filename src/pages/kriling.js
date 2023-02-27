@@ -14,7 +14,6 @@ export default function Kriling() {
   const [values, setValues] = useState({
     nomorRek: "",
     namaProduk: "Nama Produk",
-    mataUangRek: "Jenis Mata Uang",
     namaPemilik: "Nama Pemilik",
     noIdPemilik: "No Identitas Pemilik",
     kodeCabang: "",
@@ -30,15 +29,20 @@ export default function Kriling() {
     tanggalKriling: "",
   });
 
+  const [mataUangRek, setJenisMataUang] = useState({
+    mataUangRek: "Jenis Mata Uang",
+  });
+
   const [namaCabang, setNamaCabang] = useState({
     namaCabang: "Nama Cabang",
   });
 
-  const handleSelectMataUang = (evt) => {
-    setValues({ ...values, mataUangRek: evt });
-  };
   const handleSelectKodeTransaksi = (evt) => {
     setValues({ ...values, kodeTransaksi: evt });
+  };
+
+  const handleSelectMataUang = (getMataUang) => {
+    setJenisMataUang({ mataUangRek: getMataUang });
   };
 
   function handleNamaPemilik(getNamaPemilik) {
@@ -75,6 +79,7 @@ export default function Kriling() {
 
         handleNamaCabang(res.data.data.branchName);
         handleNamaPemilik(res.data.data.accountName);
+        handleSelectMataUang(res.data.data.currency);
 
         console.log(`Values nama cabang : ${values.namaCabang}`);
         console.log(`Values nama pemilik : ${values.namaPemilik}`);
@@ -199,7 +204,7 @@ export default function Kriling() {
             <DropdownButton
               variant="danger"
               id="dropdown-basic"
-              title={values.mataUangRek}
+              title={mataUangRek.mataUangRek}
               onSelect={handleSelectMataUang}
             >
               <Dropdown.Item eventKey="IDR">IDR</Dropdown.Item>
