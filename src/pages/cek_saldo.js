@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Container, Form, Row, Col, Button, Table } from "react-bootstrap";
+import "./../css/main.css";
 
 export default function CekSaldo() {
   const [values, setValues] = useState({
@@ -51,7 +52,10 @@ export default function CekSaldo() {
 
   return (
     <div>
-      <Container className="bodyHome">
+      <Container
+        className="bodyHome"
+        style={{ marginLeft: "4%", width: "80%" }}
+      >
         <Form onSubmit={search}>
           <Form.Group controlId="formText" className="mb-3">
             <Row>
@@ -186,7 +190,7 @@ export default function CekSaldo() {
         </Form.Group>
       </Container>
 
-      <Table striped>
+      <Table striped style={{ marginLeft: "4%", width: "80%" }}>
         <thead>
           <tr>
             <th>Account No</th>
@@ -221,7 +225,11 @@ export default function CekSaldo() {
       <br />
       <hr />
 
-      <Form.Group controlId="formText" className="mb-3">
+      <Form.Group
+        controlId="formText"
+        className="mb-3"
+        style={{ marginLeft: "4%", width: "80%" }}
+      >
         <Form.Label>
           <Row style={{ width: "900px" }}>
             <Col>
@@ -231,57 +239,58 @@ export default function CekSaldo() {
             </Col>
           </Row>
         </Form.Label>
-      </Form.Group>
-      <Form.Group controlId="formText" className="mb-3">
-        <Row>
-          <Col>
-            <Form.Label>Online Balance</Form.Label>
-          </Col>
-          <Col>
-            <Form.Control
-              type="text"
-              placeholder="Online Balance"
-              disabled
-              onChange={(u) =>
-                setValues({ ...values, onlineBal: u.target.value })
-              }
-            />
-          </Col>
-        </Row>
-      </Form.Group>
-      <Form.Group controlId="formText" className="mb-3">
-        <Row>
-          <Col>
-            <Form.Label>Working Balance</Form.Label>
-          </Col>
-          <Col>
-            <Form.Control
-              type="text"
-              placeholder="Working Balance"
-              disabled
-              onChange={(u) =>
-                setValues({ ...values, workingBal: u.target.value })
-              }
-            />
-          </Col>
-        </Row>
-      </Form.Group>
-      <Form.Group controlId="formText" className="mb-5">
-        <Row>
-          <Col>
-            <Form.Label>Cleared Balance</Form.Label>
-          </Col>
-          <Col>
-            <Form.Control
-              type="text"
-              placeholder="Cleared Balance"
-              disabled
-              onChange={(u) =>
-                setValues({ ...values, workingBal: u.target.value })
-              }
-            />
-          </Col>
-        </Row>
+
+        <Form.Group controlId="formText" className="mb-3">
+          <Row>
+            <Col>
+              <Form.Label>Online Balance</Form.Label>
+            </Col>
+            <Col>
+              <Form.Control
+                type="text"
+                placeholder="Online Balance"
+                disabled
+                onChange={(u) =>
+                  setValues({ ...values, onlineBal: u.target.value })
+                }
+              />
+            </Col>
+          </Row>
+        </Form.Group>
+        <Form.Group controlId="formText" className="mb-3">
+          <Row>
+            <Col>
+              <Form.Label>Working Balance</Form.Label>
+            </Col>
+            <Col>
+              <Form.Control
+                type="text"
+                placeholder="Working Balance"
+                disabled
+                onChange={(u) =>
+                  setValues({ ...values, workingBal: u.target.value })
+                }
+              />
+            </Col>
+          </Row>
+        </Form.Group>
+        <Form.Group controlId="formText" className="mb-5">
+          <Row>
+            <Col>
+              <Form.Label>Cleared Balance</Form.Label>
+            </Col>
+            <Col>
+              <Form.Control
+                type="text"
+                placeholder="Cleared Balance"
+                disabled
+                onChange={(u) =>
+                  setValues({ ...values, workingBal: u.target.value })
+                }
+              />
+            </Col>
+          </Row>
+        </Form.Group>
       </Form.Group>
     </div>
   );

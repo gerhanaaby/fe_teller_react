@@ -17,7 +17,7 @@ export default class Home extends Component {
           width="500px"
           height="500px"
           className="d-inline-block align-top"
-          style={{ marginLeft: "42%", marginTop: "7%" }}
+          style={{ marginLeft: "28%", marginTop: "-4%" }}
         />
       </Container>
     );
