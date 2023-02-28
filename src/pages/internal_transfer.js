@@ -122,7 +122,12 @@ export default function InternalTransfer() {
         console.log(res.data);
         const endTime = performance.now();
         const responseTime = endTime - startTime;
-
+        if (res.data.res.responseMessage == "Account Not Found") {
+          //modal
+        } else {
+          handleSelectMataUang(res.data.data.creditCurrency);
+          handleJumlah(res.data.data.debitAmount);
+        }
         console.log(`Values nama currency : ${mataUangRek.mataUangRek}`);
         console.log(`Values nama pemilik : ${jumlah.jumlah}`);
         handleSelectMataUang(res.data.data.creditCurrency);
