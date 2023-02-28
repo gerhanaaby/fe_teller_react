@@ -21,7 +21,6 @@ export default function InternalTransfer() {
     kodeCabangDebet: "",
     kodeCabangKredit: "",
     namaCabangKredit: "",
-    jumlah: "",
     charge: "",
     jumlahTotal: "",
     kodeopt: "",
@@ -32,6 +31,10 @@ export default function InternalTransfer() {
 
   const [mataUangRek, setJenisMataUang] = useState({
     mataUangRek: "Jenis Mata Uang",
+  });
+
+  const [jumlah, setJumlah] = useState({
+    jumlah: "Jumlah",
   });
 
   const [namaCabangDebet, setNamaCabangDebet] = useState({
@@ -48,6 +51,10 @@ export default function InternalTransfer() {
 
   function handleNamaCabang(getNamaCabang) {
     setNamaCabangDebet({ namaCabangDebet: getNamaCabang });
+  }
+
+  function handleJumlah(getJumlah) {
+    setJumlah({ jumlah: getJumlah });
   }
 
   const hostInquiry = (e) => {
@@ -95,8 +102,8 @@ export default function InternalTransfer() {
           referenceId: "MDLN-125123213129",
           debitAccountNo: values.nomorRekDebet,
           creditAccountNo: values.nomorRekKredit,
-          creditAmount: values.jumlah,
-          creditCurrency: values.mataUangRek,
+          creditAmount: jumlah.jumlah,
+          creditCurrency: mataUangRek.mataUangRek,
           transactionDate: values.tanggalTransaksi,
           remark: values.pesan,
           beneficiaryName: values.namaPemilikKredit,
@@ -115,6 +122,12 @@ export default function InternalTransfer() {
         console.log(res.data);
         const endTime = performance.now();
         const responseTime = endTime - startTime;
+
+        console.log(`Values nama currency : ${mataUangRek.mataUangRek}`);
+        console.log(`Values nama pemilik : ${jumlah.jumlah}`);
+        handleSelectMataUang(res.data.data.creditCurrency);
+        handleJumlah(res.data.data.debitAmount);
+
         console.log(`Request took ${responseTime} milliseconds`);
       })
       .catch((err) => console.error(err));
@@ -315,10 +328,7 @@ export default function InternalTransfer() {
             </Form.Label>
           </Col>
           <Col>
-            <Form.Control
-              placeholder="Jumlah"
-              onChange={(u) => setValues({ ...values, jumlah: u.target.value })}
-            />
+            <Form.Control placeholder={jumlah.jumlah} />
           </Col>
           <Col>
             <Form.Label>Charge</Form.Label>
