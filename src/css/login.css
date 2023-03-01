@@ -1,0 +1,33 @@
+.loginForm {
+  padding: 20px;
+  width: 50%;
+  width: 40%;
+  height: 300px;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  color: wheat;
+}
+
+.welcomeText {
+  color: white;
+  text-align: center;
+  margin-left: 12%;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: left;
+  background-color: white;
+  color: white;
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.tellerLogo {
+  width: 50%;
+}

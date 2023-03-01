@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { Component } from "react";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Navigate,
+  Outlet,
+} from "react-router-dom";
+import Home from "./pages/home";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "./pages/login";
+import Kriling from "./pages/kriling";
+import CekSaldo from "./pages/cek_saldo";
+import Dashboard from "./pages/dashboard";
+import InternalTransfer from "./pages/internal_transfer";
+import CekNasabah from "./pages/cek_nasabah";
 
 function App() {
+  function PrivateRoutes({ redirectTo }) {
+    let isAuthenticated = localStorage.getItem("token");
+    return isAuthenticated == null ? <Outlet /> : <Navigate to={redirectTo} />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} exact />
+        <Route element={<PrivateRoutes redirectTo={"/login"} />}>
+          <Route path="/" element={<Dashboard />} exact>
+            <Route path="/home" element={<Home />} exact />
+            <Route path="/skn" element={<Kriling />} exact />
+            <Route path="/cek_saldo" element={<CekSaldo />} exact />
+            <Route path="/cek_nasabah" element={<CekNasabah />} exact />
+            <Route
+              path="/internal_transfer"
+              element={<InternalTransfer />}
+              exact
+            />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
