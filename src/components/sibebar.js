@@ -101,6 +101,7 @@ export default function SidebarComponent() {
         modalBody={"Are You Sure to Log Out?"}
         modalHeader={"Log Out"}
         handleSubmit={() => handleLogOut()}
+        secondButton={true}
       />
     </Sidebar>
   );

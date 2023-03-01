@@ -10,6 +10,8 @@ import {
   DropdownButton,
 } from "react-bootstrap";
 import "./../css/main.css";
+import ModalComponent from "../components/modal";
+import { base64Image } from "../utils/utils";
 
 export default function CekNasabah() {
   const [values, setValues] = useState({
@@ -32,6 +34,9 @@ export default function CekNasabah() {
     kseisid: "KSEIS ID",
   });
 
+  const handleNoCif = (getCif) => {
+    setNoCIF({ nomorCIF: getCif });
+  };
   const handleKseisid = (getKseisid) => {
     setKseisid({ kseisid: getKseisid });
   };
@@ -159,8 +164,101 @@ export default function CekNasabah() {
 
   const [date, setDate] = useState(new Date());
 
+  const tampilkanImageSelfie = (e) => {
+    e.preventDefault();
+    axios
+      .get(
+        "localhost:5000/user/utils/getb64/" + nomorCIF.nomorCIF,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers":
+              "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+          },
+        }
+      )
+      .then((res) => {
+        const endTime = performance.now();
+        base64Image(res, "jpg");
+        setImage();
+        //const responseTime = endTime - startTime;
+        console.log(res);
+      })
+      .catch((err) => {
+        setModalShowImage(true);
+        console.error(err);
+      });
+  };
+  const cariDataNasabah = (e) => {
+    e.preventDefault();
+    const startTime = performance.now();
+
+    axios
+      .get(
+        "http://10.22.100.82:5000/user/nasabah/" + nomorCIF.nomorCIF + "/get",
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers":
+              "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+          },
+        }
+      )
+      .then((res) => {
+        const endTime = performance.now();
+        const responseTime = endTime - startTime;
+        console.log(res);
+
+        handleSupervisorID(res.data.supervisorId);
+        handleCreateBy(res.data.Createdby);
+        handleCreationDate(res.data.CreationDate);
+        handleGelar(res.data.titleAfterName);
+        handleSelectAgama(res.data.religion);
+        handleKseisid(res.data.kseisid);
+        handleKelengkapanDokumen(res.data.documentFlag);
+        handleSelectJenisKelamin(res.data.gender);
+        handleSelectSebutan(res.data.titleBeforeName);
+        handleMnemonic(res.data.mnemonics);
+        handleLastChange(res.data.lastchange);
+        handleSelectKependudukan(res.data.resident);
+        handleNamaLengkap(res.data.Nama);
+        handleNegaraTempatTinggal(res.data.nationality);
+        handleTanggalLahir(res.data.TanggalLahir);
+        handleTempatLahir(res.data.birthPlace);
+        handleStatus(res.data.custStatus);
+      })
+      .catch((err) => {
+        setModalShow(true);
+        console.error(err);
+      });
+  };
+  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShowImage, setModalShowImage] = React.useState(false);
+  const [image, setImage] = useState("");
   return (
     <div>
+      <ModalComponent
+        modalHeader={"Respones"}
+        modalBody={"Invalid, Account not found"}
+        show={modalShow}
+        handleClose={() => setModalShow(false)}
+        textButtonLeft={"Close"}
+        secondButton={false}
+      />
+      <ModalComponent
+        modalHeader={"Image"}
+        modalBody={"Invalid, Account not found"}
+        show={modalShow}
+        handleClose={() => setModalShowImage(false)}
+        textButtonLeft={"Close"}
+        secondButton={false}
+      />
       <Container
         className="bodyHome"
         style={{ marginLeft: "4%", width: "80%" }}
@@ -222,9 +320,9 @@ export default function CekNasabah() {
               <Col>
                 <Form.Control
                   placeholder={createBy.createBy}
-                  onChange={(u) =>
-                    setValues({ ...values, nomorRekKredit: u.target.value })
-                  }
+                  // onChange={(u) =>
+                  //   setValues({ ...values, nomorRekKredit: u.target.value })
+                  // }
                 />
               </Col>
             </Row>
@@ -239,8 +337,9 @@ export default function CekNasabah() {
               <Col>
                 <Form.Control
                   placeholder={nomorCIF.nomorCIF}
-                  onChange={(u) =>
-                    setValues({ ...values, nomorRekDebet: u.target.value })
+                  onChange={
+                    (u) => handleNoCif(u.target.value)
+                    //setValues({ ...values, nomorCIF: u.target.value })
                   }
                 />
               </Col>
@@ -597,8 +696,17 @@ export default function CekNasabah() {
               variant="danger"
               type="submit"
               style={{ marginLeft: "8px" }}
+              onClick={cariDataNasabah}
             >
               Cari Data Nasabah
+            </Button>
+            <Button
+              variant="danger"
+              type="submit"
+              style={{ marginLeft: "8px" }}
+              onClick={tampilkanImageSelfie}
+            >
+              Tampilkan Image Selfie
             </Button>
             <Button
               variant="outline-danger"

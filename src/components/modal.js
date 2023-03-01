@@ -1,4 +1,5 @@
 import React from "react";
+import { Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -10,6 +11,7 @@ export default function ModalComponent({
   modalBody,
   textButtonLeft,
   textButtonRight,
+  secondButton,
 }) {
   return (
     <Modal show={show} onHide={handleClose}>
@@ -18,16 +20,24 @@ export default function ModalComponent({
       </Modal.Header>
 
       <Modal.Body>
-        <p>{modalBody}</p>
+        <div>{modalBody}</div>
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          {textButtonLeft}
-        </Button>
-        <Button variant="primary" onClick={handleSubmit}>
-          {textButtonRight}
-        </Button>
+        {secondButton ? (
+          <Row>
+            <Button variant="secondary" onClick={handleClose}>
+              {textButtonLeft}
+            </Button>
+            <Button variant="primary" onClick={handleSubmit}>
+              {textButtonRight}
+            </Button>
+          </Row>
+        ) : (
+          <Button variant="secondary" onClick={handleClose}>
+            {textButtonLeft}
+          </Button>
+        )}
       </Modal.Footer>
     </Modal>
   );
