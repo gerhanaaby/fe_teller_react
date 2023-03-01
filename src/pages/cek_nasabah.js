@@ -6,7 +6,6 @@ import {
   Row,
   Col,
   Button,
-  Table,
   Dropdown,
   DropdownButton,
 } from "react-bootstrap";
