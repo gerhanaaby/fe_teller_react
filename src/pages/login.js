@@ -1,17 +1,9 @@
 import axios from "axios";
-import {
-  Button,
-  Container,
-  Form,
-  InputGroup,
-  Modal,
-  Navbar,
-} from "react-bootstrap";
+import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 
 import "./../css/login.css";
 
 import tellerLogo from "./../assets/images/teller.png";
-import bsimLogo from "./../assets/images/logoBSIM.png";
 import {
   BsFillPersonFill,
   BsFillEyeFill,
@@ -21,7 +13,7 @@ import { RiKeyFill } from "react-icons/ri";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavbarLoginComponent from "../components/navbar_login";
-
+import { hashPassword } from "../utils/utils";
 export default function Login() {
   const [values, setValues] = useState({
     userName: "",
@@ -38,14 +30,14 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const startTime = performance.now();
-    // console.log(values.userName);
-    // console.log(values.pass);
+    const password = hashPassword(values.pass, 14);
+    console.log(password);
     axios
       .post(
         "http://10.22.100.82:5000/user/auth/login",
         {
           userName: values.userName,
-          password: values.pass,
+          password: password,
         },
         {
           headers: {
@@ -63,8 +55,6 @@ export default function Login() {
       })
       .catch((err) => {
         handleShow();
-        // console.log("gagal");
-
         console.error(err);
       });
   };

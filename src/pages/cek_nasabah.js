@@ -31,7 +31,86 @@ export default function CekNasabah() {
   });
 
   const [date, setDate] = useState(new Date());
+  // const hostInquiry = (e) => {
+  //   e.preventDefault();
+  //   const startTime = performance.now();
+  //   axios
+  //     .post(
+  //       "http://10.22.100.82:5000/user/nasabah/" + values.nomorRek,
+  //       {
+  //         accountNo: values.nomorRekDebet,
+  //         referenceId: "154500902248",
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //           "Access-Control-Allow-Origin": "*",
+  //           "Access-Control-Allow-Headers":
+  //             "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+  //         },
+  //       }
+  //     )
+  //     .then((res) => {
+  //       const endTime = performance.now();
+  //       const responseTime = endTime - startTime;
 
+  //       handleNamaCabang(res.data.data.branchName);
+  //       handleNamaPemilik(res.data.data.accountName);
+  //       handleSelectMataUang(res.data.data.currency);
+
+  //       console.log(`Request took ${responseTime} milliseconds`);
+  //       console.log(res.data);
+  //     })
+  //     .catch((err) => console.error(err));
+  // };
+
+  // const sendTransaction = (e) => {
+  //   e.preventDefault();
+  //   const startTime = performance.now();
+  //   // console.log(localStorage.getItem("token")); ${localStorage.getItem("token")}
+  //   axios
+  //     .post(
+  //       "http://10.22.100.82:5000/user/transac/postinternaltransfer",
+  //       {
+  //         referenceId: "MDLN-125123213129",
+  //         debitAccountNo: values.nomorRekDebet,
+  //         creditAccountNo: values.nomorRekKredit,
+  //         creditAmount: jumlah.jumlah,
+  //         creditCurrency: mataUangRek.mataUangRek,
+  //         transactionDate: values.tanggalTransaksi,
+  //         remark: values.pesan,
+  //         beneficiaryName: values.namaPemilikKredit,
+  //         debitAccountName: values.namaPemilikDebet,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //           "Access-Control-Allow-Origin": "*",
+  //           Accept: "application/json",
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     )
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       const endTime = performance.now();
+  //       const responseTime = endTime - startTime;
+  //       if (res.data.res.responseMessage == "Account Not Found") {
+  //         //modal
+  //       } else {
+  //         handleSelectMataUang(res.data.data.creditCurrency);
+  //         handleJumlah(res.data.data.debitAmount);
+  //       }
+  //       console.log(`Values nama currency : ${mataUangRek.mataUangRek}`);
+  //       console.log(`Values nama pemilik : ${jumlah.jumlah}`);
+  //       handleSelectMataUang(res.data.data.creditCurrency);
+  //       handleJumlah(res.data.data.debitAmount);
+
+  //       console.log(`Request took ${responseTime} milliseconds`);
+  //     })
+  //     .catch((err) => console.error(err));
+  // };
   return (
     <div>
       <Container
@@ -218,6 +297,7 @@ export default function CekNasabah() {
             </Row>
           </Form.Group>
         </Form>
+
         <Form.Group controlId="formText" className="mb-3">
           <Row>
             <Col>
@@ -428,9 +508,6 @@ export default function CekNasabah() {
             <Col></Col>
           </Row>
         </Form.Group>
-
-        <br />
-
         <hr />
       </Container>
     </div>

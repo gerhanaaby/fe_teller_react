@@ -80,10 +80,13 @@ export default function InternalTransfer() {
       .then((res) => {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
-
-        handleNamaCabang(res.data.data.branchName);
-        handleNamaPemilik(res.data.data.accountName);
-        handleSelectMataUang(res.data.data.currency);
+        if (res.data.res.responseMessage == "Account Not Found") {
+          //modal
+        } else {
+          handleNamaCabang(res.data.data.branchName);
+          handleNamaPemilik(res.data.data.accountName);
+          handleSelectMataUang(res.data.data.currency);
+        }
 
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
