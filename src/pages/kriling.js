@@ -137,6 +137,7 @@ export default function Kriling() {
       .then((res) => {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
+
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })

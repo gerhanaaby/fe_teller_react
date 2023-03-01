@@ -14,6 +14,7 @@ import Kriling from "./pages/kriling";
 import CekSaldo from "./pages/cek_saldo";
 import Dashboard from "./pages/dashboard";
 import InternalTransfer from "./pages/internal_transfer";
+import CekNasabah from "./pages/cek_nasabah";
 
 function App() {
   function PrivateRoutes({ redirectTo }) {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/home" element={<Home />} exact />
             <Route path="/skn" element={<Kriling />} exact />
             <Route path="/cek_saldo" element={<CekSaldo />} exact />
+            <Route path="/cek_nasabah" element={<CekNasabah />} exact />
             <Route
               path="/internal_transfer"
               element={<InternalTransfer />}
