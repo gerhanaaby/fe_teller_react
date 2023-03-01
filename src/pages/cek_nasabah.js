@@ -15,102 +15,99 @@ import "./../css/main.css";
 export default function CekNasabah() {
   const [values, setValues] = useState({
     nomorRek: "",
-    branch: "",
-    nomorCabang: "",
-    tanggal: "",
-    accountNo: "",
-    accountName: "",
-    custNo: "",
-    limit: "",
-    category: "",
-    ccy: "",
-    onlineBal: "",
-    workingBal: "",
-    clearedBal: "",
-    openDate: "",
   });
 
+  const [nomorCIF, setNoCIF] = useState({
+    nomorCIF: "Nomor CIF",
+  });
+
+  const [mnemonic, setMnemonic] = useState({
+    mnemonic: "Mnemonic",
+  });
+
+  const [kseisid, setKseisid] = useState({
+    kseisid: "KSEIS ID",
+  });
+
+  const [kelengkapanDokumen, setKelengkapanDokumen] = useState({
+    kelengkapanDokumen: "Kelengkapan Dokumen",
+  });
+
+  const [namaLengkap, setnamaLengkap] = useState({
+    namaLengkap: "Nama Lengkap",
+  });
+
+  const [tempatLahir, setTempatLahir] = useState({
+    tempatLahir: "Tempat Lahir",
+  });
+
+  const [tanggalLahir, setTanggalLahir] = useState({
+    tanggalLahir: "Tanggal Lahir",
+  });
+
+  const [jenisKelamin, setJenisKelamin] = useState({
+    jenisKelamin: "FEMALE",
+  });
+
+  const [sebutan, setSebutan] = useState({
+    sebutan: "--",
+  });
+
+  const [gelar, setGelar] = useState({
+    gelar: "Gelar",
+  });
+
+  const [agama, setAgama] = useState({
+    agama: "--",
+  });
+
+  const [kependudukan, setKependudukan] = useState({
+    kependudukan: "YES",
+  });
+
+  const [negaraTempatTinggal, setNegaraTempatTinggal] = useState({
+    negaraTempatTinggal: "Negara Tempat Tinggal",
+  });
+
+  const [createBy, setCreateBy] = useState({
+    createBy: "Create By",
+  });
+
+  const [creationDate, setCreationDate] = useState({
+    creationDate: "Creation Date",
+  });
+
+  const [lastChange, setLastChange] = useState({
+    lastChange: "Last Change",
+  });
+
+  const [supervisorID, setSupervisorID] = useState({
+    supervisorID: "Supervisor ID",
+  });
+
+  const [status, setStatus] = useState({
+    status: "Status",
+  });
+
+  const handleSelectAgama = (getAgama) => {
+    setAgama({ agama: getAgama });
+  };
+
+  const handleSelectKelenglapanDokumen = (getKelengkapanDokumen) => {
+    setKelengkapanDokumen({ kelengkapanDokumen: getKelengkapanDokumen });
+  };
+  const handleSelectJenisKelamin = (getJenisKelamin) => {
+    setJenisKelamin({ jenisKelamin: getJenisKelamin });
+  };
+  const handleSelectSebutan = (getSebutan) => {
+    setSebutan({ sebutan: getSebutan });
+  };
+  const handleSelectKependudukan = (getKependudukan) => {
+    setKependudukan({ kependudukan: getKependudukan });
+  };
+
   const [date, setDate] = useState(new Date());
-  // const hostInquiry = (e) => {
-  //   e.preventDefault();
-  //   const startTime = performance.now();
-  //   axios
-  //     .post(
-  //       "http://10.22.100.82:5000/user/nasabah/" + values.nomorRek,
-  //       {
-  //         accountNo: values.nomorRekDebet,
-  //         referenceId: "154500902248",
-  //       },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //           "Access-Control-Allow-Origin": "*",
-  //           "Access-Control-Allow-Headers":
-  //             "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-  //         },
-  //       }
-  //     )
-  //     .then((res) => {
-  //       const endTime = performance.now();
-  //       const responseTime = endTime - startTime;
 
-  //       handleNamaCabang(res.data.data.branchName);
-  //       handleNamaPemilik(res.data.data.accountName);
-  //       handleSelectMataUang(res.data.data.currency);
-
-  //       console.log(`Request took ${responseTime} milliseconds`);
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => console.error(err));
-  // };
-
-  // const sendTransaction = (e) => {
-  //   e.preventDefault();
-  //   const startTime = performance.now();
-  //   // console.log(localStorage.getItem("token")); ${localStorage.getItem("token")}
-  //   axios
-  //     .post(
-  //       "http://10.22.100.82:5000/user/transac/postinternaltransfer",
-  //       {
-  //         referenceId: "MDLN-125123213129",
-  //         debitAccountNo: values.nomorRekDebet,
-  //         creditAccountNo: values.nomorRekKredit,
-  //         creditAmount: jumlah.jumlah,
-  //         creditCurrency: mataUangRek.mataUangRek,
-  //         transactionDate: values.tanggalTransaksi,
-  //         remark: values.pesan,
-  //         beneficiaryName: values.namaPemilikKredit,
-  //         debitAccountName: values.namaPemilikDebet,
-  //       },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //           "Access-Control-Allow-Origin": "*",
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     )
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       const endTime = performance.now();
-  //       const responseTime = endTime - startTime;
-  //       if (res.data.res.responseMessage == "Account Not Found") {
-  //         //modal
-  //       } else {
-  //         handleSelectMataUang(res.data.data.creditCurrency);
-  //         handleJumlah(res.data.data.debitAmount);
-  //       }
-  //       console.log(`Values nama currency : ${mataUangRek.mataUangRek}`);
-  //       console.log(`Values nama pemilik : ${jumlah.jumlah}`);
-  //       handleSelectMataUang(res.data.data.creditCurrency);
-  //       handleJumlah(res.data.data.debitAmount);
-
-  //       console.log(`Request took ${responseTime} milliseconds`);
-  //     })
-  //     .catch((err) => console.error(err));
-  // };
   return (
     <div>
       <Container
@@ -139,16 +136,32 @@ export default function CekNasabah() {
             <Row>
               <Col>
                 <Form.Label>
-                  <b>Nomor Rekening</b>
+                  <b>Data Pribadi</b>
+                  <br />
+                  <span>
+                    Nasabah bersedia memberikan informasi kepada pihak lain
+                  </span>
                 </Form.Label>
               </Col>
               <Col>
-                <Form.Control
-                  placeholder="Nomor Rekening"
-                  onChange={(u) =>
-                    setValues({ ...values, nomorRekDebet: u.target.value })
-                  }
-                />
+                {["radio"].map((type) => (
+                  <div key={`inline-${type}`} className="mb-3">
+                    <Form.Check
+                      inline
+                      label="Setuju"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-1`}
+                    />
+                    <Form.Check
+                      inline
+                      label="Tidak Setuju"
+                      name="group1"
+                      type={type}
+                      id={`inline-${type}-2`}
+                    />
+                  </div>
+                ))}
               </Col>
               <Col>
                 <Form.Label>
@@ -157,7 +170,7 @@ export default function CekNasabah() {
               </Col>
               <Col>
                 <Form.Control
-                  placeholder="Created By"
+                  placeholder={createBy.createBy}
                   onChange={(u) =>
                     setValues({ ...values, nomorRekKredit: u.target.value })
                   }
@@ -174,7 +187,7 @@ export default function CekNasabah() {
               </Col>
               <Col>
                 <Form.Control
-                  placeholder="Nomor CIF"
+                  placeholder={nomorCIF.nomorCIF}
                   onChange={(u) =>
                     setValues({ ...values, nomorRekDebet: u.target.value })
                   }
@@ -187,7 +200,7 @@ export default function CekNasabah() {
               </Col>
               <Col>
                 <Form.Control
-                  placeholder="Creation Date"
+                  placeholder={creationDate.creationDate}
                   onChange={(u) =>
                     setValues({ ...values, nomorRekKredit: u.target.value })
                   }
@@ -204,7 +217,7 @@ export default function CekNasabah() {
               </Col>
               <Col>
                 <Form.Control
-                  placeholder="Mnemonic"
+                  placeholder={mnemonic.mnemonic}
                   onChange={(u) =>
                     setValues({ ...values, nomorRekDebet: u.target.value })
                   }
@@ -217,7 +230,7 @@ export default function CekNasabah() {
               </Col>
               <Col>
                 <Form.Control
-                  placeholder="Last Change"
+                  placeholder={lastChange.lastChange}
                   onChange={(u) =>
                     setValues({ ...values, nomorRekKredit: u.target.value })
                   }
@@ -234,7 +247,7 @@ export default function CekNasabah() {
               </Col>
               <Col>
                 <Form.Control
-                  placeholder="KSEI SID"
+                  placeholder={kseisid.kseisid}
                   onChange={(u) =>
                     setValues({ ...values, nomorRekDebet: u.target.value })
                   }
@@ -247,7 +260,7 @@ export default function CekNasabah() {
               </Col>
               <Col>
                 <Form.Control
-                  placeholder="Supervisor ID"
+                  placeholder={supervisorID.supervisorID}
                   onChange={(u) =>
                     setValues({ ...values, nomorRekKredit: u.target.value })
                   }
@@ -269,12 +282,11 @@ export default function CekNasabah() {
                       <DropdownButton
                         variant="danger"
                         id="dropdown-basic"
-                        title={"BELUM"}
-                        //onSelect={handleSelectMataUang}
+                        title={kelengkapanDokumen.kelengkapanDokumen}
+                        onSelect={handleSelectKelenglapanDokumen}
                       >
-                        <Dropdown.Item eventKey="IDR">IDR</Dropdown.Item>
-                        <Dropdown.Item eventKey="USD">USD</Dropdown.Item>
-                        <Dropdown.Item eventKey="SGD">SGD</Dropdown.Item>
+                        <Dropdown.Item eventKey="BELUM">BELUM</Dropdown.Item>
+                        <Dropdown.Item eventKey="SUDAH">SUDAH</Dropdown.Item>
                       </DropdownButton>
                     </Col>
                   </Row>
@@ -288,7 +300,7 @@ export default function CekNasabah() {
               </Col>
               <Col>
                 <Form.Control
-                  placeholder="Status"
+                  placeholder={status}
                   onChange={(u) =>
                     setValues({ ...values, nomorRekKredit: u.target.value })
                   }
@@ -296,76 +308,197 @@ export default function CekNasabah() {
               </Col>
             </Row>
           </Form.Group>
-        </Form>
-
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Nama Lengkap</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                placeholder="Nama Lengkap"
-                onChange={(u) =>
-                  setValues({ ...values, nomorRekDebet: u.target.value })
-                }
-              />
-            </Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Tempat Lahir</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                placeholder="Tempat Lahir"
-                onChange={(u) =>
-                  setValues({ ...values, nomorRekDebet: u.target.value })
-                }
-              />
-            </Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Tanggal Lahir</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Group controlId="duedate">
+          <Form.Group controlId="formText" className="mb-3">
+            <Row>
+              <Col>
+                <Form.Label>
+                  <b>Nama Lengkap</b>
+                </Form.Label>
+              </Col>
+              <Col>
                 <Form.Control
-                  type="date"
-                  name="duedate"
-                  placeholder="Due date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  placeholder={namaLengkap.namaLengkap}
+                  onChange={(u) =>
+                    setValues({ ...values, nomorRekDebet: u.target.value })
+                  }
                 />
-              </Form.Group>
-            </Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Jenis Kelamin</b>
-              </Form.Label>
-            </Col>
-            <Col>
+              </Col>
+              <Col></Col>
+              <Col></Col>
+            </Row>
+          </Form.Group>
+          <Form.Group controlId="formText" className="mb-3">
+            <Row>
+              <Col>
+                <Form.Label>
+                  <b>Tempat Lahir</b>
+                </Form.Label>
+              </Col>
+              <Col>
+                <Form.Control
+                  placeholder={tempatLahir.tempatLahir}
+                  onChange={(u) =>
+                    setValues({ ...values, nomorRekDebet: u.target.value })
+                  }
+                />
+              </Col>
+              <Col></Col>
+              <Col></Col>
+            </Row>
+          </Form.Group>
+          <Form.Group controlId="formText" className="mb-3">
+            <Row>
+              <Col>
+                <Form.Label>
+                  <b>Tanggal Lahir</b>
+                </Form.Label>
+              </Col>
+              <Col>
+                <Form.Group controlId="duedate">
+                  <Form.Control
+                    type="date"
+                    name="duedate"
+                    placeholder={tanggalLahir.tanggalLahir}
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col></Col>
+              <Col></Col>
+            </Row>
+          </Form.Group>
+          <Form.Group controlId="formText" className="mb-3">
+            <Row>
+              <Col>
+                <Form.Label>
+                  <b>Jenis Kelamin</b>
+                </Form.Label>
+              </Col>
+              <Col>
+                <Col>
+                  <Dropdown>
+                    <Row>
+                      <Col>
+                        <DropdownButton
+                          variant="danger"
+                          id="dropdown-basic"
+                          title={jenisKelamin.jenisKelamin}
+                          onSelect={handleSelectJenisKelamin}
+                        >
+                          <Dropdown.Item eventKey="FEMALE">
+                            FEMALE
+                          </Dropdown.Item>
+                          <Dropdown.Item eventKey="MALE">MALE</Dropdown.Item>
+                        </DropdownButton>
+                      </Col>
+                    </Row>
+                  </Dropdown>
+                </Col>
+              </Col>
+              <Col></Col>
+              <Col></Col>
+            </Row>
+          </Form.Group>
+          <Form.Group controlId="formText" className="mb-3">
+            <Row>
+              <Col>
+                <Form.Label>
+                  <b>Sebutan</b>
+                </Form.Label>
+              </Col>
+              <Col>
+                <Col>
+                  <Dropdown>
+                    <Row>
+                      <Col>
+                        <DropdownButton
+                          variant="danger"
+                          id="dropdown-basic"
+                          title={sebutan.sebutan}
+                          onSelect={handleSelectSebutan}
+                        >
+                          <Dropdown.Item eventKey="MR">MR</Dropdown.Item>
+                          <Dropdown.Item eventKey="MS">MS</Dropdown.Item>
+                          <Dropdown.Item eventKey="MRS">MRS</Dropdown.Item>
+                        </DropdownButton>
+                      </Col>
+                    </Row>
+                  </Dropdown>
+                </Col>
+              </Col>
+              <Col></Col>
+              <Col></Col>
+            </Row>
+          </Form.Group>
+          <Form.Group controlId="formText" className="mb-3">
+            <Row>
+              <Col>
+                <Form.Label>
+                  <b>Gelar</b>
+                </Form.Label>
+              </Col>
+              <Col>
+                <Form.Control
+                  placeholder={gelar.gelar}
+                  onChange={(u) =>
+                    setValues({ ...values, nomorRekDebet: u.target.value })
+                  }
+                />
+              </Col>
+              <Col></Col>
+              <Col></Col>
+            </Row>
+          </Form.Group>
+          <Form.Group controlId="formText" className="mb-3">
+            <Row>
+              <Col>
+                <Form.Label>
+                  <b>Agama</b>
+                </Form.Label>
+              </Col>
+              <Col>
+                <Col>
+                  <Dropdown>
+                    <Row>
+                      <Col>
+                        <DropdownButton
+                          variant="danger"
+                          id="dropdown-basic"
+                          title={agama.agama}
+                          onSelect={handleSelectAgama}
+                        >
+                          <Dropdown.Item eventKey="ISLAM">ISLAM</Dropdown.Item>
+                          <Dropdown.Item eventKey="KRISTEN">
+                            KRISTEN
+                          </Dropdown.Item>
+                          <Dropdown.Item eventKey="KATOLIK">
+                            KATOLIK
+                          </Dropdown.Item>
+                          <Dropdown.Item eventKey="HINDU">HINDU</Dropdown.Item>
+                          <Dropdown.Item eventKey="BUDDHA">
+                            BUDDHA
+                          </Dropdown.Item>
+                          <Dropdown.Item eventKey="LAINNYA">
+                            LAINNYA
+                          </Dropdown.Item>
+                        </DropdownButton>
+                      </Col>
+                    </Row>
+                  </Dropdown>
+                </Col>
+              </Col>
+              <Col></Col>
+              <Col></Col>
+            </Row>
+          </Form.Group>
+          <Form.Group controlId="formText" className="mb-3">
+            <Row>
+              <Col>
+                <Form.Label>
+                  <b>Kependudukan</b>
+                </Form.Label>
+              </Col>
               <Col>
                 <Dropdown>
                   <Row>
@@ -373,142 +506,58 @@ export default function CekNasabah() {
                       <DropdownButton
                         variant="danger"
                         id="dropdown-basic"
-                        title={"FEMALE"}
-                        //onSelect={handleSelectMataUang}
+                        title={kependudukan.kependudukan}
+                        onSelect={handleSelectKependudukan}
                       >
-                        <Dropdown.Item eventKey="IDR">IDR</Dropdown.Item>
-                        <Dropdown.Item eventKey="USD">USD</Dropdown.Item>
-                        <Dropdown.Item eventKey="SGD">SGD</Dropdown.Item>
+                        <Dropdown.Item eventKey="YES">YES</Dropdown.Item>
+                        <Dropdown.Item eventKey="NO">NO</Dropdown.Item>
                       </DropdownButton>
                     </Col>
                   </Row>
                 </Dropdown>
               </Col>
-            </Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Sebutan</b>
-              </Form.Label>
-            </Col>
-            <Col>
+              <Col></Col>
+              <Col></Col>
+            </Row>
+          </Form.Group>
+          <Form.Group controlId="formText" className="mb-3">
+            <Row>
               <Col>
-                <Dropdown>
-                  <Row>
-                    <Col>
-                      <DropdownButton
-                        variant="danger"
-                        id="dropdown-basic"
-                        title={"--"}
-                        //onSelect={handleSelectMataUang}
-                      >
-                        <Dropdown.Item eventKey="IDR">IDR</Dropdown.Item>
-                        <Dropdown.Item eventKey="USD">USD</Dropdown.Item>
-                        <Dropdown.Item eventKey="SGD">SGD</Dropdown.Item>
-                      </DropdownButton>
-                    </Col>
-                  </Row>
-                </Dropdown>
+                <Form.Label>
+                  <b>Negara Tempat Tinggal</b>
+                </Form.Label>
               </Col>
-            </Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Gelar</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                placeholder="Gelar"
-                onChange={(u) =>
-                  setValues({ ...values, nomorRekDebet: u.target.value })
-                }
-              />
-            </Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Agama</b>
-              </Form.Label>
-            </Col>
-            <Col>
               <Col>
-                <Dropdown>
-                  <Row>
-                    <Col>
-                      <DropdownButton
-                        variant="danger"
-                        id="dropdown-basic"
-                        title={"--"}
-                        //onSelect={handleSelectMataUang}
-                      >
-                        <Dropdown.Item eventKey="IDR">IDR</Dropdown.Item>
-                        <Dropdown.Item eventKey="USD">USD</Dropdown.Item>
-                        <Dropdown.Item eventKey="SGD">SGD</Dropdown.Item>
-                      </DropdownButton>
-                    </Col>
-                  </Row>
-                </Dropdown>
+                <Form.Control
+                  placeholder={negaraTempatTinggal.negaraTempatTinggal}
+                  onChange={(u) =>
+                    setValues({ ...values, nomorRekDebet: u.target.value })
+                  }
+                />
               </Col>
-            </Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Kependudukan</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                placeholder="Kependudukan"
-                onChange={(u) =>
-                  setValues({ ...values, nomorRekDebet: u.target.value })
-                }
-              />
-            </Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
-        </Form.Group>
-        <Form.Group controlId="formText" className="mb-3">
-          <Row>
-            <Col>
-              <Form.Label>
-                <b>Negara Tempat Tinggal</b>
-              </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                placeholder="KSEI SID"
-                onChange={(u) =>
-                  setValues({ ...values, nomorRekDebet: u.target.value })
-                }
-              />
-            </Col>
-            <Col></Col>
-            <Col></Col>
-          </Row>
-        </Form.Group>
-        <hr />
+              <Col></Col>
+              <Col></Col>
+            </Row>
+          </Form.Group>
+          <br />
+          <hr />
+          <Col>
+            <Button
+              variant="danger"
+              type="submit"
+              style={{ marginLeft: "8px" }}
+            >
+              Cari Data Nasabah
+            </Button>
+            <Button
+              variant="outline-danger"
+              href="/home"
+              style={{ marginLeft: "8px" }}
+            >
+              Cancel
+            </Button>
+          </Col>
+        </Form>
       </Container>
     </div>
   );
