@@ -7,14 +7,24 @@ import {
 } from "react-pro-sidebar";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import ModalComponent from "./modal";
 
 export default function SidebarComponent() {
+  const [modalShow, setModalShow] = React.useState(false);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    setModalShow(true);
+  };
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
     useProSidebar();
+
   const toggle = () => {
     toggleSidebar();
     if (toggled) {
@@ -26,19 +36,9 @@ export default function SidebarComponent() {
     }
   };
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => {
-    setShow(false);
-  };
-
-  const handleShow = () => {
-    setShow(true);
-    console.log(show);
-  };
-
   return (
     <Sidebar
+      // defaultCollapsed
       breakPoint="sm"
       transitionDuration={800}
       backgroundColor="rgb(222, 220, 220)"
@@ -56,6 +56,7 @@ export default function SidebarComponent() {
           icon={<MenuOutlinedIcon />}
           onClick={() => {
             collapseSidebar();
+            //toggle();
           }}
           style={{ textAlign: "center" }}
         >
@@ -84,19 +85,19 @@ export default function SidebarComponent() {
         <MenuItem component={<Link to="/cek_saldo" />} label="Check Saldo">
           Check Saldo
         </MenuItem>
-        <MenuItem onClick={handleShow} label="Check Saldo">
-          Log Out
-          <ModalComponent
-            show={show}
-            modalBody={"Log out"}
-            modalHeader={"Log Out"}
-            //onClick={handleClose}
-
-            handleClose={handleClose}
-            //handleShow={handleShow}
-          />
+        <MenuItem variant="primary" onClick={handleLogout} label="Check Saldo">
+          LOGOUT
         </MenuItem>
       </Menu>
+      <ModalComponent
+        show={modalShow}
+        handleClose={() => setModalShow(false)}
+        textButtonLeft={"Cancel"}
+        textButtonRight={"Yes"}
+        modalBody={"Are You Sure to Log Out?"}
+        modalHeader={"Log Out"}
+        handleSubmit={() => handleLogOut()}
+      />
     </Sidebar>
   );
 }

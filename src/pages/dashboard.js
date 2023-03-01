@@ -13,7 +13,6 @@ export default class Dashboard extends Component {
           display: "flex",
           flexDirection: "row",
           position: "absolute",
-          //height: "100%",
           width: "100%",
         }}
       >

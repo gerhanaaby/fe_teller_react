@@ -77,9 +77,13 @@ export default function Kriling() {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
 
-        handleNamaCabang(res.data.data.branchName);
-        handleNamaPemilik(res.data.data.accountName);
-        handleSelectMataUang(res.data.data.currency);
+        if (res.data.res.responseMessage == "Account Not Found") {
+          //modal
+        } else {
+          handleNamaCabang(res.data.data.branchName);
+          handleNamaPemilik(res.data.data.accountName);
+          handleSelectMataUang(res.data.data.currency);
+        }
 
         console.log(`Values nama cabang : ${values.namaCabang}`);
         console.log(`Values nama pemilik : ${values.namaPemilik}`);

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import React from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 export default function ModalComponent({
+  show,
   handleClose,
   handleSubmit,
-  show,
   modalHeader,
   modalBody,
   textButtonLeft,
@@ -15,7 +16,11 @@ export default function ModalComponent({
       <Modal.Header closeButton>
         <Modal.Title>{modalHeader}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{modalBody}</Modal.Body>
+
+      <Modal.Body>
+        <p>{modalBody}</p>
+      </Modal.Body>
+
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
           {textButtonLeft}
