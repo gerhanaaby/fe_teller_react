@@ -3,48 +3,27 @@ import { Button, Modal } from "react-bootstrap";
 
 export default function ModalComponent({
   handleClose,
+  handleSubmit,
   show,
   modalHeader,
   modalBody,
-  //onClick,
+  textButtonLeft,
+  textButtonRight,
 }) {
   return (
-    <Modal show={show}>
+    <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>{modalHeader}</Modal.Title>
       </Modal.Header>
       <Modal.Body>{modalBody}</Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          {textButtonLeft}
         </Button>
-        <Button variant="primary">Save Changes</Button>
+        <Button variant="primary" onClick={handleSubmit}>
+          {textButtonRight}
+        </Button>
       </Modal.Footer>
     </Modal>
   );
 }
-
-// const ModalComponent = (show, modalHeader, modalBody) => {
-//   const [isShowing, setIsShowing] = useState(false);
-
-//   function toggles() {
-//     setIsShowing(!isShowing);
-//   }
-
-//   return (
-//     <Modal show={show}>
-//       <Modal.Header closeButton>
-//         <Modal.Title>{modalHeader}</Modal.Title>
-//       </Modal.Header>
-//       <Modal.Body>{modalBody}</Modal.Body>
-//       <Modal.Footer>
-//         <Button variant="secondary" onClick={toggles}>
-//           Close
-//         </Button>
-//         <Button variant="primary">Save Changes</Button>
-//       </Modal.Footer>
-//     </Modal>
-//   );
-// };
-
-// export default ModalComponent;
