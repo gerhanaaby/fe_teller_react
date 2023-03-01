@@ -13,7 +13,7 @@ import { RiKeyFill } from "react-icons/ri";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavbarLoginComponent from "../components/navbar_login";
-import { hashPassword } from "../utils/utils";
+import { hashMd5Password } from "../utils/utils";
 export default function Login() {
   const [values, setValues] = useState({
     userName: "",
@@ -30,7 +30,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const startTime = performance.now();
-    const password = hashPassword(values.pass, 14);
+    const password = hashMd5Password(values.pass);
     console.log(password);
     axios
       .post(
