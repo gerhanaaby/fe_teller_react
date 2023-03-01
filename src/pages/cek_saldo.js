@@ -24,7 +24,6 @@ export default function CekSaldo() {
   const search = (e) => {
     e.preventDefault();
     const startTime = performance.now();
-    // console.log(localStorage.getItem("token")); ${localStorage.getItem("token")}
     axios
       .post(
         "http://10.22.100.82:5000/user/transac/postgetdetail",
