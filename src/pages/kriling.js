@@ -13,12 +13,10 @@ import axios from "axios";
 export default function Kriling() {
   const [values, setValues] = useState({
     nomorRek: "",
-    namaProduk: "",
-    mataUangRek: "Jenis Mata Uang",
-    namaPemilik: "",
-    noIdPemilik: "",
+    namaProduk: "Nama Produk",
+    namaPemilik: "Nama Pemilik",
+    noIdPemilik: "No Identitas Pemilik",
     kodeCabang: "",
-    namaCabang: "",
     noWarkat: "",
     namaBank: "",
     kodeTransaksi: "Transaction Code",
@@ -31,12 +29,29 @@ export default function Kriling() {
     tanggalKriling: "",
   });
 
-  const handleSelectMataUang = (evt) => {
-    setValues({ ...values, mataUangRek: evt });
-  };
+  const [mataUangRek, setJenisMataUang] = useState({
+    mataUangRek: "Jenis Mata Uang",
+  });
+
+  const [namaCabang, setNamaCabang] = useState({
+    namaCabang: "Nama Cabang",
+  });
+
   const handleSelectKodeTransaksi = (evt) => {
     setValues({ ...values, kodeTransaksi: evt });
   };
+
+  const handleSelectMataUang = (getMataUang) => {
+    setJenisMataUang({ mataUangRek: getMataUang });
+  };
+
+  function handleNamaPemilik(getNamaPemilik) {
+    setValues({ ...values, namaPemilik: getNamaPemilik });
+  }
+
+  function handleNamaCabang(getNamaCabang) {
+    setNamaCabang({ namaCabang: getNamaCabang });
+  }
 
   const hostInquiry = (e) => {
     e.preventDefault();
@@ -61,7 +76,18 @@ export default function Kriling() {
       .then((res) => {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
+
+        handleNamaCabang(res.data.data.branchName);
+        handleNamaPemilik(res.data.data.accountName);
+        handleSelectMataUang(res.data.data.currency);
+
+        console.log(`Values nama cabang : ${values.namaCabang}`);
+        console.log(`Values nama pemilik : ${values.namaPemilik}`);
+        //handleSelectMataUang(res.data.data.currency);
+
         console.log(`Request took ${responseTime} milliseconds`);
+        console.log(`Branch Name : ${res.data.data.branchName} `);
+        console.log(`Account Name : ${res.data.data.accountName} `);
         console.log(res.data);
       })
       .catch((err) => console.error(err));
@@ -114,7 +140,7 @@ export default function Kriling() {
   };
 
   return (
-    <Container>
+    <Container className="bodyHome" style={{ marginLeft: "4%", width: "80%" }}>
       <Form.Group controlId="formText" className="mb-3">
         <Row>
           <Form.Group controlId="formText" className="mb-3">
@@ -161,7 +187,7 @@ export default function Kriling() {
             <Form.Control
               type="text"
               placeholder="Nama Produk"
-              //disabled
+              disabled
               onChange={(u) =>
                 setValues({ ...values, namaProduk: u.target.value })
               }
@@ -178,7 +204,7 @@ export default function Kriling() {
             <DropdownButton
               variant="danger"
               id="dropdown-basic"
-              title={values.mataUangRek}
+              title={mataUangRek.mataUangRek}
               onSelect={handleSelectMataUang}
             >
               <Dropdown.Item eventKey="IDR">IDR</Dropdown.Item>
@@ -197,11 +223,8 @@ export default function Kriling() {
           <Col>
             <Form.Control
               type="text"
-              placeholder="Nama Pemilik"
-              //disabled
-              onChange={(u) =>
-                setValues({ ...values, namaPemilik: u.target.value })
-              }
+              placeholder={values.namaPemilik}
+              disabled
             />
           </Col>
         </Row>
@@ -215,10 +238,7 @@ export default function Kriling() {
             <Form.Control
               type="text"
               placeholder="No. Identitas Pemilik"
-              //disabled
-              onChange={(u) =>
-                setValues({ ...values, noIdPemilik: u.target.value })
-              }
+              disabled
             />
           </Col>
         </Row>
@@ -229,18 +249,10 @@ export default function Kriling() {
             <Form.Label>Kode Cabang</Form.Label>
           </Col>
           <Col>
-            <Form.Control
-              placeholder="Kode"
-              //disabled
-              onChange={(u) =>
-                setValues({ ...values, kodeCabang: u.target.value })
-              }
-            />
+            <Form.Control placeholder="Kode" disabled />
           </Col>
           <Col>
-            <Form.Control
-              placeholder="Nama Cabang" //disabled
-            />
+            <Form.Control placeholder={namaCabang.namaCabang} disabled />
           </Col>
         </Row>
       </Form.Group>
@@ -278,7 +290,7 @@ export default function Kriling() {
             <Form.Control
               type="text"
               placeholder="Nama Bank"
-              //disabled
+              disabled
               onChange={(u) =>
                 setValues({ ...values, namaBank: u.target.value })
               }
@@ -345,7 +357,7 @@ export default function Kriling() {
           <Col>
             <Form.Control
               placeholder="Charge"
-              //disabled
+              disabled
               onChange={(u) => setValues({ ...values, charge: u.target.value })}
             />
           </Col>
@@ -360,7 +372,7 @@ export default function Kriling() {
             <Form.Control
               type="text"
               placeholder="Jumlah Total"
-              //disabled
+              disabled
               onChange={(u) =>
                 setValues({ ...values, jumlahTotal: u.target.value })
               }
@@ -411,7 +423,7 @@ export default function Kriling() {
             <Form.Control
               type="text"
               placeholder="Tanggal Kriling"
-              //disabled
+              disabled
               onChange={(u) =>
                 setValues({ ...values, tanggalKriling: u.target.value })
               }

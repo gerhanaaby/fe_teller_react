@@ -12,13 +12,19 @@ export default class Dashboard extends Component {
         style={{
           display: "flex",
           flexDirection: "row",
-          position: "fixed",
-          height: "100%",
-          // width: "100%",
+          position: "absolute",
+          //height: "100%",
+          width: "100%",
         }}
       >
         <SidebarComponent />
-        <main style={{ position: "relative", overflow: "auto", width: "100%" }}>
+        <main
+          style={{
+            position: "relative",
+            overflow: "auto",
+            width: "100%",
+          }}
+        >
           <NavbarComponent />
           <div
             style={{

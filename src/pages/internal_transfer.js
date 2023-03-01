@@ -16,12 +16,10 @@ export default function InternalTransfer() {
     nomorRekKredit: "",
     namaProdukDebet: "",
     namaProdukKredit: "",
-    mataUangRek: "Jenis Mata Uang",
     namaPemilikDebet: "",
     namaPemilikKredit: "",
     kodeCabangDebet: "",
     kodeCabangKredit: "",
-    namaCabangDebet: "",
     namaCabangKredit: "",
     jumlah: "",
     charge: "",
@@ -32,9 +30,25 @@ export default function InternalTransfer() {
     tanggalTransaksi: "",
   });
 
-  const handleSelectMataUang = (evt) => {
-    setValues({ ...values, mataUangRek: evt });
+  const [mataUangRek, setJenisMataUang] = useState({
+    mataUangRek: "Jenis Mata Uang",
+  });
+
+  const [namaCabangDebet, setNamaCabangDebet] = useState({
+    namaCabangDebet: "Nama Cabang",
+  });
+
+  const handleSelectMataUang = (getMataUang) => {
+    setJenisMataUang({ mataUangRek: getMataUang });
   };
+
+  function handleNamaPemilik(getNamaPemilik) {
+    setValues({ ...values, namaPemilikDebet: getNamaPemilik });
+  }
+
+  function handleNamaCabang(getNamaCabang) {
+    setNamaCabangDebet({ namaCabangDebet: getNamaCabang });
+  }
 
   const hostInquiry = (e) => {
     e.preventDefault();
@@ -59,6 +73,11 @@ export default function InternalTransfer() {
       .then((res) => {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
+
+        handleNamaCabang(res.data.data.branchName);
+        handleNamaPemilik(res.data.data.accountName);
+        handleSelectMataUang(res.data.data.currency);
+
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })
@@ -102,7 +121,7 @@ export default function InternalTransfer() {
   };
 
   return (
-    <Container>
+    <Container style={{ marginLeft: "4%", width: "80%" }}>
       <Form.Group controlId="formText" className="mb-3">
         <Row>
           <Form.Group controlId="formText" className="mb-3">
@@ -177,6 +196,7 @@ export default function InternalTransfer() {
           <Col>
             <Form.Control
               placeholder="Nama Produk"
+              disabled
               onChange={(u) =>
                 setValues({ ...values, namaProdukDebet: u.target.value })
               }
@@ -188,6 +208,7 @@ export default function InternalTransfer() {
           <Col>
             <Form.Control
               placeholder="Nama Produk"
+              disabled
               onChange={(u) =>
                 setValues({ ...values, namaProdukKredit: u.target.value })
               }
@@ -204,7 +225,7 @@ export default function InternalTransfer() {
             <DropdownButton
               variant="danger"
               id="dropdown-basic"
-              title={values.mataUangRek}
+              title={mataUangRek.mataUangRek}
               onSelect={handleSelectMataUang}
             >
               <Dropdown.Item eventKey="IDR">IDR</Dropdown.Item>
@@ -224,7 +245,7 @@ export default function InternalTransfer() {
           </Col>
           <Col>
             <Form.Control
-              placeholder="Nama Pemilik"
+              placeholder={values.namaPemilikDebet}
               onChange={(u) =>
                 setValues({ ...values, namaPemilikDebet: u.target.value })
               }
@@ -251,7 +272,7 @@ export default function InternalTransfer() {
           <Col>
             <Form.Control
               placeholder="Kode"
-              //disabled
+              disabled
               onChange={(u) =>
                 setValues({ ...values, kodeCabangDebet: u.target.value })
               }
@@ -259,10 +280,8 @@ export default function InternalTransfer() {
           </Col>
           <Col>
             <Form.Control
-              placeholder="Nama Cabang" //disabled
-              onChange={(u) =>
-                setValues({ ...values, namaCabangDebet: u.target.value })
-              }
+              placeholder={namaCabangDebet.namaCabangDebet}
+              disabled
             />
           </Col>
           <Col>
@@ -271,7 +290,7 @@ export default function InternalTransfer() {
           <Col>
             <Form.Control
               placeholder="Kode"
-              //disabled
+              disabled
               onChange={(u) =>
                 setValues({ ...values, kodeCabangKredit: u.target.value })
               }
@@ -279,7 +298,8 @@ export default function InternalTransfer() {
           </Col>
           <Col>
             <Form.Control
-              placeholder="Nama Cabang" //disabled
+              placeholder="Nama Cabang"
+              disabled
               onChange={(u) =>
                 setValues({ ...values, namaCabangKredit: u.target.value })
               }
@@ -306,7 +326,7 @@ export default function InternalTransfer() {
           <Col>
             <Form.Control
               placeholder="Charge"
-              //disabled
+              disabled
               onChange={(u) => setValues({ ...values, charge: u.target.value })}
             />
           </Col>
@@ -342,7 +362,7 @@ export default function InternalTransfer() {
             </Form>
             <Form.Control
               placeholder="Kode OPT"
-              //disabled
+              disabled
               onChange={(u) =>
                 setValues({ ...values, kodeOpt: u.target.value })
               }

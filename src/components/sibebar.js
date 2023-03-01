@@ -43,8 +43,15 @@ export default function SidebarComponent() {
       transitionDuration={800}
       backgroundColor="rgb(222, 220, 220)"
       rtl={false}
+      style={{ zIndex: "0" }}
     >
-      <Menu style={{ position: "absolute", width: "250px", height: "100%" }}>
+      <Menu
+        style={{
+          width: "250px",
+          height: "100%",
+          position: "fixed",
+        }}
+      >
         <MenuItem
           icon={<MenuOutlinedIcon />}
           onClick={() => {
@@ -54,7 +61,15 @@ export default function SidebarComponent() {
         >
           <h5>Prototype</h5>
         </MenuItem>
-
+      </Menu>
+      <Menu
+        style={{
+          width: "250px",
+          height: "100%",
+          position: "fixed",
+          top: "50px",
+        }}
+      >
         <MenuItem component={<Link to="/home" />}>Dashboard</MenuItem>
         <SubMenu label="Kriling">
           <MenuItem component={<Link to="/skn" />}>Setoran Kriling </MenuItem>
