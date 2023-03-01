@@ -24,25 +24,49 @@ export default function CekNasabah() {
     mnemonic: "Mnemonic",
   });
 
+  const handleMnemonic = (getsetMnemonic) => {
+    setMnemonic({ mnemonic: getsetMnemonic });
+  };
+
   const [kseisid, setKseisid] = useState({
     kseisid: "KSEIS ID",
   });
+
+  const handleKseisid = (getKseisid) => {
+    setKseisid({ kseisid: getKseisid });
+  };
 
   const [kelengkapanDokumen, setKelengkapanDokumen] = useState({
     kelengkapanDokumen: "Kelengkapan Dokumen",
   });
 
-  const [namaLengkap, setnamaLengkap] = useState({
+  const handleKelengkapanDokumen = (getKelengkapanDokumen) => {
+    setKelengkapanDokumen({ kelengkapanDokumen: getKelengkapanDokumen });
+  };
+
+  const [namaLengkap, setNamaLengkap] = useState({
     namaLengkap: "Nama Lengkap",
   });
+
+  const handleNamaLengkap = (getNamaLengkap) => {
+    setNamaLengkap({ namaLengkap: getNamaLengkap });
+  };
 
   const [tempatLahir, setTempatLahir] = useState({
     tempatLahir: "Tempat Lahir",
   });
 
+  const handleTempatLahir = (getTempatLahir) => {
+    setTempatLahir({ tempatLahir: getTempatLahir });
+  };
+
   const [tanggalLahir, setTanggalLahir] = useState({
     tanggalLahir: "Tanggal Lahir",
   });
+
+  const handleTanggalLahir = (getTanggalLahir) => {
+    setTanggalLahir({ tanggalLahir: getTanggalLahir });
+  };
 
   const [jenisKelamin, setJenisKelamin] = useState({
     jenisKelamin: "FEMALE",
@@ -56,6 +80,10 @@ export default function CekNasabah() {
     gelar: "Gelar",
   });
 
+  const handleGelar = (getGelar) => {
+    setGelar({ gelar: getGelar });
+  };
+
   const [agama, setAgama] = useState({
     agama: "--",
   });
@@ -68,25 +96,49 @@ export default function CekNasabah() {
     negaraTempatTinggal: "Negara Tempat Tinggal",
   });
 
+  const handleNegaraTempatTinggal = (getNegaraTempatTinggal) => {
+    setNegaraTempatTinggal({ negaraTempatTinggal: getNegaraTempatTinggal });
+  };
+
   const [createBy, setCreateBy] = useState({
     createBy: "Create By",
   });
+
+  const handleCreateBy = (getCreateBy) => {
+    setCreateBy({ createBy: getCreateBy });
+  };
 
   const [creationDate, setCreationDate] = useState({
     creationDate: "Creation Date",
   });
 
+  const handleCreationDate = (getCreationDate) => {
+    setCreationDate({ creationDate: getCreationDate });
+  };
+
   const [lastChange, setLastChange] = useState({
     lastChange: "Last Change",
   });
+
+  const handleLastChange = (getLastChange) => {
+    setLastChange({ lastChange: getLastChange });
+  };
 
   const [supervisorID, setSupervisorID] = useState({
     supervisorID: "Supervisor ID",
   });
 
+  const handleSupervisorID = (getSupervisorID) => {
+    setSupervisorID({ supervisorID: getSupervisorID });
+  };
+
   const [status, setStatus] = useState({
     status: "Status",
   });
+
+  const handleStatus = (getStatus) => {
+    setStatus({ status: getStatus });
+  };
 
   const handleSelectAgama = (getAgama) => {
     setAgama({ agama: getAgama });
@@ -299,7 +351,7 @@ export default function CekNasabah() {
               </Col>
               <Col>
                 <Form.Control
-                  placeholder={status}
+                  placeholder={status.status}
                   onChange={(u) =>
                     setValues({ ...values, nomorRekKredit: u.target.value })
                   }
