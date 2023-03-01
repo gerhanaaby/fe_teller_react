@@ -39,6 +39,7 @@ export default function SidebarComponent() {
   return (
     <Sidebar
       // defaultCollapsed
+
       breakPoint="sm"
       transitionDuration={800}
       backgroundColor="rgb(222, 220, 220)"
@@ -50,12 +51,13 @@ export default function SidebarComponent() {
           width: "250px",
           height: "100%",
           position: "fixed",
+          //position: "fixed",
         }}
       >
         <MenuItem
           icon={<MenuOutlinedIcon />}
           onClick={() => {
-            collapseSidebar();
+            //collapseSidebar();
             //toggle();
           }}
           style={{ textAlign: "center" }}
@@ -74,7 +76,6 @@ export default function SidebarComponent() {
         <MenuItem component={<Link to="/home" />}>Dashboard</MenuItem>
         <SubMenu label="Kriling">
           <MenuItem component={<Link to="/skn" />}>Setoran Kriling </MenuItem>
-          <MenuItem component={<Link to="/skn" />}>Penitipan Kriling</MenuItem>
         </SubMenu>
         <MenuItem
           component={<Link to="/internal_transfer" />}
@@ -85,8 +86,11 @@ export default function SidebarComponent() {
         <MenuItem component={<Link to="/cek_saldo" />} label="Check Saldo">
           Check Saldo
         </MenuItem>
+        <MenuItem component={<Link to="/cek_nasabah" />} label="Check Saldo">
+          Check Nasabah
+        </MenuItem>
         <MenuItem variant="primary" onClick={handleLogout} label="Check Saldo">
-          LOGOUT
+          Log Out
         </MenuItem>
       </Menu>
       <ModalComponent
