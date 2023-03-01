@@ -38,7 +38,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const startTime = performance.now();
-    //console.log("kehit");
+    // console.log(values.userName);
+    // console.log(values.pass);
     axios
       .post(
         "http://10.22.100.82:5000/user/auth/login",
@@ -62,7 +63,7 @@ export default function Login() {
       })
       .catch((err) => {
         handleShow();
-        console.log("gagal");
+        // console.log("gagal");
 
         console.error(err);
       });

@@ -18,7 +18,8 @@ import InternalTransfer from "./pages/internal_transfer";
 function App() {
   function PrivateRoutes({ redirectTo }) {
     let isAuthenticated = localStorage.getItem("token");
-    return isAuthenticated == null ? <Outlet /> : <Navigate to={redirectTo} />;
+    console.log(isAuthenticated);
+    return isAuthenticated != null ? <Outlet /> : <Navigate to={redirectTo} />;
   }
 
   return (

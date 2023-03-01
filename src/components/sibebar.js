@@ -7,13 +7,14 @@ import {
 } from "react-pro-sidebar";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
-import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import NavbarComponent from "./navbar";
+
+import React, { useState } from "react";
+import ModalComponent from "./modal";
+
 export default function SidebarComponent() {
   const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } =
     useProSidebar();
-
   const toggle = () => {
     toggleSidebar();
     if (toggled) {
@@ -24,6 +25,18 @@ export default function SidebarComponent() {
       collapseSidebar();
     }
   };
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const handleShow = () => {
+    setShow(true);
+    console.log(show);
+  };
+
   return (
     <Sidebar
       breakPoint="sm"
@@ -55,6 +68,18 @@ export default function SidebarComponent() {
         </MenuItem>
         <MenuItem component={<Link to="/cek_saldo" />} label="Check Saldo">
           Check Saldo
+        </MenuItem>
+        <MenuItem onClick={handleShow} label="Check Saldo">
+          Log Out
+          <ModalComponent
+            show={show}
+            modalBody={"Log out"}
+            modalHeader={"Log Out"}
+            //onClick={handleClose}
+
+            handleClose={handleClose}
+            //handleShow={handleShow}
+          />
         </MenuItem>
       </Menu>
     </Sidebar>

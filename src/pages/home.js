@@ -1,10 +1,6 @@
 import React, { Component, Fragment } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import NavbarComponent from "../components/navbar";
-
-import SidebarComponent from "../components/sibebar";
+import { Container } from "react-bootstrap";
 import homepage from "./../assets/images/homepage.png";
-import Sidebar from "../components/sibebar";
 
 export default class Home extends Component {
   render() {
