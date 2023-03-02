@@ -9,6 +9,7 @@ import {
   Row,
 } from "react-bootstrap";
 import axios from "axios";
+import ModalComponent from "../components/modal";
 
 export default function Kriling() {
   const [values, setValues] = useState({
@@ -77,13 +78,9 @@ export default function Kriling() {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
 
-        if (res.data.res.responseMessage == "Account Not Found") {
-          //modal
-        } else {
-          handleNamaCabang(res.data.data.branchName);
-          handleNamaPemilik(res.data.data.accountName);
-          handleSelectMataUang(res.data.data.currency);
-        }
+        handleNamaCabang(res.data.data.branchName);
+        handleNamaPemilik(res.data.data.accountName);
+        handleSelectMataUang(res.data.data.currency);
 
         console.log(`Values nama cabang : ${values.namaCabang}`);
         console.log(`Values nama pemilik : ${values.namaPemilik}`);
@@ -94,7 +91,10 @@ export default function Kriling() {
         console.log(`Account Name : ${res.data.data.accountName} `);
         console.log(res.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setModalShow(true);
+        console.error(err);
+      });
   };
 
   const sendTransaction = (e) => {
@@ -102,7 +102,7 @@ export default function Kriling() {
     const startTime = performance.now();
     axios
       .post(
-        "http://10.22.100.82:5000/user/tansact/postskn",
+        "http://10.22.100.82:5000/user/transac/postskn",
         {
           creditAccountNo: values.noWarkat,
           amount: values.jumlahTotal,
@@ -143,9 +143,17 @@ export default function Kriling() {
       })
       .catch((err) => console.error(err));
   };
-
+  const [modalShow, setModalShow] = React.useState(false);
   return (
     <Container className="bodyHome" style={{ marginLeft: "4%", width: "80%" }}>
+      <ModalComponent
+        modalHeader={"Respones"}
+        modalBody={"Invalid, Account not found"}
+        show={modalShow}
+        handleClose={() => setModalShow(false)}
+        textButtonLeft={"Close"}
+        secondButton={false}
+      />
       <Form.Group controlId="formText" className="mb-3">
         <Row>
           <Form.Group controlId="formText" className="mb-3">
