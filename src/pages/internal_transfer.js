@@ -117,6 +117,10 @@ export default function InternalTransfer() {
         }
       )
       .then((res) => {
+        const endTime = performance.now();
+        console.log(`Time taken: ${endTime - startTime} milliseconds`);
+        console.log(res.data);
+
         setModalShow(true);
         setModalBody(res.data.responseMessage);
         if (res.data.responseMessage !== "null") {
@@ -125,6 +129,10 @@ export default function InternalTransfer() {
         }
       })
       .catch((err) => {
+        const endTime = performance.now();
+        console.log(`Time taken: ${endTime - startTime} milliseconds`);
+        console.log(err);
+
         setModalBody(err.message);
         setModalShow(true);
       });
