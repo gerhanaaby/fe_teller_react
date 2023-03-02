@@ -52,7 +52,7 @@ export default function Kriling() {
 
   const hostInquiry = (e) => {
     e.preventDefault();
-
+    const startTime = performance.now();
     axios
       .post(
         "http://10.22.100.82:5000/user/transac/postinquirytransfer",
@@ -71,6 +71,9 @@ export default function Kriling() {
         }
       )
       .then((res) => {
+        const endTime = performance.now();
+        console.log(`Time taken: ${endTime - startTime} milliseconds`);
+
         setModalBody(res.data.responseMessage);
         setModalShow(true);
         if (res.data.responseMessage !== "Account not sniffed") {
@@ -82,6 +85,9 @@ export default function Kriling() {
         }
       })
       .catch((err) => {
+        const endTime = performance.now();
+        console.log(`Time taken: ${endTime - startTime} milliseconds`);
+
         setModalBody(err);
         setModalShow(true);
       });
@@ -89,7 +95,7 @@ export default function Kriling() {
 
   const sendTransaction = (e) => {
     e.preventDefault();
-
+    const startTime = performance.now();
     axios
       .post(
         "http://10.22.100.82:5000/user/transac/postskn",
@@ -125,12 +131,22 @@ export default function Kriling() {
         }
       )
       .then((res) => {
+        const endTime = performance.now();
+        console.log(`Time taken: ${endTime - startTime} milliseconds`);
+
         setModalShow(true);
         setModalBody(res.data.responseMessage);
+
+        console.log(res.data);
       })
       .catch((err) => {
+        const endTime = performance.now();
+        console.log(`Time taken: ${endTime - startTime} milliseconds`);
+
         setModalBody(err);
         setModalShow(true);
+
+        console.log(err);
       });
   };
   const [modalShow, setModalShow] = React.useState(false);
@@ -260,7 +276,7 @@ export default function Kriling() {
             <Form.Control placeholder="Kode" disabled />
           </Col>
           <Col>
-            <Form.Control placeholder={namaCabang.namaCabang} disabled />
+            <Form.Control placeholder={namaCabang} disabled />
           </Col>
         </Row>
       </Form.Group>

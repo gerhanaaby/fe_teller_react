@@ -91,6 +91,7 @@ export default function InternalTransfer() {
 
   const sendTransaction = (e) => {
     e.preventDefault();
+    const startTime = performance.now();
     console.log(mataUangRek);
     axios
       .post(
@@ -116,6 +117,10 @@ export default function InternalTransfer() {
         }
       )
       .then((res) => {
+        const endTime = performance.now();
+        console.log(`Time taken: ${endTime - startTime} milliseconds`);
+        console.log(res.data);
+
         setModalShow(true);
         setModalBody(res.data.responseMessage);
         //setJenisMataUang("Jenis Mata Uang");
@@ -125,6 +130,10 @@ export default function InternalTransfer() {
         }
       })
       .catch((err) => {
+        const endTime = performance.now();
+        console.log(`Time taken: ${endTime - startTime} milliseconds`);
+        console.log(err);
+        //setJenisMataUang("Jenis Mata Uang");
         setModalBody(err.message);
         setModalShow(true);
       });

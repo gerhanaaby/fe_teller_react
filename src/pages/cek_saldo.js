@@ -26,6 +26,9 @@ export default function CekSaldo() {
   const handleBranch = (getBranch) => {
     setBranch(getBranch);
   };
+  const handleNomorCabang = (getNomorCabang) => {
+    setNomorCabang(getNomorCabang);
+  };
 
   const handleAccountName = (getAccountName) => {
     setAccountName(getAccountName);
@@ -35,14 +38,15 @@ export default function CekSaldo() {
   };
 
   const handleOnlineBal = (getOnlineBal) => {
-    setOnlineBal({ onlineBal: getOnlineBal });
+    setOnlineBal(getOnlineBal);
   };
   const handleWorkingBal = (getWorkingBal) => {
-    setWorkingBal({ workingBal: getWorkingBal });
+    setWorkingBal(getWorkingBal);
   };
 
   const search = (e) => {
     e.preventDefault();
+
     const startTime = performance.now();
     console.log(nomorRek);
     axios
@@ -62,6 +66,11 @@ export default function CekSaldo() {
         }
       )
       .then((res) => {
+        const endTime = performance.now();
+        console.log(`Time taken: ${endTime - startTime} milliseconds`);
+
+        console.log(res.data);
+
         setModalShow(true);
         setModalBody(res.data.responseMessage);
         if (

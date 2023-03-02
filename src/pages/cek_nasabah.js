@@ -166,6 +166,7 @@ export default function CekNasabah() {
 
   const tampilkanImageTTD = (e) => {
     e.preventDefault();
+    const startTime = performance.now();
     axios
       .get(
         "http://10.22.100.82:5000/user/utils/getb64/" + nomorCIF.nomorCIF,
@@ -182,6 +183,7 @@ export default function CekNasabah() {
       )
       .then((res) => {
         const endTime = performance.now();
+        console.log(`Time taken: ${endTime - startTime} milliseconds`);
         setModalShowImage(true);
         //console.log(res);
         setImage(base64Image(res.data.message, "jpeg"));
