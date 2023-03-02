@@ -168,7 +168,7 @@ export default function CekNasabah() {
     e.preventDefault();
     axios
       .get(
-        "localhost:5000/user/utils/getb64/" + nomorCIF.nomorCIF,
+        "http://10.22.100.82:5000/user/utils/getb64/" + nomorCIF.nomorCIF,
         {},
         {
           headers: {
@@ -182,8 +182,9 @@ export default function CekNasabah() {
       )
       .then((res) => {
         const endTime = performance.now();
-        base64Image(res, "jpg");
-        setImage();
+        setModalShowImage(true);
+        //console.log(res);
+        setImage(base64Image(res.data.message, "jpeg"));
         //const responseTime = endTime - startTime;
         console.log(res);
       })
@@ -240,7 +241,8 @@ export default function CekNasabah() {
   };
   const [modalShow, setModalShow] = React.useState(false);
   const [modalShowImage, setModalShowImage] = React.useState(false);
-  const [image, setImage] = useState("");
+  //const image
+  const [image, setImage] = useState();
   return (
     <div>
       <ModalComponent
@@ -253,8 +255,8 @@ export default function CekNasabah() {
       />
       <ModalComponent
         modalHeader={"Image"}
-        modalBody={"Invalid, Account not found"}
-        show={modalShow}
+        modalBody={image}
+        show={modalShowImage}
         handleClose={() => setModalShowImage(false)}
         textButtonLeft={"Close"}
         secondButton={false}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -25,14 +25,14 @@ export default function ModalComponent({
 
       <Modal.Footer>
         {secondButton ? (
-          <Row>
+          <Col style={{ marginLeft: "70%" }}>
             <Button variant="secondary" onClick={handleClose}>
               {textButtonLeft}
             </Button>
             <Button variant="primary" onClick={handleSubmit}>
               {textButtonRight}
             </Button>
-          </Row>
+          </Col>
         ) : (
           <Button variant="secondary" onClick={handleClose}>
             {textButtonLeft}
