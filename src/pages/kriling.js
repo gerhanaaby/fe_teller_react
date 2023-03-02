@@ -141,6 +141,7 @@ export default function Kriling() {
         const responseTime = endTime - startTime;
         setModalShow(true);
         setModalBody(res.data.responseMessage);
+        console.log(res.data);
         console.log(`Request took ${responseTime} milliseconds`);
       })
       .catch((err) => {
