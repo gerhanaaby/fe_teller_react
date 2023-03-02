@@ -132,8 +132,8 @@ export default function InternalTransfer() {
           handleJumlah(res.data.data.debitAmount);
         }
 
-        console.log(`Values nama currency : ${mataUangRek.mataUangRek}`);
-        console.log(`Values nama pemilik : ${jumlah.jumlah}`);
+        console.log(`Values nama currency : ${mataUangRek}`);
+        console.log(`Values nama pemilik : ${jumlah}`);
 
         console.log(`Request took ${responseTime} milliseconds`);
       })

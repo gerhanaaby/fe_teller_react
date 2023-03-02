@@ -144,11 +144,7 @@ export default function CekSaldo() {
                 <Form.Label>Branch</Form.Label>
               </Col>
               <Col>
-                <Form.Control
-                  type="text"
-                  placeholder={nomorCabang.nomorCabang}
-                  disabled
-                />
+                <Form.Control type="text" placeholder={nomorCabang} disabled />
               </Col>
             </Row>
           </Form.Group>
@@ -188,11 +184,7 @@ export default function CekSaldo() {
               <Form.Label>Tanggal</Form.Label>
             </Col>
             <Col>
-              <Form.Control
-                type="text"
-                placeholder={tanggal.tanggal}
-                disabled
-              />
+              <Form.Control type="text" placeholder={tanggal} disabled />
             </Col>
           </Row>
         </Form.Group>
@@ -212,7 +204,7 @@ export default function CekSaldo() {
               <Form.Label>Nama Cabang</Form.Label>
             </Col>
             <Col>
-              <Form.Control type="text" placeholder={branch.branch} disabled />
+              <Form.Control type="text" placeholder={branch} disabled />
             </Col>
           </Row>
         </Form.Group>
@@ -274,11 +266,7 @@ export default function CekSaldo() {
               <Form.Label>Online Balance</Form.Label>
             </Col>
             <Col>
-              <Form.Control
-                type="text"
-                placeholder={onlineBal.onlineBal}
-                disabled
-              />
+              <Form.Control type="text" placeholder={onlineBal} disabled />
             </Col>
           </Row>
         </Form.Group>
@@ -288,11 +276,7 @@ export default function CekSaldo() {
               <Form.Label>Working Balance</Form.Label>
             </Col>
             <Col>
-              <Form.Control
-                type="text"
-                placeholder={workingBal.workingBal}
-                disabled
-              />
+              <Form.Control type="text" placeholder={workingBal} disabled />
             </Col>
           </Row>
         </Form.Group>
@@ -302,11 +286,7 @@ export default function CekSaldo() {
               <Form.Label>Cleared Balance</Form.Label>
             </Col>
             <Col>
-              <Form.Control
-                type="text"
-                placeholder={clearedBal.clearedBal}
-                disabled
-              />
+              <Form.Control type="text" placeholder={clearedBal} disabled />
             </Col>
           </Row>
         </Form.Group>
