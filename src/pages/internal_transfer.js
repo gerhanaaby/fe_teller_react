@@ -73,6 +73,8 @@ export default function InternalTransfer() {
         }
       )
       .then((res) => {
+        console.log(res.data);
+
         setModalShow(true);
         setModalBody(res.data.responseMessage);
 
