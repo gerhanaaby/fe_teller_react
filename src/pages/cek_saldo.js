@@ -5,22 +5,70 @@ import "./../css/main.css";
 import ModalComponent from "../components/modal";
 
 export default function CekSaldo() {
-  const [values, setValues] = useState({
-    nomorRek: "",
-    branch: "",
-    nomorCabang: "",
-    tanggal: "",
-    accountNo: "",
-    accountName: "",
-    custNo: "",
-    limit: "",
-    category: "",
-    ccy: "",
-    onlineBal: "",
-    workingBal: "",
-    clearedBal: "",
-    openDate: "",
+  const [nomorRek, setNomorRek] = useState({ nomorRek: "Nomor Rek" });
+  const [branch, setBranch] = useState({ branch: "Nama Cabang" });
+  const [nomorCabang, setNomorCabang] = useState({
+    nomorCabang: "Nomor Cabang",
   });
+  const [tanggal, setTanggal] = useState({ tanggal: "Tanggal Hari Ini" });
+  const [accountNo, setAccountNo] = useState({ accountNo: "Nomor Akun" });
+  const [accountName, setAccountName] = useState({ accountName: "Nama Akun" });
+  const [custNo, setCustNo] = useState({ custNo: "Nomor Cust" });
+  const [limit, setLimit] = useState({ limit: "Limit" });
+  const [category, setCategory] = useState({ category: "Categori" });
+  const [ccy, setCcy] = useState({ ccy: "CCY" });
+  const [onlineBal, setOnlineBal] = useState({ onlineBal: "Online Balance" });
+  const [workingBal, setWorkingBal] = useState({
+    workingBal: "Working Balance",
+  });
+  const [clearedBal, setClearedBal] = useState({
+    clearedBal: "Cleared Balance",
+  });
+  const [openDate, setOpenDate] = useState({ openDate: "Open Date" });
+
+  const handleNomorRek = (getNomorRek) => {
+    setNomorRek({ nomorRek: getNomorRek });
+  };
+
+  const handleBranch = (getBranch) => {
+    setBranch({ branch: getBranch });
+  };
+  const handleNomorCabang = (getNomorCabang) => {
+    setNomorCabang({ nomorCabang: getNomorCabang });
+  };
+  const handleTanggal = (getTanggal) => {
+    setTanggal({ tanggal: getTanggal });
+  };
+  const handleAccountNo = (getAccountNo) => {
+    setAccountNo({ accountNo: getAccountNo });
+  };
+  const handleAccountName = (getAccountName) => {
+    setAccountName({ accountNo: getAccountName });
+  };
+  const handleCustNo = (getCustNo) => {
+    setCustNo({ custNo: getCustNo });
+  };
+  const handleLimit = (getLimit) => {
+    setLimit({ limit: getLimit });
+  };
+  const handleCategory = (getCategory) => {
+    setCategory({ category: getCategory });
+  };
+  const handleCcy = (getCcy) => {
+    setCcy({ ccy: getCcy });
+  };
+  const handleOnlineBal = (getOnlineBal) => {
+    setOnlineBal({ onlineBal: getOnlineBal });
+  };
+  const handleWorkingBal = (getWorkingBal) => {
+    setWorkingBal({ workingBal: getWorkingBal });
+  };
+  const handleClearedBal = (getClearedBal) => {
+    setClearedBal({ clearedBal: getClearedBal });
+  };
+  const handleOpenDate = (getOpenDate) => {
+    setOpenDate({ openDate: getOpenDate });
+  };
 
   const search = (e) => {
     e.preventDefault();
@@ -30,7 +78,7 @@ export default function CekSaldo() {
         "http://10.22.100.82:5000/user/transac/postgetdetail",
         {
           transactionID: "3546245666000",
-          accountNumber: values.nomorRek,
+          accountNumber: nomorRek.nomorRek,
         },
         {
           headers: {
@@ -42,14 +90,23 @@ export default function CekSaldo() {
         }
       )
       .then((res) => {
+        console.log(nomorRek.nomorRek);
         setModalShow(true);
         setModalBody(res.data.responseMessage);
         const endTime = performance.now();
         const responseTime = endTime - startTime;
+
+        handleAccountNo(res.data.data.accountNumber);
+        handleOnlineBal(res.data.data.availableBalance);
+        handleNomorCabang(res.data.data.bankBranch);
+        handleWorkingBal(res.data.data.workingBal);
+        handleAccountName(res.data.data.name);
+
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })
       .catch((err) => {
+        console.log(nomorRek.nomorRek);
         setModalBody(err);
         setModalShow(true);
         console.error(err);
@@ -97,10 +154,8 @@ export default function CekSaldo() {
               <Col>
                 <Form.Control
                   type="text"
-                  placeholder="Nomor Rekening"
-                  onChange={(u) =>
-                    setValues({ ...values, nomorRek: u.target.value })
-                  }
+                  placeholder={nomorRek.nomorRek}
+                  onChange={(u) => setNomorRek({ nomorRek: u })}
                 />
               </Col>
             </Row>
@@ -113,11 +168,8 @@ export default function CekSaldo() {
               <Col>
                 <Form.Control
                   type="text"
-                  placeholder="Nomor Cabang"
+                  placeholder={nomorCabang.nomorCabang}
                   disabled
-                  onChange={(u) =>
-                    setValues({ ...values, nomorCabang: u.target.value })
-                  }
                 />
               </Col>
             </Row>
@@ -160,11 +212,8 @@ export default function CekSaldo() {
             <Col>
               <Form.Control
                 type="text"
-                placeholder="Tanggal Hari Ini"
+                placeholder={tanggal.tanggal}
                 disabled
-                onChange={(u) =>
-                  setValues({ ...values, tanggal: u.target.value })
-                }
               />
             </Col>
           </Row>
@@ -177,11 +226,8 @@ export default function CekSaldo() {
             <Col>
               <Form.Control
                 type="text"
-                placeholder="Nomor Rekening"
+                placeholder={nomorRek.nomorRek}
                 disabled
-                onChange={(u) =>
-                  setValues({ ...values, nomorRek: u.target.value })
-                }
               />
             </Col>
           </Row>
@@ -192,14 +238,7 @@ export default function CekSaldo() {
               <Form.Label>Nama Cabang</Form.Label>
             </Col>
             <Col>
-              <Form.Control
-                type="text"
-                placeholder="Nama Cabang"
-                disabled
-                onChange={(u) =>
-                  setValues({ ...values, branch: u.target.value })
-                }
-              />
+              <Form.Control type="text" placeholder={branch.branch} disabled />
             </Col>
           </Row>
         </Form.Group>
@@ -223,17 +262,17 @@ export default function CekSaldo() {
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{accountNo.accountNo}</td>
+            <td>{accountName.accountName}</td>
+            <td>{custNo.custNo}</td>
+            <td>{limit.limit}</td>
+            <td>{category.category}</td>
+            <td>{ccy.ccy}</td>
+            <td>{onlineBal.onlineBal}</td>
+            <td>{workingBal.workingBal}</td>
+            <td>{clearedBal.clearedBal}</td>
+            <td>{openDate.openDate}</td>
+            <td>{branch.branch}</td>
           </tr>
         </tbody>
       </Table>
@@ -263,11 +302,8 @@ export default function CekSaldo() {
             <Col>
               <Form.Control
                 type="text"
-                placeholder="Online Balance"
+                placeholder={onlineBal.onlineBal}
                 disabled
-                onChange={(u) =>
-                  setValues({ ...values, onlineBal: u.target.value })
-                }
               />
             </Col>
           </Row>
@@ -280,11 +316,8 @@ export default function CekSaldo() {
             <Col>
               <Form.Control
                 type="text"
-                placeholder="Working Balance"
+                placeholder={workingBal.workingBal}
                 disabled
-                onChange={(u) =>
-                  setValues({ ...values, workingBal: u.target.value })
-                }
               />
             </Col>
           </Row>
@@ -297,11 +330,8 @@ export default function CekSaldo() {
             <Col>
               <Form.Control
                 type="text"
-                placeholder="Cleared Balance"
+                placeholder={clearedBal.clearedBal}
                 disabled
-                onChange={(u) =>
-                  setValues({ ...values, workingBal: u.target.value })
-                }
               />
             </Col>
           </Row>
