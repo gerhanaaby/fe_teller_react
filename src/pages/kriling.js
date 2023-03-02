@@ -102,7 +102,7 @@ export default function Kriling() {
     const startTime = performance.now();
     axios
       .post(
-        "http://10.22.100.82:5000/user/tansact/postskn",
+        "http://10.22.100.82:5000/user/transac/postskn",
         {
           creditAccountNo: values.noWarkat,
           amount: values.jumlahTotal,
