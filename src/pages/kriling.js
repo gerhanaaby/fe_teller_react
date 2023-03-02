@@ -77,7 +77,8 @@ export default function Kriling() {
       .then((res) => {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
-
+        setModalBody(res);
+        setModalShow(true);
         handleNamaCabang(res.data.data.branchName);
         handleNamaPemilik(res.data.data.accountName);
         handleSelectMataUang(res.data.data.currency);
@@ -92,6 +93,7 @@ export default function Kriling() {
         console.log(res.data);
       })
       .catch((err) => {
+        setModalBody(err);
         setModalShow(true);
         console.error(err);
       });
@@ -137,18 +139,24 @@ export default function Kriling() {
       .then((res) => {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
-
+        setModalShow(true);
+        setModalBody(res);
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setModalBody(err);
+        setModalShow(true);
+        console.error(err);
+      });
   };
   const [modalShow, setModalShow] = React.useState(false);
+  const [modalBody, setModalBody] = React.useState("");
   return (
     <Container className="bodyHome" style={{ marginLeft: "4%", width: "80%" }}>
       <ModalComponent
         modalHeader={"Respones"}
-        modalBody={"Invalid, Account not found"}
+        modalBody={modalBody}
         show={modalShow}
         handleClose={() => setModalShow(false)}
         textButtonLeft={"Close"}
