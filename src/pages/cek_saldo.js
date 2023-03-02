@@ -5,33 +5,26 @@ import "./../css/main.css";
 import ModalComponent from "../components/modal";
 
 export default function CekSaldo() {
-  const [nomorRek, setNomorRek] = useState({ nomorRek: "Nomor Rekening" });
-  const [branch, setBranch] = useState({ branch: "Nama Cabang" });
-  const [nomorCabang, setNomorCabang] = useState({
-    nomorCabang: "Nomor Cabang",
-  });
-  const [tanggal, setTanggal] = useState({ tanggal: "Tanggal Hari Ini" });
-  const [accountNo, setAccountNo] = useState({ accountNo: "Nomor Akun" });
-  const [accountName, setAccountName] = useState({ accountName: "Nama Akun" });
-  const [custNo, setCustNo] = useState({ custNo: "Nomor Cust" });
-  const [limit, setLimit] = useState({ limit: "Limit" });
-  const [category, setCategory] = useState({ category: "Categori" });
-  const [ccy, setCcy] = useState({ ccy: "CCY" });
-  const [onlineBal, setOnlineBal] = useState({ onlineBal: "Online Balance" });
-  const [workingBal, setWorkingBal] = useState({
-    workingBal: "Working Balance",
-  });
-  const [clearedBal, setClearedBal] = useState({
-    clearedBal: "Cleared Balance",
-  });
-  const [openDate, setOpenDate] = useState({ openDate: "Open Date" });
+  const [nomorRek, setNomorRek] = useState("Nomor Rekening");
+  const [branch, setBranch] = useState("Nama Cabang");
+  const [nomorCabang, setNomorCabang] = useState("Nomor Cabang");
+  const [tanggal, setTanggal] = useState("Tanggal Hari Ini");
+  const [accountName, setAccountName] = useState("Nama Akun");
+  const [custNo, setCustNo] = useState("Nomor Cust");
+  const [limit, setLimit] = useState("Limit");
+  const [category, setCategory] = useState("Categori");
+  const [ccy, setCcy] = useState("CCY");
+  const [onlineBal, setOnlineBal] = useState("Online Balance");
+  const [workingBal, setWorkingBal] = useState("Working Balance");
+  const [clearedBal, setClearedBal] = useState("Cleared Balance");
+  const [openDate, setOpenDate] = useState("Open Date");
 
   const handleNomorRek = (getNomorRek) => {
-    setNomorRek({ nomorRek: getNomorRek });
+    setNomorRek(getNomorRek);
   };
 
   const handleBranch = (getBranch) => {
-    setBranch({ branch: getBranch });
+    setBranch(getBranch);
   };
   const handleNomorCabang = (getNomorCabang) => {
     setNomorCabang({ nomorCabang: getNomorCabang });
@@ -39,14 +32,12 @@ export default function CekSaldo() {
   const handleTanggal = (getTanggal) => {
     setTanggal({ tanggal: getTanggal });
   };
-  const handleAccountNo = (getAccountNo) => {
-    setAccountNo({ accountNo: getAccountNo });
-  };
+
   const handleAccountName = (getAccountName) => {
-    setAccountName({ accountNo: getAccountName });
+    setAccountName(getAccountName);
   };
   const handleCustNo = (getCustNo) => {
-    setCustNo({ custNo: getCustNo });
+    setCustNo(getCustNo);
   };
   const handleLimit = (getLimit) => {
     setLimit({ limit: getLimit });
@@ -70,20 +61,16 @@ export default function CekSaldo() {
     setOpenDate({ openDate: getOpenDate });
   };
 
-  const test = (e) => {
-    e.preventDefault();
-    console.log(nomorRek.nomorRek);
-  };
-
   const search = (e) => {
     e.preventDefault();
     const startTime = performance.now();
+    console.log(nomorRek);
     axios
       .post(
         "http://10.22.100.82:5000/user/transac/postgetdetail",
         {
           transactionID: "3546245666000",
-          accountNumber: nomorRek.nomorRek,
+          accountNumber: nomorRek,
         },
         {
           headers: {
@@ -95,17 +82,19 @@ export default function CekSaldo() {
         }
       )
       .then((res) => {
-        console.log(nomorRek.nomorRek);
+        console.log(res);
+
         //setModalShow(true);
         //setModalBody(res.data.responseMessage);
         const endTime = performance.now();
         const responseTime = endTime - startTime;
 
-        handleAccountNo(res.data.accountNumber);
+        handleNomorRek(res.data.accountNumber);
         handleOnlineBal(res.data.availableBalance);
-        handleNomorCabang(res.data.bankBranch);
-        handleWorkingBal(res.data.workingBal);
+        handleBranch(res.data.bankBranch);
+        handleWorkingBal(res.data.workingBalance);
         handleAccountName(res.data.name);
+        handleCustNo(res.data.accountType);
 
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
@@ -162,8 +151,8 @@ export default function CekSaldo() {
               <Col>
                 <Form.Control
                   type="text"
-                  placeholder={nomorRek.nomorRek}
-                  onChange={(u) => setNomorRek({ nomorRek: u })}
+                  placeholder={nomorRek}
+                  onChange={(u) => setNomorRek(u.target.value)}
                 />
               </Col>
             </Row>
@@ -232,11 +221,7 @@ export default function CekSaldo() {
               <Form.Label>Nomor Rekening</Form.Label>
             </Col>
             <Col>
-              <Form.Control
-                type="text"
-                placeholder={nomorRek.nomorRek}
-                disabled
-              />
+              <Form.Control type="text" placeholder={nomorRek} disabled />
             </Col>
           </Row>
         </Form.Group>
@@ -270,10 +255,10 @@ export default function CekSaldo() {
         </thead>
         <tbody>
           <tr>
-            <td>{accountNo.accountNo}</td>
-            <td>{accountName.accountName}</td>
-            <td>{custNo.custNo}</td>
-            <td>{limit.limit}</td>
+            <td>{nomorRek}</td>
+            <td>{accountName}</td>
+            <td>{custNo}</td>
+            <td>{limit}</td>
             <td>{category.category}</td>
             <td>{ccy.ccy}</td>
             <td>{onlineBal.onlineBal}</td>
