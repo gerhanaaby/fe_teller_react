@@ -67,27 +67,21 @@ export default function CekSaldo() {
       .then((res) => {
         setModalShow(true);
         setModalBody(res.data.responseMessage);
-        const endTime = performance.now();
-        const responseTime = endTime - startTime;
-
-        handleNomorRek(res.data.accountNumber);
-        handleOnlineBal(res.data.availableBalance);
-        handleBranch(res.data.bankBranch);
-        handleWorkingBal(res.data.workingBalance);
-        handleAccountName(res.data.name);
-        handleCustNo(res.data.accountType);
-
-        console.log(`Request took ${responseTime} milliseconds`);
-        console.log(res.data);
-
-        console.log(res.data.accountNumber);
-        console.log(res.availableBalance);
+        if (
+          res.data.responseMessage !==
+          "No records were found that matched the selection criteria"
+        ) {
+          handleNomorRek(res.data.accountNumber);
+          handleOnlineBal(res.data.availableBalance);
+          handleBranch(res.data.bankBranch);
+          handleWorkingBal(res.data.workingBalance);
+          handleAccountName(res.data.name);
+          handleCustNo(res.data.accountType);
+        }
       })
       .catch((err) => {
-        console.log(nomorRek.nomorRek);
         setModalBody(err);
         setModalShow(true);
-        console.error(err);
       });
   };
   const [modalShow, setModalShow] = React.useState(false);
