@@ -92,7 +92,7 @@ export default function InternalTransfer() {
   const sendTransaction = (e) => {
     e.preventDefault();
     const startTime = performance.now();
-    console.log(mataUangRek);
+    console.log(jumlah);
     axios
       .post(
         "http://10.22.100.82:5000/user/transac/postinternaltransfer",
@@ -123,7 +123,7 @@ export default function InternalTransfer() {
 
         setModalShow(true);
         setModalBody(res.data.responseMessage);
-        //setJenisMataUang("Jenis Mata Uang");
+        setJenisMataUang("Jenis Mata Uang");
         if (res.data.responseMessage !== "null") {
           handleSelectMataUang(res.data.creditCurrency);
           handleJumlah(res.data.data.debitAmount);
@@ -133,7 +133,7 @@ export default function InternalTransfer() {
         const endTime = performance.now();
         console.log(`Time taken: ${endTime - startTime} milliseconds`);
         console.log(err);
-        //setJenisMataUang("Jenis Mata Uang");
+        setJenisMataUang("Jenis Mata Uang");
         setModalBody(err.message);
         setModalShow(true);
       });
