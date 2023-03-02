@@ -77,7 +77,7 @@ export default function Kriling() {
       .then((res) => {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
-        setModalBody(res);
+        setModalBody(res.data.responseMessage);
         setModalShow(true);
         handleNamaCabang(res.data.data.branchName);
         handleNamaPemilik(res.data.data.accountName);
@@ -140,8 +140,7 @@ export default function Kriling() {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
         setModalShow(true);
-        setModalBody(res);
-        console.log(res.data);
+        setModalBody(res.data.responseMessage);
         console.log(`Request took ${responseTime} milliseconds`);
       })
       .catch((err) => {
