@@ -123,8 +123,9 @@ export default function InternalTransfer() {
 
         setModalShow(true);
         setModalBody(res.data.responseMessage);
+
         if (res.data.responseMessage !== "null") {
-          setJenisMataUang(res.data.creditCurrency);
+          handleSelectMataUang(res.data.data.creditCurrency);
           handleJumlah(res.data.data.debitAmount);
         }
       })
