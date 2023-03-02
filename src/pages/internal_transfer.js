@@ -82,6 +82,9 @@ export default function InternalTransfer() {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
         setModalShow(true);
+        if (res.data.responseMessage == null) {
+          setModalBody("Error request null");
+        }
         setModalBody(res.data.responseMessage);
         handleNamaCabang(res.data.data.branchName);
         handleNamaPemilik(res.data.data.accountName);
@@ -130,6 +133,9 @@ export default function InternalTransfer() {
         const responseTime = endTime - startTime;
 
         setModalShow(true);
+        if (res.data.responseMessage == null) {
+          setModalBody("Error request null");
+        }
         setModalBody(res.data.responseMessage);
         handleSelectMataUang(res.data.data.creditCurrency);
         handleJumlah(res.data.data.debitAmount);
