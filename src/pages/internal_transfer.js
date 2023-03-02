@@ -342,7 +342,7 @@ export default function InternalTransfer() {
           <Col>
             <Form.Control
               placeholder={jumlah}
-              onChange={(u) => setJumlah({ jumlah: u.target.value })}
+              onChange={(u) => setJumlah(u.target.value)}
             />
           </Col>
           <Col>
