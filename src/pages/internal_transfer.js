@@ -61,6 +61,7 @@ export default function InternalTransfer() {
   const hostInquiry = (e) => {
     e.preventDefault();
     const startTime = performance.now();
+
     axios
       .post(
         "http://10.22.100.82:5000/user/transac/postinquirytransfer",
