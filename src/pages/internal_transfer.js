@@ -17,8 +17,8 @@ export default function InternalTransfer() {
     nomorRekKredit: "",
     namaProdukDebet: "",
     namaProdukKredit: "",
-    namaPemilikDebet: "",
-    namaPemilikKredit: "",
+    namaPemilikDebet: "Nama Pemilik Debet",
+    namaPemilikKredit: "Nama Pemilik Kredit",
     kodeCabangDebet: "",
     kodeCabangKredit: "",
     namaCabangKredit: "",
@@ -110,7 +110,7 @@ export default function InternalTransfer() {
           creditAccountNo: values.nomorRekKredit,
           creditAmount: jumlah.jumlah,
           creditCurrency: mataUangRek.mataUangRek,
-          transactionDate: values.tanggalTransaksi,
+          transactionDate: "20210726",
           remark: values.pesan,
           beneficiaryName: values.namaPemilikKredit,
           debitAccountName: values.namaPemilikDebet,
@@ -125,6 +125,14 @@ export default function InternalTransfer() {
         }
       )
       .then((res) => {
+        console.log(values.nomorRekDebet);
+        console.log(values.nomorRekKredit);
+        console.log(jumlah.jumlah);
+        console.log(mataUangRek.mataUangRek);
+        console.log(values.pesan);
+        console.log(values.namaPemilikKredit);
+        console.log(values.namaPemilikDebet);
+
         console.log(res.data);
         const endTime = performance.now();
         const responseTime = endTime - startTime;
@@ -291,7 +299,7 @@ export default function InternalTransfer() {
           </Col>
           <Col>
             <Form.Control
-              placeholder="Nama Pemilik"
+              placeholder={values.namaPemilikKredit}
               onChange={(u) =>
                 setValues({ ...values, namaPemilikKredit: u.target.value })
               }
@@ -350,7 +358,10 @@ export default function InternalTransfer() {
             </Form.Label>
           </Col>
           <Col>
-            <Form.Control placeholder={jumlah.jumlah} />
+            <Form.Control
+              placeholder={jumlah.jumlah}
+              onChange={(u) => setJumlah({ jumlah: u.target.value })}
+            />
           </Col>
           <Col>
             <Form.Label>Charge</Form.Label>
