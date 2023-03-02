@@ -104,20 +104,20 @@ export default function Kriling() {
       .post(
         "http://10.22.100.82:5000/user/transac/postskn",
         {
-          creditAccountNo: values.noWarkat,
-          amount: values.jumlahTotal,
+          creditAccountNo: values.nomorRek,
+          amount: values.jumlah,
           beneficiaryResidentStatus: "1",
           clearingCode: "BBBAIDJA",
           remark: values.message,
           transactionDate: values.tanggalKriling,
-          transactionTime: "",
+          transactionTime: "000000",
           clearingTransactionCode: "50",
           referenceId: "MDLN-803837197299",
           paymentDetails1: values.message,
           senderName: values.namaPemilik,
           paymentDetails2: "",
           paymentDetails3: "",
-          debitAccountNo: values.nomorRek,
+          debitAccountNo: "391188973546426",
           beneficiaryNationStatus: "0",
           beneficiaryType: "1",
           beneficiaryName: "ALTO",
@@ -138,6 +138,7 @@ export default function Kriling() {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
 
+        console.log(values.namaPemilik);
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })
@@ -217,6 +218,7 @@ export default function Kriling() {
             <DropdownButton
               variant="danger"
               id="dropdown-basic"
+              required
               title={mataUangRek.mataUangRek}
               onSelect={handleSelectMataUang}
             >
@@ -237,7 +239,10 @@ export default function Kriling() {
             <Form.Control
               type="text"
               placeholder={values.namaPemilik}
-              disabled
+              onChange={(u) =>
+                setValues({ ...values, namaPemilik: u.target.value })
+              }
+              required
             />
           </Col>
         </Row>
@@ -361,6 +366,7 @@ export default function Kriling() {
           <Col>
             <Form.Control
               placeholder="Jumlah"
+              required
               onChange={(u) => setValues({ ...values, jumlah: u.target.value })}
             />
           </Col>
@@ -370,8 +376,8 @@ export default function Kriling() {
           <Col>
             <Form.Control
               placeholder="Charge"
-              disabled
               onChange={(u) => setValues({ ...values, charge: u.target.value })}
+              required
             />
           </Col>
         </Row>
@@ -436,7 +442,6 @@ export default function Kriling() {
             <Form.Control
               type="text"
               placeholder="Tanggal Kriling"
-              disabled
               onChange={(u) =>
                 setValues({ ...values, tanggalKriling: u.target.value })
               }
