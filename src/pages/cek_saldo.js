@@ -5,7 +5,7 @@ import "./../css/main.css";
 import ModalComponent from "../components/modal";
 
 export default function CekSaldo() {
-  const [nomorRek, setNomorRek] = useState({ nomorRek: "Nomor Rek" });
+  const [nomorRek, setNomorRek] = useState({ nomorRek: "Nomor Rekening" });
   const [branch, setBranch] = useState({ branch: "Nama Cabang" });
   const [nomorCabang, setNomorCabang] = useState({
     nomorCabang: "Nomor Cabang",
@@ -70,6 +70,11 @@ export default function CekSaldo() {
     setOpenDate({ openDate: getOpenDate });
   };
 
+  const test = (e) => {
+    e.preventDefault();
+    console.log(nomorRek.nomorRek);
+  };
+
   const search = (e) => {
     e.preventDefault();
     const startTime = performance.now();
@@ -91,24 +96,27 @@ export default function CekSaldo() {
       )
       .then((res) => {
         console.log(nomorRek.nomorRek);
-        setModalShow(true);
-        setModalBody(res.data.responseMessage);
+        //setModalShow(true);
+        //setModalBody(res.data.responseMessage);
         const endTime = performance.now();
         const responseTime = endTime - startTime;
 
-        handleAccountNo(res.data.data.accountNumber);
-        handleOnlineBal(res.data.data.availableBalance);
-        handleNomorCabang(res.data.data.bankBranch);
-        handleWorkingBal(res.data.data.workingBal);
-        handleAccountName(res.data.data.name);
+        handleAccountNo(res.data.accountNumber);
+        handleOnlineBal(res.data.availableBalance);
+        handleNomorCabang(res.data.bankBranch);
+        handleWorkingBal(res.data.workingBal);
+        handleAccountName(res.data.name);
 
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
+
+        console.log(res.data.accountNumber);
+        console.log(res.availableBalance);
       })
       .catch((err) => {
         console.log(nomorRek.nomorRek);
-        setModalBody(err);
-        setModalShow(true);
+        //setModalBody(err);
+        // setModalShow(true);
         console.error(err);
       });
   };
