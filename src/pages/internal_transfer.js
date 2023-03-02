@@ -298,10 +298,7 @@ export default function InternalTransfer() {
             />
           </Col>
           <Col>
-            <Form.Control
-              placeholder={namaCabangDebet.namaCabangDebet}
-              disabled
-            />
+            <Form.Control placeholder={namaCabangDebet} disabled />
           </Col>
           <Col>
             <Form.Label>Kode Cabang</Form.Label>
@@ -335,7 +332,7 @@ export default function InternalTransfer() {
           </Col>
           <Col>
             <Form.Control
-              placeholder={jumlah.jumlah}
+              placeholder={jumlah}
               onChange={(u) => setJumlah({ jumlah: u.target.value })}
             />
           </Col>
