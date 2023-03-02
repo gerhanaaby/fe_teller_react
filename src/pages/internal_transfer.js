@@ -82,19 +82,21 @@ export default function InternalTransfer() {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
         setModalShow(true);
-        if (res.data.responseMessage == null) {
-          setModalBody("Error request null");
-        }
         setModalBody(res.data.responseMessage);
-        handleNamaCabang(res.data.data.branchName);
-        handleNamaPemilik(res.data.data.accountName);
-        handleSelectMataUang(res.data.data.currency);
+        console.log(res.data);
+        if (res.data.responseMessage !== "Account not sniffed") {
+          console.log("masuk if");
+
+          handleNamaCabang(res.data.data.branchName);
+          handleNamaPemilik(res.data.data.accountName);
+          handleSelectMataUang(res.data.data.currency);
+        }
 
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })
       .catch((err) => {
-        setModalBody(err);
+        setModalBody(err.message);
         setModalShow(true);
         console.error(err);
       });
@@ -141,12 +143,11 @@ export default function InternalTransfer() {
         const responseTime = endTime - startTime;
 
         setModalShow(true);
-        if (res.data.responseMessage == null) {
-          setModalBody("Error request null");
-        }
         setModalBody(res.data.responseMessage);
-        handleSelectMataUang(res.data.data.creditCurrency);
-        handleJumlah(res.data.data.debitAmount);
+        if (res.data.responseMessage !== "null") {
+          handleSelectMataUang(res.data.creditCurrency);
+          handleJumlah(res.data.data.debitAmount);
+        }
 
         console.log(`Values nama currency : ${mataUangRek.mataUangRek}`);
         console.log(`Values nama pemilik : ${jumlah.jumlah}`);
@@ -154,7 +155,7 @@ export default function InternalTransfer() {
         console.log(`Request took ${responseTime} milliseconds`);
       })
       .catch((err) => {
-        setModalBody(err);
+        setModalBody(err.message);
         setModalShow(true);
         console.error(err);
       });
