@@ -123,9 +123,9 @@ export default function InternalTransfer() {
 
         setModalShow(true);
         setModalBody(res.data.responseMessage);
-        //setJenisMataUang("Jenis Mata Uang");
+
         if (res.data.responseMessage !== "null") {
-          handleSelectMataUang(res.data.creditCurrency);
+          handleSelectMataUang(res.data.data.creditCurrency);
           handleJumlah(res.data.data.debitAmount);
         }
       })
@@ -133,7 +133,6 @@ export default function InternalTransfer() {
         const endTime = performance.now();
         console.log(`Time taken: ${endTime - startTime} milliseconds`);
         console.log(err);
-        //setJenisMataUang("Jenis Mata Uang");
         setModalBody(err.message);
         setModalShow(true);
       });
