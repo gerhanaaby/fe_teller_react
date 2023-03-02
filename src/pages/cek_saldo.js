@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Container, Form, Row, Col, Button, Table } from "react-bootstrap";
 import "./../css/main.css";
+import ModalComponent from "../components/modal";
 
 export default function CekSaldo() {
   const [values, setValues] = useState({
@@ -41,20 +42,35 @@ export default function CekSaldo() {
         }
       )
       .then((res) => {
+        setModalShow(true);
+        setModalBody(res.data.responseMessage);
         const endTime = performance.now();
         const responseTime = endTime - startTime;
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setModalBody(err);
+        setModalShow(true);
+        console.error(err);
+      });
   };
-
+  const [modalShow, setModalShow] = React.useState(false);
+  const [modalBody, setModalBody] = React.useState("");
   return (
     <div>
       <Container
         className="bodyHome"
         style={{ marginLeft: "4%", width: "80%" }}
       >
+        <ModalComponent
+          modalHeader={"Respones"}
+          modalBody={modalBody}
+          show={modalShow}
+          handleClose={() => setModalShow(false)}
+          textButtonLeft={"Close"}
+          secondButton={false}
+        />
         <Form onSubmit={search}>
           <Form.Group controlId="formText" className="mb-3">
             <Row>

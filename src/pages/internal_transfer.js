@@ -9,6 +9,7 @@ import {
   DropdownButton,
   Button,
 } from "react-bootstrap";
+import ModalComponent from "../components/modal";
 
 export default function InternalTransfer() {
   const [values, setValues] = useState({
@@ -80,18 +81,20 @@ export default function InternalTransfer() {
       .then((res) => {
         const endTime = performance.now();
         const responseTime = endTime - startTime;
-        if (res.data.res.responseMessage == "Account Not Found") {
-          //modal
-        } else {
-          handleNamaCabang(res.data.data.branchName);
-          handleNamaPemilik(res.data.data.accountName);
-          handleSelectMataUang(res.data.data.currency);
-        }
+        setModalShow(true);
+        setModalBody(res.data.responseMessage);
+        handleNamaCabang(res.data.data.branchName);
+        handleNamaPemilik(res.data.data.accountName);
+        handleSelectMataUang(res.data.data.currency);
 
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setModalBody(err);
+        setModalShow(true);
+        console.error(err);
+      });
   };
 
   const sendTransaction = (e) => {
@@ -125,12 +128,11 @@ export default function InternalTransfer() {
         console.log(res.data);
         const endTime = performance.now();
         const responseTime = endTime - startTime;
-        if (res.data.res.responseMessage == "Account Not Found") {
-          //modal
-        } else {
-          handleSelectMataUang(res.data.data.creditCurrency);
-          handleJumlah(res.data.data.debitAmount);
-        }
+        setModalShow(true);
+        setModalBody(res.data.responseMessage);
+        handleSelectMataUang(res.data.data.creditCurrency);
+        handleJumlah(res.data.data.debitAmount);
+
         console.log(`Values nama currency : ${mataUangRek.mataUangRek}`);
         console.log(`Values nama pemilik : ${jumlah.jumlah}`);
         handleSelectMataUang(res.data.data.creditCurrency);
@@ -138,11 +140,24 @@ export default function InternalTransfer() {
 
         console.log(`Request took ${responseTime} milliseconds`);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setModalBody(err);
+        setModalShow(true);
+        console.error(err);
+      });
   };
-
+  const [modalShow, setModalShow] = React.useState(false);
+  const [modalBody, setModalBody] = React.useState("");
   return (
     <Container style={{ marginLeft: "4%", width: "80%" }}>
+      <ModalComponent
+        modalHeader={"Respones"}
+        modalBody={modalBody}
+        show={modalShow}
+        handleClose={() => setModalShow(false)}
+        textButtonLeft={"Close"}
+        secondButton={false}
+      />
       <Form.Group controlId="formText" className="mb-3">
         <Row>
           <Form.Group controlId="formText" className="mb-3">
