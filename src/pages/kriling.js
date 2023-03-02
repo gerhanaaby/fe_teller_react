@@ -30,20 +30,16 @@ export default function Kriling() {
     tanggalKriling: "",
   });
 
-  const [mataUangRek, setJenisMataUang] = useState({
-    mataUangRek: "Jenis Mata Uang",
-  });
+  const [mataUangRek, setJenisMataUang] = useState("Jenis Mata Uang");
 
-  const [namaCabang, setNamaCabang] = useState({
-    namaCabang: "Nama Cabang",
-  });
+  const [namaCabang, setNamaCabang] = useState("Nama Cabang");
 
   const handleSelectKodeTransaksi = (evt) => {
     setValues({ ...values, kodeTransaksi: evt });
   };
 
   const handleSelectMataUang = (getMataUang) => {
-    setJenisMataUang({ mataUangRek: getMataUang });
+    setJenisMataUang(getMataUang);
   };
 
   function handleNamaPemilik(getNamaPemilik) {
@@ -51,12 +47,12 @@ export default function Kriling() {
   }
 
   function handleNamaCabang(getNamaCabang) {
-    setNamaCabang({ namaCabang: getNamaCabang });
+    setNamaCabang(getNamaCabang);
   }
 
   const hostInquiry = (e) => {
     e.preventDefault();
-    const startTime = performance.now();
+
     axios
       .post(
         "http://10.22.100.82:5000/user/transac/postinquirytransfer",
@@ -75,8 +71,6 @@ export default function Kriling() {
         }
       )
       .then((res) => {
-        const endTime = performance.now();
-        const responseTime = endTime - startTime;
         setModalBody(res.data.responseMessage);
         setModalShow(true);
         if (res.data.responseMessage !== "Account not sniffed") {
@@ -86,25 +80,16 @@ export default function Kriling() {
           handleNamaPemilik(res.data.data.accountName);
           handleSelectMataUang(res.data.data.currency);
         }
-        // console.log(`Values nama cabang : ${values.namaCabang}`);
-        // console.log(`Values nama pemilik : ${values.namaPemilik}`);
-        // handleSelectMataUang(res.data.data.currency);
-
-        console.log(`Request took ${responseTime} milliseconds`);
-        console.log(`Branch Name : ${res.data.data.branchName} `);
-        console.log(`Account Name : ${res.data.data.accountName} `);
-        console.log(res.data);
       })
       .catch((err) => {
         setModalBody(err);
         setModalShow(true);
-        console.error(err);
       });
   };
 
   const sendTransaction = (e) => {
     e.preventDefault();
-    const startTime = performance.now();
+
     axios
       .post(
         "http://10.22.100.82:5000/user/transac/postskn",
@@ -140,17 +125,12 @@ export default function Kriling() {
         }
       )
       .then((res) => {
-        const endTime = performance.now();
-        const responseTime = endTime - startTime;
         setModalShow(true);
         setModalBody(res.data.responseMessage);
-        console.log(res.data);
-        console.log(`Request took ${responseTime} milliseconds`);
       })
       .catch((err) => {
         setModalBody(err);
         setModalShow(true);
-        console.error(err);
       });
   };
   const [modalShow, setModalShow] = React.useState(false);
@@ -229,7 +209,7 @@ export default function Kriling() {
               variant="danger"
               id="dropdown-basic"
               required
-              title={mataUangRek.mataUangRek}
+              title={mataUangRek}
               onSelect={handleSelectMataUang}
             >
               <Dropdown.Item eventKey="IDR">IDR</Dropdown.Item>

@@ -74,8 +74,6 @@ export default function InternalTransfer() {
         }
       )
       .then((res) => {
-        const endTime = performance.now();
-        const responseTime = endTime - startTime;
         setModalShow(true);
         setModalBody(res.data.responseMessage);
 
@@ -84,9 +82,6 @@ export default function InternalTransfer() {
           handleNamaPemilik(res.data.data.accountName);
           handleSelectMataUang(res.data.data.currency);
         }
-
-        console.log(`Request took ${responseTime} milliseconds`);
-        console.log(res.data);
       })
       .catch((err) => {
         setModalBody(err.message);
@@ -122,25 +117,16 @@ export default function InternalTransfer() {
         }
       )
       .then((res) => {
-        const endTime = performance.now();
-        const responseTime = endTime - startTime;
-
         setModalShow(true);
         setModalBody(res.data.responseMessage);
         if (res.data.responseMessage !== "null") {
           handleSelectMataUang(res.data.creditCurrency);
           handleJumlah(res.data.data.debitAmount);
         }
-
-        console.log(`Values nama currency : ${mataUangRek.mataUangRek}`);
-        console.log(`Values nama pemilik : ${jumlah.jumlah}`);
-
-        console.log(`Request took ${responseTime} milliseconds`);
       })
       .catch((err) => {
         setModalBody(err.message);
         setModalShow(true);
-        console.error(err);
       });
   };
   const [modalShow, setModalShow] = React.useState(false);
