@@ -79,13 +79,16 @@ export default function Kriling() {
         const responseTime = endTime - startTime;
         setModalBody(res.data.responseMessage);
         setModalShow(true);
-        handleNamaCabang(res.data.data.branchName);
-        handleNamaPemilik(res.data.data.accountName);
-        handleSelectMataUang(res.data.data.currency);
+        if (res.data.responseMessage !== "Account not sniffed") {
+          console.log("masuk if");
 
-        console.log(`Values nama cabang : ${values.namaCabang}`);
-        console.log(`Values nama pemilik : ${values.namaPemilik}`);
-        //handleSelectMataUang(res.data.data.currency);
+          handleNamaCabang(res.data.data.branchName);
+          handleNamaPemilik(res.data.data.accountName);
+          handleSelectMataUang(res.data.data.currency);
+        }
+        // console.log(`Values nama cabang : ${values.namaCabang}`);
+        // console.log(`Values nama pemilik : ${values.namaPemilik}`);
+        // handleSelectMataUang(res.data.data.currency);
 
         console.log(`Request took ${responseTime} milliseconds`);
         console.log(`Branch Name : ${res.data.data.branchName} `);

@@ -30,20 +30,14 @@ export default function InternalTransfer() {
     tanggalTransaksi: "",
   });
 
-  const [mataUangRek, setJenisMataUang] = useState({
-    mataUangRek: "Jenis Mata Uang",
-  });
+  const [mataUangRek, setJenisMataUang] = useState("Jenis Mata Uang");
 
-  const [jumlah, setJumlah] = useState({
-    jumlah: "Jumlah",
-  });
+  const [jumlah, setJumlah] = useState("Jumlah");
 
-  const [namaCabangDebet, setNamaCabangDebet] = useState({
-    namaCabangDebet: "Nama Cabang",
-  });
+  const [namaCabangDebet, setNamaCabangDebet] = useState("Nama Cabang");
 
   const handleSelectMataUang = (getMataUang) => {
-    setJenisMataUang({ mataUangRek: getMataUang });
+    setJenisMataUang(getMataUang);
   };
 
   function handleNamaPemilik(getNamaPemilik) {
@@ -51,11 +45,11 @@ export default function InternalTransfer() {
   }
 
   function handleNamaCabang(getNamaCabang) {
-    setNamaCabangDebet({ namaCabangDebet: getNamaCabang });
+    setNamaCabangDebet(getNamaCabang);
   }
 
   function handleJumlah(getJumlah) {
-    setJumlah({ jumlah: getJumlah });
+    setJumlah(getJumlah);
   }
 
   const hostInquiry = (e) => {
@@ -84,10 +78,8 @@ export default function InternalTransfer() {
         const responseTime = endTime - startTime;
         setModalShow(true);
         setModalBody(res.data.responseMessage);
-        console.log(res.data);
-        if (res.data.responseMessage !== "Account not sniffed") {
-          console.log("masuk if");
 
+        if (res.data.responseMessage !== "Account not sniffed") {
           handleNamaCabang(res.data.data.branchName);
           handleNamaPemilik(res.data.data.accountName);
           handleSelectMataUang(res.data.data.currency);
@@ -106,7 +98,6 @@ export default function InternalTransfer() {
   const sendTransaction = (e) => {
     e.preventDefault();
     const startTime = performance.now();
-    // console.log(localStorage.getItem("token")); ${localStorage.getItem("token")}
     axios
       .post(
         "http://10.22.100.82:5000/user/transac/postinternaltransfer",
@@ -131,15 +122,6 @@ export default function InternalTransfer() {
         }
       )
       .then((res) => {
-        console.log(values.nomorRekDebet);
-        console.log(values.nomorRekKredit);
-        console.log(jumlah.jumlah);
-        console.log(mataUangRek.mataUangRek);
-        console.log(values.pesan);
-        console.log(values.namaPemilikKredit);
-        console.log(values.namaPemilikDebet);
-
-        console.log(res.data);
         const endTime = performance.now();
         const responseTime = endTime - startTime;
 
@@ -276,7 +258,7 @@ export default function InternalTransfer() {
             <DropdownButton
               variant="danger"
               id="dropdown-basic"
-              title={mataUangRek.mataUangRek}
+              title={mataUangRek}
               onSelect={handleSelectMataUang}
             >
               <Dropdown.Item eventKey="IDR">IDR</Dropdown.Item>
