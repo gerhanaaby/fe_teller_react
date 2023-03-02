@@ -26,9 +26,6 @@ export default function CekSaldo() {
   const handleBranch = (getBranch) => {
     setBranch(getBranch);
   };
-  const handleNomorCabang = (getNomorCabang) => {
-    setNomorCabang({ nomorCabang: getNomorCabang });
-  };
 
   const handleAccountName = (getAccountName) => {
     setAccountName(getAccountName);
