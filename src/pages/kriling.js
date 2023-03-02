@@ -123,7 +123,7 @@ export default function Kriling() {
           beneficiaryNationStatus: "0",
           beneficiaryType: "1",
           beneficiaryName: "ALTO",
-          chargeAmount: values.charge,
+          chargeAmount: "IDR" + values.charge,
           currency: values.mataUangRek,
         },
         {
@@ -141,8 +141,8 @@ export default function Kriling() {
         const responseTime = endTime - startTime;
         setModalShow(true);
         setModalBody(res.data.responseMessage);
-        console.log(`Request took ${responseTime} milliseconds`);
         console.log(res.data);
+        console.log(`Request took ${responseTime} milliseconds`);
       })
       .catch((err) => {
         setModalBody(err);

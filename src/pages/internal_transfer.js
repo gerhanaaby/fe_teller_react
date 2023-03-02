@@ -128,6 +128,7 @@ export default function InternalTransfer() {
         console.log(res.data);
         const endTime = performance.now();
         const responseTime = endTime - startTime;
+
         setModalShow(true);
         setModalBody(res.data.responseMessage);
         handleSelectMataUang(res.data.data.creditCurrency);
@@ -135,8 +136,6 @@ export default function InternalTransfer() {
 
         console.log(`Values nama currency : ${mataUangRek.mataUangRek}`);
         console.log(`Values nama pemilik : ${jumlah.jumlah}`);
-        handleSelectMataUang(res.data.data.creditCurrency);
-        handleJumlah(res.data.data.debitAmount);
 
         console.log(`Request took ${responseTime} milliseconds`);
       })
