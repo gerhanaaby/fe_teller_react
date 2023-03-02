@@ -29,9 +29,6 @@ export default function CekSaldo() {
   const handleNomorCabang = (getNomorCabang) => {
     setNomorCabang({ nomorCabang: getNomorCabang });
   };
-  const handleTanggal = (getTanggal) => {
-    setTanggal({ tanggal: getTanggal });
-  };
 
   const handleAccountName = (getAccountName) => {
     setAccountName(getAccountName);
@@ -39,26 +36,12 @@ export default function CekSaldo() {
   const handleCustNo = (getCustNo) => {
     setCustNo(getCustNo);
   };
-  const handleLimit = (getLimit) => {
-    setLimit({ limit: getLimit });
-  };
-  const handleCategory = (getCategory) => {
-    setCategory({ category: getCategory });
-  };
-  const handleCcy = (getCcy) => {
-    setCcy({ ccy: getCcy });
-  };
+
   const handleOnlineBal = (getOnlineBal) => {
     setOnlineBal({ onlineBal: getOnlineBal });
   };
   const handleWorkingBal = (getWorkingBal) => {
     setWorkingBal({ workingBal: getWorkingBal });
-  };
-  const handleClearedBal = (getClearedBal) => {
-    setClearedBal({ clearedBal: getClearedBal });
-  };
-  const handleOpenDate = (getOpenDate) => {
-    setOpenDate({ openDate: getOpenDate });
   };
 
   const search = (e) => {
@@ -82,10 +65,8 @@ export default function CekSaldo() {
         }
       )
       .then((res) => {
-        console.log(res);
-
-        //setModalShow(true);
-        //setModalBody(res.data.responseMessage);
+        setModalShow(true);
+        setModalBody(res.data.responseMessage);
         const endTime = performance.now();
         const responseTime = endTime - startTime;
 
@@ -104,8 +85,8 @@ export default function CekSaldo() {
       })
       .catch((err) => {
         console.log(nomorRek.nomorRek);
-        //setModalBody(err);
-        // setModalShow(true);
+        setModalBody(err);
+        setModalShow(true);
         console.error(err);
       });
   };
@@ -259,13 +240,13 @@ export default function CekSaldo() {
             <td>{accountName}</td>
             <td>{custNo}</td>
             <td>{limit}</td>
-            <td>{category.category}</td>
-            <td>{ccy.ccy}</td>
-            <td>{onlineBal.onlineBal}</td>
-            <td>{workingBal.workingBal}</td>
-            <td>{clearedBal.clearedBal}</td>
-            <td>{openDate.openDate}</td>
-            <td>{branch.branch}</td>
+            <td>{category}</td>
+            <td>{ccy}</td>
+            <td>{onlineBal}</td>
+            <td>{workingBal}</td>
+            <td>{clearedBal}</td>
+            <td>{openDate}</td>
+            <td>{branch}</td>
           </tr>
         </tbody>
       </Table>
