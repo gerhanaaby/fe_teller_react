@@ -224,7 +224,6 @@ export default function Kriling() {
             <DropdownButton
               variant="danger"
               id="dropdown-basic"
-              required
               title={mataUangRek}
               onSelect={handleSelectMataUang}
             >
