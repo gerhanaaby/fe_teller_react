@@ -164,7 +164,7 @@ export default function CekNasabah() {
 
   const [date, setDate] = useState(new Date());
 
-  const tampilkanImageSelfie = (e) => {
+  const tampilkanImageTTD = (e) => {
     e.preventDefault();
     axios
       .get(
@@ -706,9 +706,9 @@ export default function CekNasabah() {
               variant="danger"
               type="submit"
               style={{ marginLeft: "8px" }}
-              onClick={tampilkanImageSelfie}
+              onClick={tampilkanImageTTD}
             >
-              Tampilkan Image Selfie
+              Tampilkan Tanda Tangan
             </Button>
             <Button
               variant="outline-danger"
