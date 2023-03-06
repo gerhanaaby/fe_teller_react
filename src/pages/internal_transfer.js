@@ -60,7 +60,7 @@ export default function InternalTransfer() {
         "http://10.22.100.82:5000/user/transac/postinquirytransfer",
         {
           accountNo: values.nomorRekDebet,
-          referenceId: "154500902248",
+          referenceId: "",
         },
         {
           headers: {
@@ -99,7 +99,7 @@ export default function InternalTransfer() {
       .post(
         "http://10.22.100.82:5000/user/transac/postinternaltransfer",
         {
-          referenceId: "MDLN-125123213129",
+          referenceId: "",
           debitAccountNo: values.nomorRekDebet,
           creditAccountNo: values.nomorRekKredit,
           creditAmount: jumlah,
