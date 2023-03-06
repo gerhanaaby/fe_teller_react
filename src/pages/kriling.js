@@ -58,7 +58,7 @@ export default function Kriling() {
         "http://10.22.100.82:5000/user/transac/postinquirytransfer",
         {
           accountNo: values.nomorRek,
-          referenceId: "154500902248",
+          referenceId: "",
         },
         {
           headers: {
@@ -108,7 +108,7 @@ export default function Kriling() {
           transactionDate: values.tanggalKriling,
           transactionTime: "000000",
           clearingTransactionCode: "50",
-          referenceId: "MDLN-803837197299",
+          referenceId: "",
           paymentDetails1: values.message,
           senderName: values.namaPemilik,
           paymentDetails2: "",
