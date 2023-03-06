@@ -58,7 +58,6 @@ export default function Kriling() {
         "http://10.22.100.82:5000/user/transac/postinquirytransfer",
         {
           accountNo: values.nomorRek,
-          referenceId: "",
         },
         {
           headers: {
@@ -96,40 +95,36 @@ export default function Kriling() {
   const sendTransaction = (e) => {
     e.preventDefault();
     const startTime = performance.now();
+    const bodyReq = {
+      creditAccountNo: values.nomorRek,
+      amount: values.jumlah,
+      beneficiaryResidentStatus: "1",
+      clearingCode: "BBBAIDJA",
+      remark: values.message,
+      transactionDate: values.tanggalKriling,
+      transactionTime: "000000",
+      clearingTransactionCode: "50",
+      paymentDetails1: values.message,
+      senderName: values.namaPemilik,
+      paymentDetails2: "",
+      paymentDetails3: "",
+      debitAccountNo: "0040965912",
+      beneficiaryNationStatus: "0",
+      beneficiaryType: "1",
+      beneficiaryName: "ALTO",
+      chargeAmount: "IDR" + values.charge,
+      currency: mataUangRek,
+    };
     axios
-      .post(
-        "http://10.22.100.82:5000/user/transac/postskn",
-        {
-          creditAccountNo: values.nomorRek,
-          amount: values.jumlah,
-          beneficiaryResidentStatus: "1",
-          clearingCode: "BBBAIDJA",
-          remark: values.message,
-          transactionDate: values.tanggalKriling,
-          transactionTime: "000000",
-          clearingTransactionCode: "50",
-          referenceId: "",
-          paymentDetails1: values.message,
-          senderName: values.namaPemilik,
-          paymentDetails2: "",
-          paymentDetails3: "",
-          debitAccountNo: "391188973546426",
-          beneficiaryNationStatus: "0",
-          beneficiaryType: "1",
-          beneficiaryName: "ALTO",
-          chargeAmount: "IDR" + values.charge,
-          currency: values.mataUangRek,
+      .post("http://10.22.100.82:5000/user/transac/postskn", bodyReq, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept, Authorization",
         },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers":
-              "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-          },
-        }
-      )
+      })
       .then((res) => {
         const endTime = performance.now();
         console.log(`Time taken: ${endTime - startTime} milliseconds`);
@@ -168,7 +163,7 @@ export default function Kriling() {
               <Row style={{ width: "900px" }}>
                 <Col>
                   <h5>
-                    <i>Setoran Kriling</i>
+                    <i>Setoran Kliring</i>
                   </h5>
                 </Col>
                 <Col>
@@ -441,7 +436,7 @@ export default function Kriling() {
       <Form.Group controlId="formText" className="mb-3">
         <Row>
           <Col>
-            <Form.Label>Tanggal Kriling</Form.Label>
+            <Form.Label>Tanggal Kliring</Form.Label>
           </Col>
           <Col>
             <Form.Control

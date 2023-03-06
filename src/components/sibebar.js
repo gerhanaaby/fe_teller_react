@@ -74,8 +74,8 @@ export default function SidebarComponent() {
         }}
       >
         <MenuItem component={<Link to="/home" />}>Dashboard</MenuItem>
-        <SubMenu label="Kriling">
-          <MenuItem component={<Link to="/skn" />}>Setoran Kriling </MenuItem>
+        <SubMenu label="Kliring">
+          <MenuItem component={<Link to="/skn" />}>Setoran Kliring </MenuItem>
         </SubMenu>
         <MenuItem
           component={<Link to="/internal_transfer" />}
