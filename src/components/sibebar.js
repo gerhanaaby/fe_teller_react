@@ -62,7 +62,7 @@ export default function SidebarComponent() {
           }}
           style={{ textAlign: "center" }}
         >
-          <h5>Prototype</h5>
+          <h5>CS-Teller App</h5>
         </MenuItem>
       </Menu>
       <Menu
@@ -74,10 +74,28 @@ export default function SidebarComponent() {
         }}
       >
         <MenuItem component={<Link to="/home" />}>Dashboard</MenuItem>
-        <SubMenu label="Kriling">
-          <MenuItem component={<Link to="/skn" />}>Setoran Kriling </MenuItem>
+
+        <SubMenu label="Inquiry">
+          <MenuItem component={<Link to="/cek_saldo" />}>Cek Saldo </MenuItem>
+          <MenuItem component={<Link to="/cek_nasabah" />}>
+            Cek Nasabah
+          </MenuItem>
         </SubMenu>
-        <MenuItem
+
+        <SubMenu label="Kliring">
+          <MenuItem component={<Link to="/skn" />}>Setoran Kliring </MenuItem>
+        </SubMenu>
+
+        <SubMenu label="Pemindahbukuan">
+          <MenuItem
+            component={<Link to="/internal_transfer" />}
+            label="Internal Transfer"
+          >
+            Mata Uang Sama
+          </MenuItem>
+        </SubMenu>
+
+        {/* <MenuItem
           component={<Link to="/internal_transfer" />}
           label="Internal Transfer"
         >
@@ -88,7 +106,7 @@ export default function SidebarComponent() {
         </MenuItem>
         <MenuItem component={<Link to="/cek_nasabah" />} label="Check Saldo">
           Check Nasabah
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem variant="primary" onClick={handleLogout} label="Check Saldo">
           Log Out
         </MenuItem>

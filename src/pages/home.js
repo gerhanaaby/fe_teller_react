@@ -3,6 +3,10 @@ import { Container } from "react-bootstrap";
 import homepage from "./../assets/images/homepage.png";
 
 export default class Home extends Component {
+  componentDidMount() {
+    const zoomLevel = 1.15 / window.devicePixelRatio;
+    document.body.style.zoom = zoomLevel;
+  }
   render() {
     document.body.style = "background: white;";
     return (

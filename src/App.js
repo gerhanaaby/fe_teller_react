@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import {
   BrowserRouter,
   Route,
@@ -17,6 +17,9 @@ import InternalTransfer from "./pages/internal_transfer";
 import CekNasabah from "./pages/cek_nasabah";
 
 function App() {
+  useEffect(() => {
+    document.title = "CS-Teller App Sinarmas";
+  }, []);
   function PrivateRoutes({ redirectTo }) {
     let isAuthenticated = localStorage.getItem("token");
     console.log(isAuthenticated);

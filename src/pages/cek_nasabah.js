@@ -248,7 +248,7 @@ export default function CekNasabah() {
   return (
     <div>
       <ModalComponent
-        modalHeader={"Respones"}
+        modalHeader={"Message Response"}
         modalBody={"Invalid, Account not found"}
         show={modalShow}
         handleClose={() => setModalShow(false)}
