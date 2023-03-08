@@ -307,6 +307,7 @@ export default function CekNasabah() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-1`}
+                      required
                     />
                     <Form.Check
                       inline
@@ -314,14 +315,13 @@ export default function CekNasabah() {
                       name="group1"
                       type={type}
                       id={`inline-${type}-2`}
+                      required
                     />
                   </div>
                 ))}
               </Col>
               <Col>
-                <Form.Label>
-                  <b>Created By</b>
-                </Form.Label>
+                <Form.Label>Created By</Form.Label>
               </Col>
               <Col>
                 <Form.Control
@@ -329,6 +329,7 @@ export default function CekNasabah() {
                   // onChange={(u) =>
                   //   setValues({ ...values, nomorRekKredit: u.target.value })
                   // }
+                  disabled
                 />
               </Col>
             </Row>
@@ -347,12 +348,11 @@ export default function CekNasabah() {
                     (u) => handleNoCif(u.target.value)
                     //setValues({ ...values, nomorCIF: u.target.value })
                   }
+                  required
                 />
               </Col>
               <Col>
-                <Form.Label>
-                  <b>Creation Date</b>
-                </Form.Label>
+                <Form.Label>Creation Date</Form.Label>
               </Col>
               <Col>
                 <Form.Control
@@ -360,6 +360,7 @@ export default function CekNasabah() {
                   onChange={(u) =>
                     setValues({ ...values, nomorRekKredit: u.target.value })
                   }
+                  disabled
                 />
               </Col>
             </Row>
@@ -367,9 +368,7 @@ export default function CekNasabah() {
           <Form.Group controlId="formText" className="mb-3">
             <Row>
               <Col>
-                <Form.Label>
-                  <b>Mnemonic</b>
-                </Form.Label>
+                <Form.Label>Mnemonic</Form.Label>
               </Col>
               <Col>
                 <Form.Control
@@ -377,12 +376,11 @@ export default function CekNasabah() {
                   onChange={(u) =>
                     setValues({ ...values, nomorRekDebet: u.target.value })
                   }
+                  disabled
                 />
               </Col>
               <Col>
-                <Form.Label>
-                  <b>Last Change</b>
-                </Form.Label>
+                <Form.Label>Last Change</Form.Label>
               </Col>
               <Col>
                 <Form.Control
@@ -390,6 +388,7 @@ export default function CekNasabah() {
                   onChange={(u) =>
                     setValues({ ...values, nomorRekKredit: u.target.value })
                   }
+                  disabled
                 />
               </Col>
             </Row>
@@ -397,9 +396,7 @@ export default function CekNasabah() {
           <Form.Group controlId="formText" className="mb-3">
             <Row>
               <Col>
-                <Form.Label>
-                  <b>KSEI SID</b>
-                </Form.Label>
+                <Form.Label>KSEI SID</Form.Label>
               </Col>
               <Col>
                 <Form.Control
@@ -407,12 +404,11 @@ export default function CekNasabah() {
                   onChange={(u) =>
                     setValues({ ...values, nomorRekDebet: u.target.value })
                   }
+                  disabled
                 />
               </Col>
               <Col>
-                <Form.Label>
-                  <b>Supervisor ID</b>
-                </Form.Label>
+                <Form.Label>Supervisor ID</Form.Label>
               </Col>
               <Col>
                 <Form.Control
@@ -420,6 +416,7 @@ export default function CekNasabah() {
                   onChange={(u) =>
                     setValues({ ...values, nomorRekKredit: u.target.value })
                   }
+                  disabled
                 />
               </Col>
             </Row>
@@ -427,9 +424,7 @@ export default function CekNasabah() {
           <Form.Group controlId="formText" className="mb-3">
             <Row>
               <Col>
-                <Form.Label>
-                  <b>Kelengkapan Dokumen</b>
-                </Form.Label>
+                <Form.Label>Kelengkapan Dokumen</Form.Label>
               </Col>
               <Col>
                 <Dropdown>
@@ -450,9 +445,7 @@ export default function CekNasabah() {
               </Col>
 
               <Col>
-                <Form.Label>
-                  <b>Status</b>
-                </Form.Label>
+                <Form.Label>Status</Form.Label>
               </Col>
               <Col>
                 <Form.Control
@@ -460,6 +453,7 @@ export default function CekNasabah() {
                   onChange={(u) =>
                     setValues({ ...values, nomorRekKredit: u.target.value })
                   }
+                  disabled
                 />
               </Col>
             </Row>
@@ -467,9 +461,7 @@ export default function CekNasabah() {
           <Form.Group controlId="formText" className="mb-3">
             <Row>
               <Col>
-                <Form.Label>
-                  <b>Nama Lengkap</b>
-                </Form.Label>
+                <Form.Label>Nama Lengkap</Form.Label>
               </Col>
               <Col>
                 <Form.Control
@@ -477,6 +469,7 @@ export default function CekNasabah() {
                   onChange={(u) =>
                     setValues({ ...values, nomorRekDebet: u.target.value })
                   }
+                  disabled
                 />
               </Col>
               <Col></Col>
@@ -496,6 +489,7 @@ export default function CekNasabah() {
                   onChange={(u) =>
                     setValues({ ...values, nomorRekDebet: u.target.value })
                   }
+                  disabled
                 />
               </Col>
               <Col></Col>
@@ -517,6 +511,7 @@ export default function CekNasabah() {
                     placeholder={tanggalLahir.tanggalLahir}
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
+                    disabled
                   />
                 </Form.Group>
               </Col>
@@ -600,6 +595,7 @@ export default function CekNasabah() {
                   onChange={(u) =>
                     setValues({ ...values, nomorRekDebet: u.target.value })
                   }
+                  disabled
                 />
               </Col>
               <Col></Col>
@@ -689,6 +685,7 @@ export default function CekNasabah() {
                   onChange={(u) =>
                     setValues({ ...values, nomorRekDebet: u.target.value })
                   }
+                  disabled
                 />
               </Col>
               <Col></Col>
