@@ -185,13 +185,13 @@ export default function CekNasabah() {
         const endTime = performance.now();
         console.log(`Time taken: ${endTime - startTime} milliseconds`);
         setModalShowImage(true);
-        //console.log(res);
         setImage(base64Image(res.data.message, "jpeg"));
-        //const responseTime = endTime - startTime;
+
         console.log(res);
       })
       .catch((err) => {
         setModalShowImage(true);
+        setImage(err.response.data.status);
         console.error(err);
       });
   };

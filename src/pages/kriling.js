@@ -17,6 +17,8 @@ export default function Kriling() {
     document.body.style.zoom = zoomLevel;
   }, []);
 
+  var date = new Date();
+  var formattedDate = date.toISOString().slice(0, 10).replace(/-/g, "");
   const [values, setValues] = useState({
     nomorRek: "",
     namaProduk: "Nama Produk",
@@ -63,8 +65,9 @@ export default function Kriling() {
     const startTime = performance.now();
     axios
       .post(
-        "http://10.22.100.82:5000/user/transac/postinquirytransfer",
+        "http://10.22.100.82:5000/user/transac/postgetdetail",
         {
+          transactionID: "3546245666000",
           accountNo: values.nomorRek,
         },
         {
@@ -177,7 +180,7 @@ export default function Kriling() {
                   </Col>
                   <Col>
                     <h5 style={{ float: "right", marginRight: "16%" }}>
-                      <i>Case-ID : SK-202302150001</i>
+                      <i>Case-ID : SK-{formattedDate}0001</i>
                     </h5>
                   </Col>
                 </Row>

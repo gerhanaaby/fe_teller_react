@@ -43,7 +43,8 @@ export default function InternalTransfer() {
     message: "",
     tanggalTransaksi: "",
   });
-
+  var date = new Date();
+  var formattedDate = date.toISOString().slice(0, 10).replace(/-/g, "");
   const [ftoptChecked, setFtoptChecked] = useState(false);
 
   const [kodeopt, setKodeOpt] = useState("Kode OPT");
@@ -82,8 +83,9 @@ export default function InternalTransfer() {
 
     axios
       .post(
-        "http://10.22.100.82:5000/user/transac/postinquirytransfer",
+        "http://10.22.100.82:5000/user/transac/postgetdetail",
         {
+          transactionID: "3546245666000",
           accountNo: values.nomorRekDebet,
         },
         {
@@ -187,7 +189,7 @@ export default function InternalTransfer() {
                 </Col>
                 <Col>
                   <h5 style={{ float: "right" }}>
-                    <i>Case-ID : PB-202302150001</i>
+                    <i>Case-ID : PB-{formattedDate}0001</i>
                   </h5>
                 </Col>
               </Row>

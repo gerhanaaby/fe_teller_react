@@ -6,6 +6,8 @@ import {
   Routes,
   Navigate,
   Outlet,
+  HashRouter,
+  Router,
 } from "react-router-dom";
 import Home from "./pages/home";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -28,7 +30,8 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/login" element={<Login />} exact />
         <Route element={<PrivateRoutes redirectTo={"/login"} />}>
@@ -45,7 +48,8 @@ function App() {
           </Route>
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
+    //</BrowserRouter>
   );
 }
 
