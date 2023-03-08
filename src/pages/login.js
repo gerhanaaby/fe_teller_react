@@ -10,10 +10,11 @@ import {
   BsFillEyeSlashFill,
 } from "react-icons/bs";
 import { RiKeyFill } from "react-icons/ri";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavbarLoginComponent from "../components/navbar_login";
 import { hashMd5Password } from "../utils/utils";
+
 export default function Login() {
   const [values, setValues] = useState({
     userName: "",

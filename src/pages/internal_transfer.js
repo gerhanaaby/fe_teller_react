@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
   Container,
@@ -12,6 +12,11 @@ import {
 import ModalComponent from "../components/modal";
 
 export default function InternalTransfer() {
+  useEffect(() => {
+    const zoomLevel = 1.15 / window.devicePixelRatio;
+    document.body.style.zoom = zoomLevel;
+  }, []);
+
   const [values, setValues] = useState({
     nomorRekDebet: "",
     nomorRekKredit: "",
@@ -142,7 +147,7 @@ export default function InternalTransfer() {
   return (
     <Container style={{ marginLeft: "4%", width: "80%" }}>
       <ModalComponent
-        modalHeader={"Respones"}
+        modalHeader={"Message Response"}
         modalBody={modalBody}
         show={modalShow}
         handleClose={() => setModalShow(false)}
@@ -161,7 +166,7 @@ export default function InternalTransfer() {
                   <span>Transfer Antar Bank Sinarmas</span>
                 </Col>
                 <Col>
-                  <h5>
+                  <h5 style={{ float: "right" }}>
                     <i>Case-ID : IT-202302150001</i>
                   </h5>
                 </Col>
@@ -299,6 +304,7 @@ export default function InternalTransfer() {
           <Col>
             <Form.Control
               placeholder="Kode"
+              style={{ width: "45%", float: "right" }}
               disabled
               onChange={(u) =>
                 setValues({ ...values, kodeCabangDebet: u.target.value })
@@ -314,6 +320,7 @@ export default function InternalTransfer() {
           <Col>
             <Form.Control
               placeholder="Kode"
+              style={{ width: "45%", float: "right" }}
               disabled
               onChange={(u) =>
                 setValues({ ...values, kodeCabangKredit: u.target.value })

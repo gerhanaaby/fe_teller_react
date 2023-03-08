@@ -99,7 +99,7 @@ export default function CekSaldo() {
         style={{ marginLeft: "4%", width: "80%" }}
       >
         <ModalComponent
-          modalHeader={"Respones"}
+          modalHeader={"Message Response"}
           modalBody={modalBody}
           show={modalShow}
           handleClose={() => setModalShow(false)}
@@ -131,6 +131,7 @@ export default function CekSaldo() {
               </Col>
               <Col>
                 <Form.Control
+                  required
                   type="text"
                   placeholder={nomorRek}
                   onChange={(u) => setNomorRek(u.target.value)}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Navbar } from "react-bootstrap";
-import bsimLogo from "./../assets/images/logoBSIM.png";
+import logo_banksinarmas from "./../assets/images/logo_banksinarmas.png";
 
 export default function NavbarComponent() {
   return (
@@ -8,15 +8,15 @@ export default function NavbarComponent() {
       style={{
         width: "100%",
         position: "fixed",
-        backgroundColor: "rgb(255, 49, 49)",
+        backgroundColor: "rgba(237,27,36,255)",
         zIndex: "1",
       }}
     >
-      <Container>
+      <Container style={{ marginLeft: "3%" }}>
         <Navbar.Brand>
           <img
             alt=""
-            src={bsimLogo}
+            src={logo_banksinarmas}
             width="180"
             height="50"
             className="d-inline-block align-top"

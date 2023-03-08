@@ -27,7 +27,7 @@ export default class Dashboard extends Component {
           <NavbarComponent />
           <div
             style={{
-              paddingTop: "10%",
+              paddingTop: "8%",
               paddingBottom: "5%",
             }}
           >
