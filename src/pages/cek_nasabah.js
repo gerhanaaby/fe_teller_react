@@ -275,7 +275,7 @@ export default function CekNasabah() {
                   <Row style={{ width: "900px" }}>
                     <Col>
                       <h5>
-                        <i>Data Customer Individual</i>
+                        <i>Cek Nasabah - Data Customer Individual</i>
                       </h5>
                       <span>Long CIF</span>
                     </Col>
@@ -292,7 +292,9 @@ export default function CekNasabah() {
                   <b>Data Pribadi</b>
                   <br />
                   <span>
-                    Nasabah bersedia memberikan informasi kepada pihak lain
+                    <i>
+                      Nasabah bersedia memberikan informasi kepada pihak lain
+                    </i>
                   </span>
                 </Form.Label>
               </Col>

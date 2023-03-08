@@ -114,7 +114,7 @@ export default function CekSaldo() {
                   <Row style={{ width: "900px" }}>
                     <Col>
                       <h5>
-                        <i>Account Enquiries</i>
+                        <i>Cek Saldo - Account Enquiries</i>
                       </h5>
                       <span>Account Balance by Account Number</span>
                     </Col>
