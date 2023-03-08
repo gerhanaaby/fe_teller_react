@@ -161,13 +161,13 @@ export default function InternalTransfer() {
               <Row style={{ width: "900px" }}>
                 <Col>
                   <h5>
-                    <i>Internal Transfer</i>
+                    <i>Pemindahbukuan - Mata Uang Sama</i>
                   </h5>
                   <span>Transfer Antar Bank Sinarmas</span>
                 </Col>
                 <Col>
                   <h5 style={{ float: "right" }}>
-                    <i>Case-ID : IT-202302150001</i>
+                    <i>Case-ID : PB-202302150001</i>
                   </h5>
                 </Col>
               </Row>

@@ -3,7 +3,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 import NavbarComponent from "../components/navbar";
 import SidebarComponent from "../components/sibebar";
-import "./../css/sidebar.css";
 
 export default class Dashboard extends Component {
   render() {

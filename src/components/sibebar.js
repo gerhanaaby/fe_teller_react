@@ -42,25 +42,25 @@ export default function SidebarComponent() {
 
       breakPoint="sm"
       transitionDuration={800}
-      backgroundColor="rgb(222, 220, 220)"
+      backgroundColor="rgb(178,34,34)"
       rtl={false}
       style={{ zIndex: "0" }}
     >
       <Menu
         style={{
           width: "250px",
-          height: "100%",
+          height: "202px",
           position: "fixed",
-          //position: "fixed",
+          marginTop: "10px",
+          paddingTop: "0%",
+          backgroundColor: "rgb(178,34,34)",
+          color: "white",
         }}
       >
         <MenuItem
+          disabled={true}
           icon={<MenuOutlinedIcon />}
-          onClick={() => {
-            //collapseSidebar();
-            //toggle();
-          }}
-          style={{ textAlign: "center" }}
+          style={{ textAlign: "center", color: "white" }}
         >
           <h5>CS-Teller App</h5>
         </MenuItem>
@@ -71,42 +71,53 @@ export default function SidebarComponent() {
           height: "100%",
           position: "fixed",
           top: "50px",
+          marginTop: "26px",
+          backgroundColor: "rgb(218,218,218)",
         }}
       >
         <MenuItem component={<Link to="/home" />}>Dashboard</MenuItem>
 
         <SubMenu label="Inquiry">
-          <MenuItem component={<Link to="/cek_saldo" />}>Cek Saldo </MenuItem>
-          <MenuItem component={<Link to="/cek_nasabah" />}>
+          <MenuItem
+            component={<Link to="/cek_nasabah" />}
+            style={{
+              backgroundColor: "rgb(218,218,218)",
+            }}
+          >
             Cek Nasabah
+          </MenuItem>
+          <MenuItem
+            component={<Link to="/cek_saldo" />}
+            style={{
+              backgroundColor: "rgb(218,218,218)",
+            }}
+          >
+            Cek Saldo{" "}
           </MenuItem>
         </SubMenu>
 
         <SubMenu label="Kliring">
-          <MenuItem component={<Link to="/skn" />}>Setoran Kliring </MenuItem>
+          <MenuItem
+            component={<Link to="/skn" />}
+            style={{
+              backgroundColor: "rgb(218,218,218)",
+            }}
+          >
+            Setoran Kliring{" "}
+          </MenuItem>
         </SubMenu>
 
         <SubMenu label="Pemindahbukuan">
           <MenuItem
             component={<Link to="/internal_transfer" />}
             label="Internal Transfer"
+            style={{
+              backgroundColor: "rgb(218,218,218)",
+            }}
           >
             Mata Uang Sama
           </MenuItem>
         </SubMenu>
-
-        {/* <MenuItem
-          component={<Link to="/internal_transfer" />}
-          label="Internal Transfer"
-        >
-          Internal Transfer
-        </MenuItem>
-        <MenuItem component={<Link to="/cek_saldo" />} label="Check Saldo">
-          Check Saldo
-        </MenuItem>
-        <MenuItem component={<Link to="/cek_nasabah" />} label="Check Saldo">
-          Check Nasabah
-        </MenuItem> */}
         <MenuItem variant="primary" onClick={handleLogout} label="Check Saldo">
           Log Out
         </MenuItem>

@@ -16,6 +16,10 @@ import NavbarLoginComponent from "../components/navbar_login";
 import { hashMd5Password } from "../utils/utils";
 
 export default function Login() {
+  useEffect(() => {
+    const zoomLevel = 1.2 / window.devicePixelRatio;
+    document.body.style.zoom = zoomLevel;
+  }, []);
   const [values, setValues] = useState({
     userName: "",
     pass: "",
