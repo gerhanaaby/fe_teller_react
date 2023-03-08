@@ -9,7 +9,6 @@ import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
 import PersonSearchOutlinedIcon from "@mui/icons-material/PersonSearchOutlined";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import MoveDownOutlinedIcon from "@mui/icons-material/MoveDownOutlined";
 import LocalLibraryOutlinedIcon from "@mui/icons-material/LocalLibraryOutlined";
 import SavingsOutlinedIcon from "@mui/icons-material/SavingsOutlined";
 import "./../css/sidebar.css";
