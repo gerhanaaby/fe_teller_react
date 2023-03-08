@@ -70,6 +70,8 @@ export default function Login() {
     });
   };
   document.body.style = "background: red;";
+  // document.body.style.backgroundImage =
+  //   "url('./../../src/assets/images/logo_sinarmas_small.png')";
   return (
     <div>
       <NavbarLoginComponent />

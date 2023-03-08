@@ -15,6 +15,7 @@ import CekSaldo from "./pages/cek_saldo";
 import Dashboard from "./pages/dashboard";
 import InternalTransfer from "./pages/internal_transfer";
 import CekNasabah from "./pages/cek_nasabah";
+import logoTab from "./../src/assets/images/logo_sinarmas_small.png";
 
 function App() {
   useEffect(() => {

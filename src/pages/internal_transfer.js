@@ -17,6 +17,16 @@ export default function InternalTransfer() {
     document.body.style.zoom = zoomLevel;
   }, []);
 
+  const today = new Date()
+    .toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replace(/\//g, "");
+
+  const todayRate = `${today}`;
+
   const [values, setValues] = useState({
     nomorRekDebet: "",
     nomorRekKredit: "",
@@ -31,15 +41,25 @@ export default function InternalTransfer() {
     jumlahTotal: "",
     kodeopt: "",
     message: "",
-    ftopt: "",
     tanggalTransaksi: "",
   });
+
+  const [ftoptChecked, setFtoptChecked] = useState(false);
+
+  const [kodeopt, setKodeOpt] = useState("Kode OPT");
 
   const [mataUangRek, setJenisMataUang] = useState("Jenis Mata Uang");
 
   const [jumlah, setJumlah] = useState("Jumlah");
 
   const [namaCabangDebet, setNamaCabangDebet] = useState("Nama Cabang");
+
+  const randomNum = Math.floor(Math.random() * 9000) + 1000;
+
+  const handleCheckboxChange = () => {
+    setFtoptChecked(!ftoptChecked);
+    setKodeOpt(ftoptChecked ? "" : `FT-${today}${randomNum}`);
+  };
 
   const handleSelectMataUang = (getMataUang) => {
     setJenisMataUang(getMataUang);
@@ -385,18 +405,17 @@ export default function InternalTransfer() {
                 <div key={`default-${type}`} className="mb-3">
                   <Form.Check
                     type={type}
-                    id={`default-${type}`}
                     label={`Input FT-OPT`}
+                    checked={ftoptChecked}
+                    onChange={handleCheckboxChange}
                   />
                 </div>
               ))}
             </Form>
             <Form.Control
-              placeholder="Kode OPT"
+              placeholder={kodeopt}
               disabled
-              onChange={(u) =>
-                setValues({ ...values, kodeOpt: u.target.value })
-              }
+              onChange={(e) => setKodeOpt(e.target.value)}
             />
           </Col>
         </Row>
