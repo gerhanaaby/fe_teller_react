@@ -8,7 +8,7 @@ export default function CekSaldo() {
   const [nomorRek, setNomorRek] = useState("Nomor Rekening");
   const [branch, setBranch] = useState("Nama Cabang");
   const [nomorCabang, setNomorCabang] = useState("Nomor Cabang");
-  const [tanggal, setTanggal] = useState("Tanggal Hari Ini");
+  const [tanggal, setTanggal] = useState(new Date().toLocaleDateString());
   const [accountName, setAccountName] = useState("Nama Akun");
   const [custNo, setCustNo] = useState("Nomor Cust");
   const [limit, setLimit] = useState("Limit");
