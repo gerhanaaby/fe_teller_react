@@ -20,6 +20,8 @@ export default function CekNasabah() {
 
   const [nomorCIF, setNoCIF] = useState({
     nomorCIF: "Nomor CIF",
+    valid: false,
+    validated: false,
   });
 
   const [mnemonic, setMnemonic] = useState({
@@ -235,6 +237,12 @@ export default function CekNasabah() {
         handleTanggalLahir(res.data.TanggalLahir);
         handleTempatLahir(res.data.birthPlace);
         handleStatus(res.data.custStatus);
+
+        setNoCIF({
+          nomorCIF: nomorCIF.nomorCIF,
+          valid: res.data === "Invalid, Account not found",
+          validated: true,
+        });
       })
       .catch((err) => {
         setModalShow(true);
@@ -267,73 +275,71 @@ export default function CekNasabah() {
         className="bodyHome"
         style={{ marginLeft: "4%", width: "80%" }}
       >
+        <Form.Group controlId="formText" className="mb-3">
+          <Row>
+            <Form.Group controlId="formText" className="mb-3">
+              <Form.Label>
+                <Row style={{ width: "900px" }}>
+                  <Col>
+                    <h5>
+                      <i>Cek Nasabah - Data Customer Individual</i>
+                    </h5>
+                    <span>Long CIF</span>
+                  </Col>
+                </Row>
+              </Form.Label>
+              <hr />
+            </Form.Group>
+          </Row>
+        </Form.Group>
+        <Form.Group controlId="formText" className="mb-3">
+          <Row>
+            <Col>
+              <Form.Label>
+                <b>Data Pribadi</b>
+                <br />
+                <span>
+                  <i>Nasabah bersedia memberikan informasi kepada pihak lain</i>
+                </span>
+              </Form.Label>
+            </Col>
+            <Col>
+              {["radio"].map((type) => (
+                <div key={`inline-${type}`} className="mb-3">
+                  <Form.Check
+                    inline
+                    label="Setuju"
+                    name="group1"
+                    type={type}
+                    id={`inline-${type}-1`}
+                    required
+                  />
+                  <Form.Check
+                    inline
+                    label="Tidak Setuju"
+                    name="group1"
+                    type={type}
+                    id={`inline-${type}-2`}
+                    required
+                  />
+                </div>
+              ))}
+            </Col>
+            <Col>
+              <Form.Label>Created By</Form.Label>
+            </Col>
+            <Col>
+              <Form.Control
+                placeholder={createBy.createBy}
+                // onChange={(u) =>
+                //   setValues({ ...values, nomorRekKredit: u.target.value })
+                // }
+                disabled
+              />
+            </Col>
+          </Row>
+        </Form.Group>
         <Form>
-          <Form.Group controlId="formText" className="mb-3">
-            <Row>
-              <Form.Group controlId="formText" className="mb-3">
-                <Form.Label>
-                  <Row style={{ width: "900px" }}>
-                    <Col>
-                      <h5>
-                        <i>Cek Nasabah - Data Customer Individual</i>
-                      </h5>
-                      <span>Long CIF</span>
-                    </Col>
-                  </Row>
-                </Form.Label>
-                <hr />
-              </Form.Group>
-            </Row>
-          </Form.Group>
-          <Form.Group controlId="formText" className="mb-3">
-            <Row>
-              <Col>
-                <Form.Label>
-                  <b>Data Pribadi</b>
-                  <br />
-                  <span>
-                    <i>
-                      Nasabah bersedia memberikan informasi kepada pihak lain
-                    </i>
-                  </span>
-                </Form.Label>
-              </Col>
-              <Col>
-                {["radio"].map((type) => (
-                  <div key={`inline-${type}`} className="mb-3">
-                    <Form.Check
-                      inline
-                      label="Setuju"
-                      name="group1"
-                      type={type}
-                      id={`inline-${type}-1`}
-                      required
-                    />
-                    <Form.Check
-                      inline
-                      label="Tidak Setuju"
-                      name="group1"
-                      type={type}
-                      id={`inline-${type}-2`}
-                      required
-                    />
-                  </div>
-                ))}
-              </Col>
-              <Col>
-                <Form.Label>Created By</Form.Label>
-              </Col>
-              <Col>
-                <Form.Control
-                  placeholder={createBy.createBy}
-                  // onChange={(u) =>
-                  //   setValues({ ...values, nomorRekKredit: u.target.value })
-                  // }
-                  disabled
-                />
-              </Col>
-            </Row>
-          </Form.Group>
           <Form.Group controlId="formText" className="mb-3">
             <Row>
               <Col>
@@ -348,8 +354,15 @@ export default function CekNasabah() {
                     (u) => handleNoCif(u.target.value)
                     //setValues({ ...values, nomorCIF: u.target.value })
                   }
+                  isInvalid={nomorCIF.valid}
                   required
+                  validated={nomorCIF.validated}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {nomorCIF.valid
+                    ? "Masukkan Nomor CIF yang valid."
+                    : "Invalid, Account not found."}
+                </Form.Control.Feedback>
               </Col>
               <Col>
                 <Form.Label>Creation Date</Form.Label>
